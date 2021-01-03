@@ -29,6 +29,7 @@
     "chart.js": "2.9.3",
     "popper.js": "^1.16.1",
     "rxjs": "6.6.3",
+    "sweetalert2": "^10.12.7",
     "tailwindcss": "1.8.10",
     "tslib": "2.0.1",
     "zone.js": "0.10.3"

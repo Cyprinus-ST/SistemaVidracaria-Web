@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { UserModel } from "src/app/models/User/UserModel";
 import { LoginService } from "src/app/services/login/login.service";
 import { ViacepService } from "src/app/services/utils/viacep.service";
+import Swal from "sweetalert2";
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
@@ -162,8 +163,7 @@ export class RegisterComponent implements OnInit {
   }
 
   doRegister(){
-    try{
-      console.log(this.registerForm);
+    try{      
       this.submited = true;
       if(this.registerForm.status == "INVALID")
         this.openError("Favor preencher todos os campos obrigatórios");
@@ -176,16 +176,34 @@ export class RegisterComponent implements OnInit {
         user.Phone = user.Phone.toString();
         console.log(user);
         this.LoginService.registerUser(user).subscribe(data =>{
-          console.log(data);
+          if(data.user){
+            Swal.fire({
+              title: 'Sucesso!',
+              text: 'Usuário cadastrado com sucesso!',
+              confirmButtonText: `Ok`,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.router.navigate(['/login'])
+              }
+            })
+          }
+          else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...Ocorreu um erro ao cadastrar o usuário',
+              text: 'Error: ' + data.message
+            })
+          }
         });
-        
       }
       
     }
     catch(ex){
-      this.openError(ex);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...Ocorreu um erro ao cadastrar o usuário',
+        text: 'Error: ' + ex
+      })
     }
-    
-
   }
 }
