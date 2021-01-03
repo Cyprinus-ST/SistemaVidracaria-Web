@@ -17,7 +17,7 @@ export class UserModel{
     Complement : string;
     Phone : string;
     TokenPassword : string;
-
+    CEP : string;
 }
 
 //Classe que é o retorno da api, aonde vem message de erro ou algo do tipo

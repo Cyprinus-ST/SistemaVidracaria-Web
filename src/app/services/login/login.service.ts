@@ -25,4 +25,8 @@ export class LoginService {
   public doLoginUser(user : UserModel) : Observable<UserResponse>{
     return this.httpClient.post<UserResponse>(this.apiUrl + "Login/Login",user,this.httpOptions);
   }
+
+  public registerUser(user: UserModel) : Observable<UserResponse>{
+    return this.httpClient.post<UserResponse>(this.apiUrl + "Login/Register",user,this.httpOptions);
+  }
 }

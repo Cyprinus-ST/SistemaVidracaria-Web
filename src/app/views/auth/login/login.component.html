@@ -67,14 +67,6 @@
                 </span>
               </label>
             </div>
-            <ng-container
-            [ngTemplateOutlet]="formError"
-            [ngTemplateOutletContext]="{
-              validation: 'minlength',
-              message: 'A senha tem que ter pelo menos 3 dígitos.',
-              control: loginForm.controls['password']
-            }"
-            ></ng-container>
 
             <div class="text-center mt-6">
               <button
@@ -111,7 +103,7 @@
           </a>
         </div>
         <div class="w-1/2 text-right">
-          <a [routerLink]="['/auth/register']" class="text-gray-300">
+          <a [routerLink]="['/register']" class="text-gray-300">
             <small>Criar conta</small>
           </a>
         </div>
