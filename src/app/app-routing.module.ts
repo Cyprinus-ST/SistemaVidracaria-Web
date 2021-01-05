@@ -17,6 +17,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 
 //auth guard
 import { AuthGuardService as AuthGuard } from "./services/utils/auth/auth-guard.service";
+import { ForgotPasswordComponent } from "./views/auth/forgot-password/forgot-password.component";
 
 
 //Rotas que precisam de autenticação adicionar o canActivate: [AuthGuard], 
@@ -43,6 +44,7 @@ const routes: Routes = [
     children: [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
+      { path: "forgot", component: ForgotPasswordComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },

@@ -17,6 +17,7 @@ import { TablesComponent } from "./views/admin/tables/tables.component";
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
+import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
 
 // no layouts views
 import { IndexComponent } from "./views/index/index.component";
@@ -86,6 +87,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    ForgotPasswordComponent,
     
   ],
   imports: [

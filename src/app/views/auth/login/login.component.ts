@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup,Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { LoginInput } from "src/app/models/inputs/loginInput";
 import { UserModel } from "src/app/models/User/UserModel";
 import { LoginService } from '../../../services/login/login.service';
 @Component({
@@ -88,7 +89,7 @@ export class LoginComponent implements OnInit {
       }
       else{
 
-        let user = new UserModel();
+        let user = new LoginInput();
         user.Email = this.loginForm.value.email;
         user.Password = this.loginForm.value.password;
   
