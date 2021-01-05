@@ -15,13 +15,13 @@
     <!-- Brand -->
     <a
       [routerLink]="['/']"
-      class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
+      class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-xl font-bold p-4 px-0"
     >
       <span class="block sm:hidden">
         Tailwind Angular
       </span>
       <span class="hidden sm:block">
-        Notus Angular
+       Vidraçaria
       </span>
     </a>
     <!-- User -->
@@ -48,7 +48,7 @@
               [routerLink]="['/']"
               class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
             >
-              Notus Angular
+              Vidraçaria
             </a>
           </div>
           <div class="w-6/12 flex justify-end">
@@ -68,26 +68,28 @@
           <input
             type="text"
             placeholder="Search"
-            class="px-3 py-2 h-12 border border-solid border-gray-600 placeholder-gray-400 text-gray-700 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
+            class="px-3 py-2 h-12 border border-solid
+                    border-gray-600 placeholder-gray-400
+                    text-gray-700 bg-white rounded text-base
+                    leading-snug shadow-none outline-none
+                    focus:outline-none w-full font-normal"
           />
         </div>
       </form>
 
-      <!-- Divider -->
+
       <hr class="my-4 md:min-w-full" />
-      <!-- Heading -->
       <h6
-        class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        class="md:min-w-full text-gray-600 text font-bold block pt-1 pb-4 no-underline"
       >
-        Admin Layout Pages
+        Principal
       </h6>
-      <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
         <li class="items-center">
           <a
             [routerLink]="['/admin/dashboard']"
-            class="text-xs uppercase py-3 font-bold block"
+            class="text-sm py-3 font-bold block"
             routerLinkActive
             #adminDashboard="routerLinkActive"
             [ngClass]="
@@ -109,7 +111,7 @@
         <li class="items-center">
           <a
             [routerLink]="['/admin/settings']"
-            class="text-xs uppercase py-3 font-bold block"
+            class="text-sm py-3 font-bold block"
             routerLinkActive
             #adminSettings="routerLinkActive"
             [ngClass]="
@@ -119,215 +121,123 @@
             "
           >
             <i
-              class="fas fa-tools mr-2 text-sm"
+              class="fas fa-user mr-2 text-sm"
               [ngClass]="
                 adminSettings.isActive ? 'opacity-75' : 'text-gray-400'
               "
             ></i>
-            Settings
+            Minha Conta
           </a>
         </li>
-
+        
         <li class="items-center">
           <a
-            [routerLink]="['/admin/tables']"
-            class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
-            #adminTables="routerLinkActive"
-            [ngClass]="
-              adminTables.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-gray-800 hover:text-gray-600'
-            "
+            [routerLink]="['/auth/login']"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
           >
-            <i
-              class="fas fa-table mr-2 text-sm"
-              [ngClass]="adminTables.isActive ? 'opacity-75' : 'text-gray-400'"
-            ></i>
-            Tables
+            <i class="fas fa-calculator text-gray-400 mr-2 text-sm"></i>
+            Calculadora
           </a>
         </li>
+  
+      </ul>
 
+
+      <hr class="my-4 md:min-w-full" />
+
+      <h6
+        class="md:min-w-full text-gray-600 text font-bold block pt-1 pb-4 no-underline"
+      >
+        Administração
+      </h6>
+
+      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
         <li class="items-center">
           <a
-            [routerLink]="['/admin/maps']"
-            class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
-            #adminMaps="routerLinkActive"
-            [ngClass]="
-              adminMaps.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-gray-800 hover:text-gray-600'
-            "
+            [routerLink]="['/auth/register']"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
           >
-            <i
-              class="fas fa-map-marked mr-2 text-sm"
-              [ngClass]="adminMaps.isActive ? 'opacity-75' : 'text-gray-400'"
-            ></i>
-            Maps
+            <i class="fas fa-clipboard-list text-gray-400 mr-2 text-sm"></i>
+            Planos
+          </a>
+        </li>
+        <li class="items-center">
+          <a
+            [routerLink]="['/auth/register']"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
+          >
+            <i class="fas fa-users text-gray-400 mr-2 text-sm"></i>
+            Usuários
           </a>
         </li>
       </ul>
 
-      <!-- Divider -->
       <hr class="my-4 md:min-w-full" />
-      <!-- Heading -->
+
       <h6
-        class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        class="md:min-w-full text-gray-600 text font-bold block pt-1 pb-4 no-underline"
       >
-        Auth Layout Pages
+        Gestão
       </h6>
-      <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
         <li class="items-center">
           <a
             [routerLink]="['/auth/login']"
-            class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
           >
-            <i class="fas fa-fingerprint text-gray-400 mr-2 text-sm"></i>
-            Login
+            <i class="fas fa-money-check-alt text-gray-400 mr-2 text-sm"></i>
+            Financeiro
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
+            [routerLink]="['/auth/login']"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
+          >
+            <i class="fas fa-truck-loading text-gray-400 mr-2 text-sm"></i>
+            Fornecedores
           </a>
         </li>
 
         <li class="items-center">
           <a
             [routerLink]="['/auth/register']"
-            class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
           >
-            <i class="fas fa-clipboard-list text-gray-400 mr-2 text-sm"></i>
-            Register
-          </a>
-        </li>
-      </ul>
-
-      <!-- Divider -->
-      <hr class="my-4 md:min-w-full" />
-      <!-- Heading -->
-      <h6
-        class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
-      >
-        No Layout Pages
-      </h6>
-      <!-- Navigation -->
-
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-        <li class="items-center">
-          <a
-            [routerLink]="['/landing']"
-            class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
-          >
-            <i class="fas fa-newspaper text-gray-400 mr-2 text-sm"></i>
-            Landing Page
+            <i class="fas fa-user-friends text-gray-400 mr-2 text-sm"></i>
+            Clientes
           </a>
         </li>
 
         <li class="items-center">
           <a
-            [routerLink]="['/profile']"
-            class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+            [routerLink]="['/auth/register']"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
           >
-            <i class="fas fa-user-circle text-gray-400 mr-2 text-sm"></i>
-            Profile Page
-          </a>
-        </li>
-      </ul>
-
-      <!-- Divider -->
-      <hr class="my-4 md:min-w-full" />
-      <!-- Heading -->
-      <h6
-        class="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
-      >
-        Documentation
-      </h6>
-      <!-- Navigation -->
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-        <li class="inline-flex">
-          <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/angular/colors/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-          >
-            <i class="fas fa-paint-brush mr-2 text-gray-400 text-base"></i>
-            Styles
+            <i class="fas fa-boxes text-gray-400 mr-2 text-sm"></i>
+            Materiais
           </a>
         </li>
 
-        <li class="inline-flex">
+        <li class="items-center">
           <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/angular/alerts/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+            [routerLink]="['/auth/login']"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
           >
-            <i class="fab fa-css3-alt mr-2 text-gray-400 text-base"></i>
-            CSS Components
+            <i class="fas fa-project-diagram text-gray-400 mr-2 text-sm"></i>
+            Projetos
           </a>
         </li>
 
-        <li class="inline-flex">
+        <li class="items-center">
           <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/angular/overview/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+            [routerLink]="['/auth/login']"
+            class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block"
           >
-            <i class="fab fa-angular mr-2 text-gray-400 text-base"></i>
-            Angular
-          </a>
-        </li>
-
-        <li class="inline-flex">
-          <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-          >
-            <i class="fab fa-js-square mr-2 text-gray-400 text-base"></i>
-            Javascript
-          </a>
-        </li>
-
-        <li class="inline-flex">
-          <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-          >
-            <i class="fab fa-react mr-2 text-gray-400 text-base"></i>
-            NextJS
-          </a>
-        </li>
-
-        <li class="inline-flex">
-          <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/react/overview/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-          >
-            <i class="fab fa-react mr-2 text-gray-400 text-base"></i>
-            React
-          </a>
-        </li>
-
-        <li class="inline-flex">
-          <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/svelte/overview/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-          >
-            <i class="fas fa-link mr-2 text-gray-400 text-base"></i>
-            Svelte
-          </a>
-        </li>
-
-        <li class="inline-flex">
-          <a
-            href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus"
-            target="_blank"
-            class="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-          >
-            <i class="fab fa-vuejs mr-2 text-gray-400 text-base"></i>
-            VueJS
+            <i class="fas fa-wallet text-gray-400 mr-2 text-sm"></i>
+            Orçamentos
           </a>
         </li>
       </ul>
