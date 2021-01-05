@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule,CanActivate } from "@angular/router";
 
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
@@ -15,16 +15,19 @@ import { TablesComponent } from "./views/admin/tables/tables.component";
 import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
 
-// no layouts views
-import { IndexComponent } from "./views/index/index.component";
-import { LandingComponent } from "./views/landing/landing.component";
-import { ProfileComponent } from "./views/profile/profile.component";
+//auth guard
+import { AuthGuardService as AuthGuard } from "./services/utils/auth/auth-guard.service";
+
+
+//Rotas que precisam de autenticação adicionar o canActivate: [AuthGuard], 
+//pois o mesmo valida se o usuário está logo e o tempo de expiração do token - Vilas
 
 const routes: Routes = [
   // admin views
   {
     path: "admin",
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
@@ -43,13 +46,7 @@ const routes: Routes = [
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },
-  // no layout views
-  // { path: "profile", component: ProfileComponent },
-  // { path: "landing", component: LandingComponent },
-  // { path: "", component: IndexComponent },
-  // { path: "**", redirectTo: "", pathMatch: "full" },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

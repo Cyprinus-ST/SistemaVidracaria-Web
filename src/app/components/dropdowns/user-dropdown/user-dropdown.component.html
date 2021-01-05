@@ -1,18 +1,26 @@
-<a
-  class="text-gray-600 block"
-  href="#pablo"
-  (click)="toggleDropdown($event)"
-  #btnDropdownRef
->
-  <div class="items-center flex">
-    <span
-      class="w-12 h-12 text-sm text-white bg-gray-300 inline-flex items-center justify-center rounded-full"
-    >
-      <img
-        alt="..."
-        class="w-full rounded-full align-middle border-none shadow-lg"
-        src="assets/img/team-1-800x800.jpg"
-      />
-    </span>
-  </div>
-</a>
+<div class="flex lg:flex-grow items-center" id="example-navbar-info">
+  <ul class="flex flex-col lg:flex-row list-none ml-auto">
+    <li class="nav-item">
+      <button class="text-white background-transparent
+          font-bold uppercase px-3 py-1 text-xs outline-none
+          focus:outline-none mr-1 mb-1 ease-linear
+          transition-all duration-150"
+          type="button"
+          (click)="goToAccount()"
+      >
+        Bem vindo, {{user.name}}
+      </button>
+    </li>
+    <li class="nav-item">
+      <button class="text-white background-transparent 
+            font-bold uppercase px-3 py-1 text-xs
+            outline-none focus:outline-none mr-1
+            mb-1 ease-linear transition-all duration-150"
+            type="button" 
+            (click)="logOut()"
+        >
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </li>
+  </ul>
+</div>

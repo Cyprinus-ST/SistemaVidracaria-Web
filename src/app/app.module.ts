@@ -49,7 +49,7 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 
 import { HttpClientModule } from '@angular/common/http';
-
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +95,10 @@ import { HttpClientModule } from '@angular/common/http';
      ReactiveFormsModule,
      HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
