@@ -11,7 +11,6 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
 import { MapsComponent } from "./views/admin/maps/maps.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
 
 // auth views
@@ -19,20 +18,16 @@ import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
 import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
 
-// no layouts views
-import { IndexComponent } from "./views/index/index.component";
-import { LandingComponent } from "./views/landing/landing.component";
-import { ProfileComponent } from "./views/profile/profile.component";
+//user views
+import { AccountComponent } from './views/user/account/account.component';
 
 // components for views and layouts
-
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
 import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
 import { CardBarChartComponent } from "./components/cards/card-bar-chart/card-bar-chart.component";
 import { CardLineChartComponent } from "./components/cards/card-line-chart/card-line-chart.component";
 import { CardPageVisitsComponent } from "./components/cards/card-page-visits/card-page-visits.component";
 import { CardProfileComponent } from "./components/cards/card-profile/card-profile.component";
-import { CardSettingsComponent } from "./components/cards/card-settings/card-settings.component";
 import { CardSocialTrafficComponent } from "./components/cards/card-social-traffic/card-social-traffic.component";
 import { CardStatsComponent } from "./components/cards/card-stats/card-stats.component";
 import { CardTableComponent } from "./components/cards/card-table/card-table.component";
@@ -51,6 +46,7 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +64,6 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     FooterAdminComponent,
     CardPageVisitsComponent,
     CardProfileComponent,
-    CardSettingsComponent,
     CardSocialTrafficComponent,
     CardStatsComponent,
     CardTableComponent,
@@ -80,14 +75,11 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     AdminComponent,
     AuthComponent,
     MapsComponent,
-    SettingsComponent,
     TablesComponent,
     LoginComponent,
     RegisterComponent,
-    IndexComponent,
-    LandingComponent,
-    ProfileComponent,
     ForgotPasswordComponent,
+    AccountComponent,
     
   ],
   imports: [
