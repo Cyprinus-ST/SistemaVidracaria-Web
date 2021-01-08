@@ -8,16 +8,14 @@ import {
   ForgotPasswordResponse,
 } from "src/app/models/inputs/forgotPasswordInput";
 import { LoginInput } from "src/app/models/inputs/loginInput";
+import { RecoveryTokenIsValidOutput } from "src/app/models/inputs/recoveryTokenIsValidOutput";
+import { UpdatePasswordInput } from "src/app/models/inputs/updatePasswordInput";
 
 @Injectable({
   providedIn: "root",
 })
 export class LoginService {
   apiUrl = "http://localhost:20209/api/";
-
-  httpHeaders = new HttpHeaders({
-    "Content-Type": "application/json",
-  });
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -46,10 +44,24 @@ export class LoginService {
   public forgotPassword(
     input: ForgotPasswordInput
   ): Observable<ForgotPasswordResponse> {
-
     return this.httpClient.put<ForgotPasswordResponse>(
-      this.apiUrl + "Login/forgotPassword?email="+input.Email,
-      { headers: this.httpHeaders }
+      this.apiUrl + "Login/forgotPassword?email=" + input.Email,
+      this.httpOptions
+    );
+  }
+
+  public recoveryTokenIsValid(input: string): Observable<RecoveryTokenIsValidOutput> {
+    return this.httpClient.get<RecoveryTokenIsValidOutput>(
+      this.apiUrl + "Login/recoveryTokenIsValid?token=" + input,
+      this.httpOptions
+    );
+  }
+
+  public updatePassword(input: UpdatePasswordInput): Observable<Boolean> {
+    return this.httpClient.patch<boolean>(
+      this.apiUrl + "Login/updatePassword",
+      input,
+      this.httpOptions
     );
   }
 }

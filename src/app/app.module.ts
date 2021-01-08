@@ -18,6 +18,7 @@ import { TablesComponent } from "./views/admin/tables/tables.component";
 import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
 import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
+import { RecoveryPasswordComponent } from './views/auth/recovery-password/recovery-password.component';
 
 // no layouts views
 import { IndexComponent } from "./views/index/index.component";
@@ -48,6 +49,7 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import {MatButtonModule} from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
@@ -88,6 +90,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     LandingComponent,
     ProfileComponent,
     ForgotPasswordComponent,
+    RecoveryPasswordComponent,
     
   ],
   imports: [
@@ -95,7 +98,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
      AppRoutingModule,
      FormsModule,
      ReactiveFormsModule,
-     HttpClientModule
+     HttpClientModule,
+     MatButtonModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

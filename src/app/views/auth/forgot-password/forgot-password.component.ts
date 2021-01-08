@@ -6,7 +6,8 @@ import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html'
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ["../../../../assets/styles/main.css"],
 })
 export class ForgotPasswordComponent implements OnInit {
 
@@ -80,7 +81,7 @@ export class ForgotPasswordComponent implements OnInit {
             this.router.navigate(['/login'])
           }
           else{
-            this.openError(data.message);
+            return this.openError(data.message);
           }
         });
   
