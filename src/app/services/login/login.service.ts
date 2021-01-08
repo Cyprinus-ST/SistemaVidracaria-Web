@@ -13,7 +13,7 @@ import { LoginInput } from "src/app/models/inputs/loginInput";
   providedIn: "root",
 })
 export class LoginService {
-  apiUrl = "http://localhost: /api/";
+  apiUrl = "http://localhost:20209/api/"; 
 
   httpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
