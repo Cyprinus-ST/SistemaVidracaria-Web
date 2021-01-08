@@ -10,327 +10,219 @@
               Vamos criar a sua conta!
             </h2>
           </div>
-          <form [formGroup]="registerForm" (ngSubmit)="doRegister()"> 
+          <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
 
             <hr class="mt-6 border-b-1 border-gray-400" />
             <br>
-            
+
             <div class="flex flex-wrap">
-                <div class="w-full px-4 flex-1">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Nome Completo 
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Nome"
-                    formControlName="Name"
-                    class="px-3 py-3 placeholder-gray-400
+              <div class="w-full px-4 flex-1">
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
+                  Nome Completo
+                </label>
+                <input type="text" placeholder="Nome" formControlName="Name" class="px-3 py-3 placeholder-gray-400
                       text-gray-700 bg-white rounded
                       text-sm shadow focus:outline-none
                       focus:shadow-outline w-full ease-linear
-                      transition-all duration-150"
-                  />
-    
-                  <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                    *ngIf="registerForm.controls.Name.errors != null && submited == true">
-                      * O campo nome é obrigatório!
-                  </small>
-                </div>
-                <div class="w-full px-4 flex-1">
-                  <label
-                    class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    formControlName="Email"
-                    class="px-3 py-3 placeholder-gray-400 text-gray-700
-                      bg-white rounded text-sm shadow focus:outline-none
-                      focus:shadow-outline w-full ease-linear transition-all 
-                      duration-150"
-                  />
-                  <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                    *ngIf="registerForm.controls.Email.errors != null && registerForm.controls.Email.errors.required != null && submited == true">
-                    * O campo email é obrigatório!
-                  </small>
-                  <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                    *ngIf="registerForm.controls.Email.errors != null && registerForm.controls.Email.errors.email != null && submited == true">
-                    * Favor inserir um e-mail válido!
-                  </small>
-                </div>
-            </div>
+                      transition-all duration-150" />
 
-            <br/>
-
-            <div class="flex flex-wrap">
-              <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
-                  Senha
-                </label>
-                <input
-                  type="password"
-                  formControlName="Password"
-                  class="px-3 py-3 placeholder-gray-400 text-gray-700
-                    bg-white rounded text-sm shadow focus:outline-none
-                    focus:shadow-outline w-full ease-linear transition-all duration-150"
-                  placeholder="Senha"
-                />
                 <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                *ngIf="registerForm.controls.Password.errors != null  && submited == true">
-                   * O campo senha é obrigatório!
-              </small>
+                  *ngIf="registerForm.controls.Name.errors != null && submited == true">
+                  * O campo nome é obrigatório!
+                </small>
               </div>
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
-                  CPF/CNPJ 
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
+                  Email
                 </label>
-                <input
-                  type="number"
-                  placeholder="CPF/CNPJ somente os números"
-                  formControlName="CPF"
-                  class="px-3 py-3 placeholder-gray-400
-                    text-gray-700 bg-white rounded
-                    text-sm shadow focus:outline-none
-                    focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
+                <input type="email" placeholder="Email" formControlName="Email" class="px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none
+                      focus:shadow-outline w-full ease-linear transition-all 
+                      duration-150" />
                 <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                  *ngIf="registerForm.controls.CPF.errors != null  && submited == true">
-                     * O campo CPF/CNPJ é obrigatório!
+                  *ngIf="registerForm.controls.Email.errors != null && registerForm.controls.Email.errors.required != null && submited == true">
+                  * O campo email é obrigatório!
+                </small>
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="registerForm.controls.Email.errors != null && registerForm.controls.Email.errors.email != null && submited == true">
+                  * Favor inserir um e-mail válido!
                 </small>
               </div>
             </div>
 
-            <br/>
+            <br />
 
-            
             <div class="flex flex-wrap">
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
+                  Senha
+                </label>
+                <input type="password" formControlName="Password" class="px-3 py-3 placeholder-gray-400 text-gray-700
+                    bg-white rounded text-sm shadow focus:outline-none
+                    focus:shadow-outline w-full ease-linear transition-all duration-150" placeholder="Senha" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="registerForm.controls.Password.errors != null  && submited == true">
+                  * O campo senha é obrigatório!
+                </small>
+              </div>
+              <div class="w-full px-4 flex-1">
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
+                  CPF/CNPJ
+                </label>
+                <input type="number" placeholder="CPF/CNPJ somente os números" formControlName="CPF" class="px-3 py-3 placeholder-gray-400
+                    text-gray-700 bg-white rounded
+                    text-sm shadow focus:outline-none
+                    focus:shadow-outline w-full ease-linear
+                    transition-all duration-150" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="registerForm.controls.CPF.errors != null  && submited == true">
+                  * O campo CPF/CNPJ é obrigatório!
+                </small>
+              </div>
+            </div>
+
+            <br />
+
+
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 flex-1">
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   Telefone
                 </label>
-                <input
-                  type="number"
-                  placeholder="Telefone"
-                  formControlName="Phone"
-                  class="px-3 py-3 placeholder-gray-400
+                <input type="number" placeholder="Telefone" formControlName="Phone" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
+                    transition-all duration-150" />
                 <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                *ngIf="registerForm.controls.Phone.errors != null  && submited == true">
-                   * O campo telefone é obrigatório!
-              </small>
+                  *ngIf="registerForm.controls.Phone.errors != null  && submited == true">
+                  * O campo telefone é obrigatório!
+                </small>
               </div>
 
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   CEP
                 </label>
-                <input
-                  type="text"
-                  placeholder="CEP"
-                  formControlName="CEP"
-                  class="px-3 py-3 placeholder-gray-400
+                <input type="text" placeholder="CEP" formControlName="CEP" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                  (change)="getCep()"
-                />
-  
+                    transition-all duration-150" (change)="getCep()" />
+
               </div>
             </div>
 
-            <br/>
-            
+            <br />
+
             <div class="flex flex-wrap">
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   País
                 </label>
-                <input
-                  type="text"
-                  placeholder="País"
-                  formControlName="Country"
-                  class="px-3 py-3 placeholder-gray-400
+                <input type="text" placeholder="País" formControlName="Country" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
+                    transition-all duration-150" />
               </div>
 
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   Estado
                 </label>
-                <input
-                  type="text"
-                  placeholder="Estado"
-                  formControlName="State"
-                  class="px-3 py-3 placeholder-gray-400
+                <input type="text" placeholder="Estado" formControlName="State" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
-  
+                    transition-all duration-150" />
+
               </div>
             </div>
 
-            <br/>
+            <br />
 
             <div class="flex flex-wrap">
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   Cidade
                 </label>
-                <input
-                  type="text"
-                  placeholder="Cidade"
-                  formControlName="City"
-                  class="px-3 py-3 placeholder-gray-400
+                <input type="text" placeholder="Cidade" formControlName="City" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
+                    transition-all duration-150" />
               </div>
 
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   Bairro
                 </label>
-                <input                  
-                  type="text"
-                  placeholder="Bairro"
-                  formControlName="Neighborhood"
-                  class="px-3 py-3 placeholder-gray-400
+                <input type="text" placeholder="Bairro" formControlName="Neighborhood" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
+                    transition-all duration-150" />
               </div>
 
             </div>
-            
-            <br/>
+
+            <br />
 
             <div class="flex flex-wrap">
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   Endereço
                 </label>
-                <input
-                  disabled
-                  type="text"
-                  placeholder="Endereço"
-                  formControlName="Street"
-                  class="px-3 py-3 placeholder-gray-400
+                <input disabled type="text" placeholder="Endereço" formControlName="Street" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
+                    transition-all duration-150" />
               </div>
 
               <div class="w-full px-4 flex-1">
-                <label
-                  class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
+                <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                   Número
                 </label>
-                <input
-                  type="text"
-                  placeholder="Número"
-                  formControlName="Number"
-                  class="px-3 py-3 placeholder-gray-400
+                <input type="text" placeholder="Número" formControlName="Number" class="px-3 py-3 placeholder-gray-400
                     text-gray-700 bg-white rounded
                     text-sm shadow focus:outline-none
                     focus:shadow-outline w-full ease-linear
-                    transition-all duration-150"
-                />
-  
+                    transition-all duration-150" />
+
               </div>
             </div>
-            <br/>
+            <br />
             <div class="w-full px-4 flex-1">
-              <label
-                class="block uppercase text-gray-700 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
+              <label class="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                 Complemento
               </label>
-              <input
-                type="text"
-                placeholder="Complemento"
-                formControlName="Complement"
-                class="px-3 py-3 placeholder-gray-400
+              <input type="text" placeholder="Complemento" formControlName="Complement" class="px-3 py-3 placeholder-gray-400
                   text-gray-700 bg-white rounded
                   text-sm shadow focus:outline-none
                   focus:shadow-outline w-full ease-linear
-                  transition-all duration-150"
-              />
+                  transition-all duration-150" />
 
             </div>
-            <br/>
+            <br />
 
             <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500" *ngIf="error.show">
               <span class="text-xl inline-block mr-5 align-middle">
                 <i class="fas fa-times"></i>&nbsp;&nbsp;
               </span>
               <span class="inline-block align-middle mr-8">
-                <b>{{error.message}} </b> <br/> 
+                <b>{{error.message}} </b> <br />
               </span>
               <button class="absolute
                   bg-transparent text-2xl
                   font-semibold leading-none
                   right-0 top-0 mt-4 mr-6
-                  outline-none focus:outline-none"
-                  (click)="closeError()"
-                  >
+                  outline-none focus:outline-none" (click)="closeError()">
                 <span>× &nbsp;&nbsp;</span>
               </button>
             </div>
-            
+
             <div class="flex flex-wrap">
               <div class="w-full px-4 flex-1">
                 <button
@@ -339,8 +231,7 @@
                   class="cancel bg-red-500 text-white active:bg-gray-700
                     text-sm font-bold uppercase px-6 py-3 rounded
                     shadow hover:shadow-lg outline-none focus:outline-none
-                    mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                >
+                    mr-1 mb-1 w-full ease-linear transition-all duration-150">
                   Cancelar
                 </button>
               </div>
@@ -351,8 +242,7 @@
                   class="submit bg-gray-900 text-white active:bg-gray-700
                     text-sm font-bold uppercase px-6 py-3 rounded
                     shadow hover:shadow-lg outline-none focus:outline-none
-                    mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                >
+                    mr-1 mb-1 w-full ease-linear transition-all duration-150">
                   Criar Conta
                 </button>
               </div>

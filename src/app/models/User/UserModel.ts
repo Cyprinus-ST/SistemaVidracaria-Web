@@ -1,7 +1,7 @@
 
 //Model seguindo exemplo da API, a classe de usuário
 export class UserModel{
-    
+    id: string;
     Name : string;
     Email : string;
     Password : string;

@@ -8,8 +8,11 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
 import { MapsComponent } from "./views/admin/maps/maps.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
+
+//#region user views
+import { AccountComponent } from "./views/user/account/account.component";
+////#endregion
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -32,11 +35,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
-      { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
+  },
+  {
+    path:"user",
+    component: AdminComponent,
+    canActivate : [AuthGuard],
+    children:[
+      { path: "account", component: AccountComponent }
+    ]
   },
   // auth views
   {

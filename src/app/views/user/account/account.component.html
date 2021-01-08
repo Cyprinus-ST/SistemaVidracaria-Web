@@ -1,0 +1,204 @@
+<div class="flex flex-wrap">
+  <div class="w-full lg:w-12/12 px-4">
+    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
+      <div class="rounded-t bg-white mb-0 px-6 py-6">
+        <div class="text-center flex justify-between">
+          <h6 class="text-gray-800 text-xl font-bold">Minha Conta</h6>
+        </div>
+      </div>
+      <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <form [formGroup]="updateForm" (ngSubmit)="submit()">
+          <br />
+          <div class="flex flex-wrap justify-center">
+            <div class="w-8/12 sm:w-4/12 px-4">
+              <img src="{{pathAvatar}}" alt="..." class="shadow rounded-full align-middle border-none" width="250px" />
+            </div><br />
+          </div>
+          <div class="flex flex-wrap justify-center">
+            <button
+              class="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button">
+              Alterar logo
+            </button>
+          </div>
+          <br />
+          <br />
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-12/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Nome
+                </label>
+                <input type="text"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Name" />
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Email
+                </label>
+                <input type="email"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Email" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Email.errors != null && updateForm.controls.Email.errors.required != null && submited == true">
+                  * O campo email é obrigatório!
+                </small>
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Email.errors != null && updateForm.controls.Email.errors.email != null && submited == true">
+                  * Favor inserir um e-mail válido!
+                </small>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Telefone
+                </label>
+                <input type="email"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Phone" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Phone.errors != null  && submited == true">
+                  * O campo telefone é obrigatório!
+                </small>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  CPF
+                </label>
+                <input type="text"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="CPF" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.CPF.errors != null  && submited == true">
+                  * O campo CPF/CNPJ é obrigatório!
+                </small>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Senha
+                </label>
+                <input type="password"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Password" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Password.errors != null  && submited == true">
+                  * O campo senha é obrigatório!
+                </small>
+              </div>
+            </div>
+          </div>
+          <hr class="mt-6 border-b-1 border-gray-400" />
+          <br />
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-12/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Endereço
+                </label>
+                <input type="text"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Street" />
+              </div>
+            </div>
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  CEP
+                </label>
+                <input type="text"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="CEP" />
+              </div>
+            </div>
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Cidade
+                </label>
+                <input type="email"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="City" />
+              </div>
+            </div>
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block  text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Estado
+                </label>
+                <input type="text"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="State" />
+              </div>
+            </div>
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  País
+                </label>
+                <input type="text"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Country" />
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Número
+                </label>
+                <input type="text"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Number" />
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Complemento
+                </label>
+                <input type="email"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="Complement" />
+              </div>
+            </div>
+          </div>
+          <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500" *ngIf="error.show">
+            <span class="text-xl inline-block mr-5 align-middle">
+              <i class="fas fa-times"></i>&nbsp;&nbsp;
+            </span>
+            <span class="inline-block align-middle mr-8">
+              <b>{{error.message}} </b> <br />
+            </span>
+            <button class="absolute
+                bg-transparent text-2xl
+                font-semibold leading-none
+                right-0 top-0 mt-4 mr-6
+                outline-none focus:outline-none" (click)="closeError()">
+              <span>× &nbsp;&nbsp;</span>
+            </button>
+          </div>
+          <hr class="mt-6 border-b-1 border-gray-400" />
+          <br />
+          <div class="flex flex-wrap">
+            <div class="w-10/12 px-4">
+            </div>
+            <div class="w-full px-12 flex-1">
+              <button
+                class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="submit">
+                Salvar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
