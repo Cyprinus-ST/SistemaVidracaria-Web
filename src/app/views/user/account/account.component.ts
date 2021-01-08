@@ -12,11 +12,9 @@ import Swal from 'sweetalert2';
 export class AccountComponent implements OnInit {
 
   updateForm : FormGroup;
-  
   userData;
-  
   submited;
-
+  pathAvatar: string;
   error = {
     show : false,
     message: ""
@@ -33,9 +31,12 @@ export class AccountComponent implements OnInit {
   }
 
   initForm(){
-
     this.userData = JSON.parse(localStorage.getItem("user"));
-    console.log(this.userData);
+
+    this.pathAvatar = this.userData.pathAvatar;
+    if(this.pathAvatar == null || this.pathAvatar == "")
+      this.pathAvatar = "../../../../assets/img/user.png";
+
     this.updateForm = this.fb.group({
       Name : [
         this.userData.name,
