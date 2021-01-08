@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
   templateUrl: "./register.component.html",
 })
 
+
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
@@ -17,12 +18,10 @@ export class RegisterComponent implements OnInit {
     show : false,
     message : ""
   };
-
   submited = false;
 
   constructor(
     private fb : FormBuilder,
-    private route : ActivatedRoute,
     private router : Router,
     public LoginService : LoginService,
     public ViaCepService : ViacepService

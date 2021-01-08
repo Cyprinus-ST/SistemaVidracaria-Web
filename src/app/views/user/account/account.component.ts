@@ -9,12 +9,15 @@ import Swal from 'sweetalert2';
   selector: 'app-account',
   templateUrl: './account.component.html'
 })
+
+//Implementar pesquisa via cep aqui tbm - Vilas
 export class AccountComponent implements OnInit {
 
   updateForm : FormGroup;
   userData;
   submited;
   pathAvatar: string;
+  showModal = true;
   error = {
     show : false,
     message: ""
@@ -136,7 +139,6 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  
   closeError(){
     this.error.show = false;
     this.error.message= "";
@@ -187,5 +189,9 @@ export class AccountComponent implements OnInit {
         text: 'Error: ' + ex
       });
     }
+  }
+
+  toggleModal(){
+    this.showModal = !this.showModal;
   }
 }

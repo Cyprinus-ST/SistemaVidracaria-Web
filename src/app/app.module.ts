@@ -43,6 +43,7 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { FileUploadComponent } from "./components/modal/file-upload/file-upload.component";
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
@@ -79,8 +80,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    AccountComponent,
-    
+    AccountComponent,    
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
