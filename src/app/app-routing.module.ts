@@ -17,10 +17,11 @@ import { AccountComponent } from "./views/user/account/account.component";
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
+import { ForgotPasswordComponent } from "./views/auth/forgot-password/forgot-password.component";
+import { RecoveryPasswordComponent } from './views/auth/recovery-password/recovery-password.component';
 
 //auth guard
 import { AuthGuardService as AuthGuard } from "./services/utils/auth/auth-guard.service";
-import { ForgotPasswordComponent } from "./views/auth/forgot-password/forgot-password.component";
 
 
 //Rotas que precisam de autenticação adicionar o canActivate: [AuthGuard], 
@@ -55,6 +56,7 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "forgot", component: ForgotPasswordComponent },
+      { path: "recoveryPassword", component: RecoveryPasswordComponent},
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },

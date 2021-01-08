@@ -17,6 +17,7 @@ import { TablesComponent } from "./views/admin/tables/tables.component";
 import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
 import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
+import { RecoveryPasswordComponent } from './views/auth/recovery-password/recovery-password.component';
 
 //user views
 import { AccountComponent } from './views/user/account/account.component';
@@ -44,6 +45,7 @@ import { NotificationDropdownComponent } from "./components/dropdowns/notificati
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { FileUploadComponent } from "./components/modal/file-upload/file-upload.component";
+import { MatButtonModule } from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
@@ -81,14 +83,16 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     RegisterComponent,
     ForgotPasswordComponent,
     AccountComponent,    
-    FileUploadComponent
+    FileUploadComponent,
+    RecoveryPasswordComponent
   ],
   imports: [
     BrowserModule,
      AppRoutingModule,
      FormsModule,
      ReactiveFormsModule,
-     HttpClientModule
+     HttpClientModule,
+     MatButtonModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
