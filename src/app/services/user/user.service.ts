@@ -7,24 +7,22 @@ import { UserModel } from 'src/app/models/User/UserModel';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService{
+
+  token = JSON.parse(localStorage.getItem("token"));
 
   apiUrl = "http://localhost:20209/api/";
-
-  httpHeaders = new HttpHeaders({
-    "Content-Type": "application/json",
-  });
 
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
+      "Authorization": "Bearer " + this.token
     }),
   };
 
-  
   constructor(private httpClient : HttpClient) { }
 
-  public updateUser(user: UserModel): Observable<MessageResponse>{
+  public  updateUser(user: UserModel): Observable<MessageResponse>{
     return this.httpClient.put<MessageResponse>(
       this.apiUrl + "User",
       user,

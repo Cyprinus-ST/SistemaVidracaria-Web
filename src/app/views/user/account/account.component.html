@@ -44,6 +44,14 @@
                 <input type="email"
                   class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                   formControlName="Email" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Email.errors != null && updateForm.controls.Email.errors.required != null && submited == true">
+                  * O campo email é obrigatório!
+                </small>
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Email.errors != null && updateForm.controls.Email.errors.email != null && submited == true">
+                  * Favor inserir um e-mail válido!
+                </small>
               </div>
             </div>
             <div class="w-full lg:w-6/12 px-4">
@@ -54,6 +62,10 @@
                 <input type="email"
                   class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                   formControlName="Phone" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Phone.errors != null  && submited == true">
+                  * O campo telefone é obrigatório!
+                </small>
               </div>
             </div>
             <div class="w-full lg:w-6/12 px-4">
@@ -64,6 +76,10 @@
                 <input type="text"
                   class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                   formControlName="CPF" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.CPF.errors != null  && submited == true">
+                  * O campo CPF/CNPJ é obrigatório!
+                </small>
               </div>
             </div>
             <div class="w-full lg:w-6/12 px-4">
@@ -74,6 +90,10 @@
                 <input type="password"
                   class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                   formControlName="Password" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="updateForm.controls.Password.errors != null  && submited == true">
+                  * O campo senha é obrigatório!
+                </small>
               </div>
             </div>
           </div>
@@ -151,7 +171,21 @@
               </div>
             </div>
           </div>
-
+          <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500" *ngIf="error.show">
+            <span class="text-xl inline-block mr-5 align-middle">
+              <i class="fas fa-times"></i>&nbsp;&nbsp;
+            </span>
+            <span class="inline-block align-middle mr-8">
+              <b>{{error.message}} </b> <br />
+            </span>
+            <button class="absolute
+                bg-transparent text-2xl
+                font-semibold leading-none
+                right-0 top-0 mt-4 mr-6
+                outline-none focus:outline-none" (click)="closeError()">
+              <span>× &nbsp;&nbsp;</span>
+            </button>
+          </div>
           <hr class="mt-6 border-b-1 border-gray-400" />
           <br />
           <div class="flex flex-wrap">

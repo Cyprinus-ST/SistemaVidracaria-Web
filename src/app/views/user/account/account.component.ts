@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from 'src/app/models/User/UserModel';
 import { UserService } from 'src/app/services/user/user.service';
 import { ViacepService } from 'src/app/services/utils/viacep.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-account',
@@ -11,7 +12,11 @@ import { ViacepService } from 'src/app/services/utils/viacep.service';
 export class AccountComponent implements OnInit {
 
   updateForm : FormGroup;
+  
   userData;
+  
+  submited;
+
   error = {
     show : false,
     message: ""
@@ -130,16 +135,56 @@ export class AccountComponent implements OnInit {
     });
   }
 
+  
+  closeError(){
+    this.error.show = false;
+    this.error.message= "";
+  }
+
+  openError(message : string){
+    this.error.show = true;
+    this.error.message= message;
+  }
+
   submit(){
     try{
+
+        this.submited = true;
         let user = new UserModel();
         user = this.updateForm.value;
+        user.id = this.userData.id;
         user.Type = "user";
         user.CPF = user.CPF.toString();
         user.Phone = user.Phone.toString();
-    }
-    catch{
 
+        if(this.updateForm.status == "INVALID"){
+          this.openError("Favor preencher todos os campos obrigatórios!");
+        }else{
+          this.UserService.updateUser(user).subscribe(data =>{
+            if(data.valid){
+              Swal.fire({
+                'icon':'success',
+                title: 'Sucesso!',
+                text: 'Usuário atualizado!'
+              });
+            }
+            else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Erro ao atualizar o cadastro do usuário!',
+                text:  data.message
+              });
+            }
+          });
+        }
+
+    }
+    catch(ex){
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro ao atualizar o cadastro do usuário!',
+        text: 'Error: ' + ex
+      });
     }
   }
 }
