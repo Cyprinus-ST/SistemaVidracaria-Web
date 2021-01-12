@@ -226,6 +226,7 @@ export class AccountComponent implements OnInit{
   sendUpdate(user){
     this.UserService.updateUser(user).subscribe(data =>{
       if(data.valid){
+        this.pathAvatar = user.PathAvatar;
         Swal.fire({
           'icon':'success',
           title: 'Sucesso!',
