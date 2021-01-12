@@ -50,11 +50,12 @@ import { FileUploadComponent } from "./components/modal/file-upload/file-upload.
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
+import { Pipe, PipeTransform } from '@angular/core';
 
 @NgModule({
   declarations: [

@@ -3,22 +3,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserModel } from 'src/app/models/User/UserModel';
 import { UserService } from 'src/app/services/user/user.service';
 import { ViacepService } from 'src/app/services/utils/viacep.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html'
 })
 
 //Implementar pesquisa via cep aqui tbm - Vilas
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit{
 
   updateForm : FormGroup;
   userData;
   submited;
   showModal : boolean;
-  pathAvatar: string;
+  pathAvatar;
+  fileUrl : string;
   error = {
     show : false,
     message: ""
@@ -34,12 +33,13 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.fileUrl = "../../../../assets/files/";
   }
 
   initForm(){
     this.userData = JSON.parse(localStorage.getItem("user"));
-
     this.pathAvatar = this.userData.pathAvatar;
+
     if(this.pathAvatar == null || this.pathAvatar == "")
       this.pathAvatar = "../../../../assets/img/user.png";
 
@@ -193,7 +193,7 @@ export class AccountComponent implements OnInit {
             this.UserService.updateAvatarFile(formData).subscribe(data =>{
               if(data.valid){
                 user.PathAvatar = data.path;
-                this.pathAvatar =  user.PathAvatar;
+                this.pathAvatar =user.PathAvatar;
                 this.sendUpdate(user);
               }
               else{
@@ -237,5 +237,9 @@ export class AccountComponent implements OnInit {
       }
     });
   }
-
+  
+  getUrl(){
+    return this.fileUrl + this.pathAvatar;
+  }
 }
+
