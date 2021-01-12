@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
+  
+  model : boolean;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  @Input()
+  set showModal(valor: boolean) {
+    console.log("Oi"+ valor)
+    this.model = valor;
   }
 
+  constructor() { }
+  
+  ngOnInit(): void {
+    
+  }
+  close(){
+    this.model = false;
+  }
 }
