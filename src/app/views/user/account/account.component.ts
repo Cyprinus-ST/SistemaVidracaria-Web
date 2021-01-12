@@ -184,16 +184,20 @@ export class AccountComponent implements OnInit{
           this.openError("Favor preencher todos os campos obrigatórios!");
         }else{
 
-          if(file != null){
-
-            const formData = new FormData();
+          if(file != "" && file != null){
           
+            const formData = new FormData();
+            
+            if(!this.validType(file))
+              throw "A imagem deve ser no formato .PNG, .JPG ou .JPEG!";
+
             formData.append('file',file);
             formData.append('idUser',user.id);
+
             this.UserService.updateAvatarFile(formData).subscribe(data =>{
               if(data.valid){
                 user.PathAvatar = data.path;
-                this.pathAvatar =user.PathAvatar;
+                this.pathAvatar = user.PathAvatar;
                 this.sendUpdate(user);
               }
               else{
@@ -237,9 +241,22 @@ export class AccountComponent implements OnInit{
       }
     });
   }
-  
+
+  validType(file): Boolean{
+
+    const type = file.type;
+    if(type == "image/jpeg" || type == "image/png" || type == "image/jpg"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   getUrl(){
-    return this.fileUrl + this.pathAvatar;
+    if(this.pathAvatar == null || this.pathAvatar == "")
+      return this.fileUrl + "/Default/User.png";
+    else
+      return this.fileUrl + this.pathAvatar;
   }
 }
 
