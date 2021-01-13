@@ -5,11 +5,31 @@ import { Component, OnInit } from "@angular/core";
   templateUrl: "./sidebar.component.html",
 })
 export class SidebarComponent implements OnInit {
-  collapseShow = "hidden";
+  
+  //#region  Declarações de variáveis
+    userData;
+    isAdmin: boolean;
+    collapseShow = "hidden";
+  ////#endregion
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getUserData();
+  }
   toggleCollapseShow(classes) {
     this.collapseShow = classes;
+  }
+
+  
+  async getUserData(){
+
+    this.userData = await JSON.parse(localStorage.getItem('user'));
+    if(this.userData.type == "admin"){
+      this.isAdmin = true;
+    }
+    else{
+      this.isAdmin = false;
+    }
   }
 }
