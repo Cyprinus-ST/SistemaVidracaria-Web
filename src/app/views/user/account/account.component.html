@@ -11,15 +11,8 @@
           <br />
           <div class="flex flex-wrap justify-center">
             <div class="w-8/12 sm:w-4/12 px-4">
-              <img src="{{pathAvatar}}" alt="..." class="shadow rounded-full align-middle border-none" width="250px" />
+              <img [src]="getUrl()" class="shadow rounded align-middle border-none" width="250px" height="250px" />
             </div><br />
-          </div>
-          <div class="flex flex-wrap justify-center">
-            <button
-              class="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button">
-              Alterar logo
-            </button>
           </div>
           <br />
           <br />
@@ -168,6 +161,16 @@
                   formControlName="Complement" />
               </div>
             </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Alterar logo
+                </label>
+                <input type="file"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="PathAvatarFile" (change)="onFileChange($event)" />
+              </div>
+            </div>
           </div>
           <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500" *ngIf="error.show">
             <span class="text-xl inline-block mr-5 align-middle">
@@ -196,7 +199,9 @@
                 Salvar
               </button>
             </div>
-            <app-file-upload></app-file-upload>
+            <div *ngIf="showModal">
+              <app-file-upload showModal="{{showModal}}"></app-file-upload>
+            </div>
           </div>
         </form>
       </div>

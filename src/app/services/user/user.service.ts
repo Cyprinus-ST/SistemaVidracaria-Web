@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MessageResponse } from 'src/app/models/Response/MessageResponse';
+import { MessageResponse, FileMessageResponse } from 'src/app/models/Response/MessageResponse';
 import { UserModel } from 'src/app/models/User/UserModel';
 
 @Injectable({
@@ -20,13 +20,27 @@ export class UserService{
     }),
   };
 
+  httpOptionsFormData = {
+    headers: new HttpHeaders({
+      "Authorization": "Bearer " + this.token
+    }),
+  };
+
   constructor(private httpClient : HttpClient) { }
 
-  public  updateUser(user: UserModel): Observable<MessageResponse>{
+  public updateUser(user: UserModel): Observable<MessageResponse>{
     return this.httpClient.put<MessageResponse>(
       this.apiUrl + "User",
       user,
       this.httpOptions
+    );
+  }
+
+  public updateAvatarFile(formData: FormData):Observable<FileMessageResponse>{
+    return this.httpClient.post<FileMessageResponse>(
+      this.apiUrl + "User/uploadFile",
+      formData,
+      this.httpOptionsFormData
     );
   }
 }

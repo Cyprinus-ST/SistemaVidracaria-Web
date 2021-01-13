@@ -104,28 +104,28 @@
 
       </ul>
 
+      <div *ngIf="isAdmin">
+        <hr class="my-4 md:min-w-full" />
 
-      <hr class="my-4 md:min-w-full" />
+        <h6 class="md:min-w-full text-gray-600 text font-bold block pt-1 pb-4 no-underline">
+          Administração
+        </h6>
 
-      <h6 class="md:min-w-full text-gray-600 text font-bold block pt-1 pb-4 no-underline">
-        Administração
-      </h6>
-
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-        <li class="items-center">
-          <a [routerLink]="['/user/plan']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
-            <i class="fas fa-clipboard-list text-gray-400 mr-2 text-sm"></i>
-            Planos
-          </a>
-        </li>
-        <li class="items-center">
-          <a [routerLink]="['/auth/register']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
-            <i class="fas fa-users text-gray-400 mr-2 text-sm"></i>
-            Usuários
-          </a>
-        </li>
-      </ul>
-
+        <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+          <li class="items-center">
+            <a [routerLink]="['/auth/register']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
+              <i class="fas fa-clipboard-list text-gray-400 mr-2 text-sm"></i>
+              Planos
+            </a>
+          </li>
+          <li class="items-center">
+            <a [routerLink]="['/auth/register']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
+              <i class="fas fa-users text-gray-400 mr-2 text-sm"></i>
+              Usuários
+            </a>
+          </li>
+        </ul>
+      </div>
       <hr class="my-4 md:min-w-full" />
 
       <h6 class="md:min-w-full text-gray-600 text font-bold block pt-1 pb-4 no-underline">

@@ -4,20 +4,20 @@ import { UserModel } from 'src/app/models/User/UserModel';
 import { UserService } from 'src/app/services/user/user.service';
 import { ViacepService } from 'src/app/services/utils/viacep.service';
 import Swal from 'sweetalert2';
-
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html'
 })
 
 //Implementar pesquisa via cep aqui tbm - Vilas
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit{
 
   updateForm : FormGroup;
   userData;
   submited;
-  pathAvatar: string;
-  showModal = true;
+  showModal : boolean;
+  pathAvatar;
+  fileUrl : string;
   error = {
     show : false,
     message: ""
@@ -27,16 +27,19 @@ export class AccountComponent implements OnInit {
     private fb : FormBuilder,
     public UserService : UserService,
     public ViaCepService : ViacepService
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit(): void {
     this.initForm();
+    this.fileUrl = "../../../../assets/files/";
   }
 
   initForm(){
     this.userData = JSON.parse(localStorage.getItem("user"));
-
     this.pathAvatar = this.userData.pathAvatar;
+
     if(this.pathAvatar == null || this.pathAvatar == "")
       this.pathAvatar = "../../../../assets/img/user.png";
 
@@ -135,7 +138,11 @@ export class AccountComponent implements OnInit {
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
-      ]
+      ],
+      PathAvatarFile: [
+        ''
+      ],
+      FileSource:['']
     });
   }
 
@@ -149,7 +156,18 @@ export class AccountComponent implements OnInit {
     this.error.message= message;
   }
 
+  onFileChange(event) {
+  
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.updateForm.patchValue({
+        FileSource: file
+      });
+    }
+  }
+
   submit(){
+    
     try{
 
         this.submited = true;
@@ -160,27 +178,41 @@ export class AccountComponent implements OnInit {
         user.CPF = user.CPF.toString();
         user.Phone = user.Phone.toString();
 
+        const file = this.updateForm.get('FileSource').value;
+
         if(this.updateForm.status == "INVALID"){
           this.openError("Favor preencher todos os campos obrigatórios!");
         }else{
-          this.UserService.updateUser(user).subscribe(data =>{
-            if(data.valid){
-              Swal.fire({
-                'icon':'success',
-                title: 'Sucesso!',
-                text: 'Usuário atualizado!'
-              });
-            }
-            else{
-              Swal.fire({
-                icon: 'error',
-                title: 'Erro ao atualizar o cadastro do usuário!',
-                text:  data.message
-              });
-            }
-          });
-        }
 
+          if(file != "" && file != null){
+          
+            const formData = new FormData();
+            
+            if(!this.validType(file))
+              throw "A imagem deve ser no formato .PNG, .JPG ou .JPEG!";
+
+            formData.append('file',file);
+            formData.append('idUser',user.id);
+
+            this.UserService.updateAvatarFile(formData).subscribe(data =>{
+              if(data.valid){
+                user.PathAvatar = data.path;
+                this.pathAvatar = user.PathAvatar;
+                this.sendUpdate(user);
+              }
+              else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Erro ao realizar o upload da imagem de perfil!',
+                  text:  data.message
+                });
+              }
+            });
+          }
+          else{
+            this.sendUpdate(user)
+          }
+        }
     }
     catch(ex){
       Swal.fire({
@@ -191,7 +223,41 @@ export class AccountComponent implements OnInit {
     }
   }
 
-  toggleModal(){
-    this.showModal = !this.showModal;
+  sendUpdate(user){
+    this.UserService.updateUser(user).subscribe(data =>{
+      if(data.valid){
+        this.pathAvatar = user.PathAvatar;
+        Swal.fire({
+          'icon':'success',
+          title: 'Sucesso!',
+          text: 'Usuário atualizado!'
+        });
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro ao atualizar o cadastro do usuário!',
+          text:  data.message
+        });
+      }
+    });
+  }
+
+  validType(file): Boolean{
+
+    const type = file.type;
+    if(type == "image/jpeg" || type == "image/png" || type == "image/jpg"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  getUrl(){
+    if(this.pathAvatar == null || this.pathAvatar == "")
+      return this.fileUrl + "/Default/User.png";
+    else
+      return this.fileUrl + this.pathAvatar;
   }
 }
+

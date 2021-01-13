@@ -46,12 +46,18 @@ import { NotificationDropdownComponent } from "./components/dropdowns/notificati
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { FileUploadComponent } from "./components/modal/file-upload/file-upload.component";
+
+//Material Imports
 import { MatButtonModule } from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
+
+import { Pipe, PipeTransform } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -85,7 +91,7 @@ import { DialogResgisterComponent } from './components/modal/dialog-resgister/di
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    AccountComponent,    
+    AccountComponent,
     FileUploadComponent,
     RecoveryPasswordComponent,
     AccountComponent,
@@ -94,21 +100,21 @@ import { DialogResgisterComponent } from './components/modal/dialog-resgister/di
     
   ],
   imports: [
-    BrowserModule,
-     AppRoutingModule,
-     FormsModule,
-     ReactiveFormsModule,
-     HttpClientModule,
-     MatButtonModule,
-     MatDialogModule
+      BrowserModule,
+      AppRoutingModule,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+      MatButtonModule,
+      BrowserAnimationsModule,
+      MatDialogModule,
+      MatInputModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
   ],
+  entryComponents:[FileUploadComponent, DialogResgisterComponent],
   bootstrap: [AppComponent],
-  entryComponents: [
-    DialogResgisterComponent,
-  ],
 })
 export class AppModule {}
