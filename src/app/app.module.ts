@@ -21,6 +21,7 @@ import { RecoveryPasswordComponent } from './views/auth/recovery-password/recove
 
 //user views
 import { AccountComponent } from './views/user/account/account.component';
+import { PlanComponent } from './views/user/plan/plan.component';
 
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
@@ -46,9 +47,11 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { FileUploadComponent } from "./components/modal/file-upload/file-upload.component";
 import { MatButtonModule } from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +87,11 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     ForgotPasswordComponent,
     AccountComponent,    
     FileUploadComponent,
-    RecoveryPasswordComponent
+    RecoveryPasswordComponent,
+    AccountComponent,
+    PlanComponent,
+    DialogResgisterComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -93,11 +100,15 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
      ReactiveFormsModule,
      HttpClientModule,
      MatButtonModule,
+     MatDialogModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
   ],
   bootstrap: [AppComponent],
+  entryComponents: [
+    DialogResgisterComponent,
+  ],
 })
 export class AppModule {}

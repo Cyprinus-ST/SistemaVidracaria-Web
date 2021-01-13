@@ -1,0 +1,22 @@
+.upper-border-card {
+    background-color: white ;
+}
+
+.card-plan {
+    background-color: #7ec8ea ;
+}
+
+.p-price-plan {
+    font-size: xx-large;
+    color: white;
+}
+
+.icon-card-main {
+    background-color: green;
+}
+
+.button-plan-card {
+    border-radius: 25;
+    background-color: yellow;
+    height: 100;
+}

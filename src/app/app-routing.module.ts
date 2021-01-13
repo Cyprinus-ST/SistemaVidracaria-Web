@@ -12,6 +12,7 @@ import { TablesComponent } from "./views/admin/tables/tables.component";
 
 //#region user views
 import { AccountComponent } from "./views/user/account/account.component";
+import { PlanComponent } from './views/user/plan/plan.component';
 ////#endregion
 
 // auth views
@@ -45,9 +46,11 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate : [AuthGuard],
     children:[
-      { path: "account", component: AccountComponent }
+      { path: "account", component: AccountComponent },
+      { path: "plan", component: PlanComponent },
     ]
   },
+
   // auth views
   {
     path: "",

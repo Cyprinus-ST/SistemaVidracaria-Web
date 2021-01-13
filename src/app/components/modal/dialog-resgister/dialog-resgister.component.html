@@ -1,0 +1,47 @@
+<form [formGroup]="registerForm" (ngSubmit)="submit()">
+  <h2 mat-dialog-title>Cadastrar Plano</h2>
+  <mat-dialog-content class="mat-typography">
+      <div class="flex flex-wrap">
+          <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                Nome do Plano
+              </label>
+              <input type="text"
+                class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                formControlName="Name" />
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                Descrição
+              </label>
+              <input type="text"
+                class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                formControlName="Description" />
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                Preço
+              </label>
+              <input type="number"
+                class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                formControlName="Price" />
+              <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                *ngIf="registerForm.controls.Price.errors != null  && submited == true">
+                * O campo Preço é obrigatório!
+              </small>
+            </div>
+          </div>
+      </div>
+    
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button type="submit">Cadastrar</button>
+  </mat-dialog-actions>
+</form>
+  
