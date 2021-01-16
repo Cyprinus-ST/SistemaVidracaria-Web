@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MessageResponse, FileMessageResponse } from 'src/app/models/Response/MessageResponse';
-import { UserModel } from 'src/app/models/User/UserModel';
+import { ListUsers, UserModel } from 'src/app/models/User/UserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,13 @@ export class UserService{
       this.apiUrl + "User/uploadFile",
       formData,
       this.httpOptionsFormData
+    );
+  }
+
+  public getAll(): Observable<ListUsers>{
+    return this.httpClient.get<ListUsers>(
+      this.apiUrl + "User",
+      this.httpOptions
     );
   }
 }

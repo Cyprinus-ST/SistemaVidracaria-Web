@@ -42,7 +42,6 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
-import { FileUploadComponent } from "./components/modal/file-upload/file-upload.component";
 
 //Material Imports
 import { MatButtonModule } from '@angular/material/button';
@@ -84,7 +83,6 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     RegisterComponent,
     ForgotPasswordComponent,
     AccountComponent,
-    FileUploadComponent,
     RecoveryPasswordComponent,
     UsersComponent
   ],
@@ -103,7 +101,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
   ],
-  entryComponents:[FileUploadComponent],
+  entryComponents:[],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

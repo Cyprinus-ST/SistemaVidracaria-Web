@@ -1,1 +1,78 @@
-<p>users works!</p>
+<div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3 class="font-semibold text-lg text-gray-800">
+          Usuários
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+    <!-- Projects table -->
+    <table class="items-center w-full bg-transparent border-collapse">
+      <thead>
+        <tr>
+          <th class="px-6 align-middle border border-solid py-3 
+                text-xs uppercase border-l-0 border-r-0
+                whitespace-no-wrap font-semibold text-left 
+                bg-gray-100 text-gray-600 border-gray-200">
+            Nome
+          </th>
+          <th class="px-6 align-middle border border-solid py-3
+                     text-xs uppercase border-l-0 border-r-0
+                     whitespace-no-wrap font-semibold text-left
+                     bg-gray-100 text-gray-600 border-gray-200">
+            Data de Cadastro
+          </th>
+          <th class="px-6 align-middle border border-solid
+                    py-3 text-xs uppercase border-l-0 border-r-0
+                    whitespace-no-wrap font-semibold text-left
+                    bg-gray-100 text-gray-600 border-gray-200">
+            Data Vencimento Plano
+          </th>
+          <th class="px-6 align-middle border border-solid
+                 py-3 text-xs uppercase border-l-0 border-r-0
+                 whitespace-no-wrap font-semibold text-left
+                 bg-gray-100 text-gray-600 border-gray-200">
+            Status
+          </th>
+          <th class="px-6 align-middle border border-solid py-3 text-xs
+                    uppercase border-l-0 border-r-0 whitespace-no-wrap
+                    font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <th
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left flex items-center">
+            <span class="ml-3 font-bold text-gray-700">
+              {{user.name}}
+            </span>
+          </th>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+            <span class="ml-3 font-bold text-gray-700">
+              {{dataAtualFormatada(user.createAt)}}
+            </span>
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+            <span class="ml-3 font-bold text-gray-700">
+              {{dataAtualFormatada(user.dateExpired)}}
+            </span>
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0  font-bold border-r-0 text-sm whitespace-no-wrap p-4">
+            <span class="ml-3">
+              <img src="../../../../assets/img/active.jpg" width="20px" height="20px"
+                *ngIf="user.statusPlan == 'ACTIVE'" class="status">
+              <img src="../../../../assets/img/inactive.jpg" width="20px" height="20px"
+                *ngIf="user.statusPlan == 'INACTIVE'" class="status">
+            </span>
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-right">
+            Visualizar
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
