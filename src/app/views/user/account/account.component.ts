@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/models/User/UserModel';
 import { UserService } from 'src/app/services/user/user.service';
 import { ViacepService } from 'src/app/services/utils/viacep.service';
+import { FormatService } from '../../../services/utils/format.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-account',
@@ -31,18 +32,20 @@ export class AccountComponent implements OnInit{
     public UserService : UserService,
     public ViaCepService : ViacepService,
     public route : Router,
-    public activedRoute: ActivatedRoute
+    public activedRoute: ActivatedRoute,
+    public FormatService : FormatService
   ) { 
 
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.fileUrl = "../../../../assets/files/";
 
     this.activedRoute.queryParams.subscribe(params => {
       this.type = params['type'];
       this.idUser = params['user'];
     });
+
     this.initForm();   
 
   }
@@ -51,7 +54,7 @@ export class AccountComponent implements OnInit{
 
     try{
         this.UserService.getById(this.idUser).subscribe(data =>{
-          
+          console.log(data)
           this.userData = data;
 
           if(data == null){
@@ -318,6 +321,10 @@ export class AccountComponent implements OnInit{
 
    getUser = async() => {
     this.UserService.getById(this.idUser).toPromise().then
+  }
+
+  formatDate(date){
+    return this.FormatService.formatDate(date);
   }
 }
 

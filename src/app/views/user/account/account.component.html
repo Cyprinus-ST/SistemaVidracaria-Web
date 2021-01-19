@@ -17,6 +17,8 @@
           </div>
           <br />
           <br />
+          <br />
+          <br />
           <div class="flex flex-wrap">
             <div class="w-full lg:w-12/12 px-4">
               <div class="relative w-full mb-3">
@@ -162,13 +164,13 @@
                   formControlName="Complement" />
               </div>
             </div>
-            <div class="w-full lg:w-6/12 px-4">
+            <div class="w-full lg:w-6/12 px-4" *ngIf="type=='user'">
               <div class="relative w-full mb-3">
                 <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
                   Alterar logo
                 </label>
-                <input type="file"
-                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                <input type="file" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm
+                    shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                   formControlName="PathAvatarFile" (change)="onFileChange($event)" />
               </div>
             </div>
@@ -194,9 +196,10 @@
             <div class="w-10/12 px-4">
             </div>
             <div class="w-full px-12 flex-1">
-              <button
-                class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="submit">
+              <button class="bg-green-500 text-white active:bg-green-600 
+                font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit"
+                *ngIf="type=='user'">
                 Salvar
               </button>
             </div>
@@ -218,10 +221,14 @@
           <div class="flex flex-wrap justify-center">
             <div class="w-full lg:w-9/12 px-4">
               <ul>
-                <li><b>Plano: </b> Teste </li>
-                <li><b>Data de assinatura:</b> 14/07/2020 </li>
-                <li><b>Data de Expiração:</b>14/07/2021 </li>
-                <li><b>Status:</b> Ativo</li>
+                <li><b>Status:</b>
+                  <b *ngIf="userData.statusPlan == 'ACTIVE'" class="text-green-500"> Ativo</b>
+                  <b *ngIf="userData.statusPlan == 'INACTIVE'" class="text-red-500"> Inativo</b>
+                </li>
+                <li><b>Plano: </b> {{userData.description}} </li>
+                <li><b>Data de assinatura:</b>{{formatDate(userData.dateAcquisition)}} </li>
+                <li><b>Data de Expiração:</b> {{formatDate(userData.dateExpired)}} </li>
+
               </ul>
               <p class="mb-4 text-lg leading-relaxed text-gray-800">
 
