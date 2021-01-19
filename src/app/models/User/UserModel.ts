@@ -32,27 +32,31 @@ export class UserResponse{
 }
 
 export class UsersDTO {
-        Name : string;
-        Email : string;
-        CPF: string; 
-        Type: string; 
-        Street : string;
-        Neighborhood : string;
-        City : string;
-        State : string;
-        Country : string;
-        Number : string;
-        Complement : string;
-        Phone : string;
-        CEP : string;
-        CreateAt : Date;
+        name : string;
+        email : string;
+        cpf: string; 
+        type: string; 
+        street : string;
+        neighborhood : string;
+        city : string;
+        state : string;
+        country : string;
+        number : string;
+        complement : string;
+        phone : string;
+        cep : string;
+        createAt : Date;
+        pathAvatar?: string;
 
-        IdPlan : string
-        StatusPlan : string;
-        DateAcquisition : Date;
-        DateExpired : Date;
+        idPlan : string
+        statusPlan : string;
+        dateAcquisition : Date;
+        dateExpired : Date;
         
-        NamePlan : string;
+        namePlan : string;
+        description: string;
+        price: number;
+        status: string;
 }
 
 export class ListUsers {

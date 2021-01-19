@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/models/User/UserModel';
 import { UserService } from 'src/app/services/user/user.service';
 import { ViacepService } from 'src/app/services/utils/viacep.service';
@@ -17,6 +18,8 @@ export class AccountComponent implements OnInit{
   submited;
   showModal : boolean;
   pathAvatar;
+  type : string;
+  idUser;
   fileUrl : string;
   error = {
     show : false,
@@ -26,38 +29,87 @@ export class AccountComponent implements OnInit{
   constructor(
     private fb : FormBuilder,
     public UserService : UserService,
-    public ViaCepService : ViacepService
+    public ViaCepService : ViacepService,
+    public route : Router,
+    public activedRoute: ActivatedRoute
   ) { 
 
   }
 
-  ngOnInit(): void {
-    this.initForm();
+  async ngOnInit() {
     this.fileUrl = "../../../../assets/files/";
+
+    this.activedRoute.queryParams.subscribe(params => {
+      this.type = params['type'];
+      this.idUser = params['user'];
+    });
+    this.initForm();   
+
+  }
+
+  populaForm(){
+
+    try{
+        this.UserService.getById(this.idUser).subscribe(data =>{
+          
+          this.userData = data;
+
+          if(data == null){
+            Swal.fire({
+              icon: 'error',
+              title: 'Erro!',
+              text: 'Ocorreu um erro ao buscar os dados do usuário!'
+            });
+          }
+           
+
+          if(this.userData.pathAvatar == null || this.userData.pathAvatar == "")
+            this.pathAvatar = "../../../../assets/img/user.png";
+          else{
+            this.pathAvatar = this.userData.pathAvatar; 
+          }
+    
+          this.updateForm.controls.Email.setValue(this.userData.email);
+          this.updateForm.controls.Name.setValue(this.userData.name);
+          this.updateForm.controls.CPF.setValue(this.userData.cpf);
+          this.updateForm.controls.CEP.setValue(this.userData.cep);
+          this.updateForm.controls.City.setValue(this.userData.city);
+          this.updateForm.controls.Complement.setValue(this.userData.complement);
+          this.updateForm.controls.Country.setValue(this.userData.country);
+          this.updateForm.controls.Neighborhood.setValue(this.userData.neighborhood);
+          this.updateForm.controls.State.setValue(this.userData.state);
+          this.updateForm.controls.Street.setValue(this.userData.street);
+          this.updateForm.controls.Number.setValue(this.userData.number);
+          this.updateForm.controls.Phone.setValue(this.userData.phone);
+
+        });
+      }
+      catch(ex){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro ao atualizar o cadastro do usuário!',
+          text: 'Error: ' + ex
+        });
+      }
   }
 
   initForm(){
-    this.userData = JSON.parse(localStorage.getItem("user"));
-    this.pathAvatar = this.userData.pathAvatar;
-
-    if(this.pathAvatar == null || this.pathAvatar == "")
-      this.pathAvatar = "../../../../assets/img/user.png";
 
     this.updateForm = this.fb.group({
-      Name : [
-        this.userData.name,
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(320), 
-        ]),
-      ],
       Email: [
-        this.userData.email,
+        "",
         Validators.compose([
           Validators.required,
           Validators.email,
           Validators.minLength(3),
+          Validators.maxLength(320), 
+        ]),
+      ],
+      Name : [
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(2),
           Validators.maxLength(320), 
         ]),
       ],
@@ -70,69 +122,69 @@ export class AccountComponent implements OnInit{
         ]),
       ],
       CPF : [
-        this.userData.cpf,
+        "",
         Validators.compose([
           Validators.required,
           Validators.maxLength(14), 
         ]),
       ],
       CEP : [
-        this.userData.cep,
+        "",
         Validators.compose([
           Validators.maxLength(20), 
         ]),
       ],
       City : [
-        this.userData.city,
+        "",
         Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
       ],
       Complement : [
-        this.userData.complement,
+        "",
         Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
       ],
       Country : [
-        this.userData.country,
+        "",
         Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
       ],
       Neighborhood : [
-        this.userData.neighborhood,
+        "",
         Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
       ],
       State : [
-        this.userData.state,
+        "",
         Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
       ],
       Street : [
-        this.userData.street,
+        "",
         Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
       ],
       Number : [
-        this.userData.number,
+        "",
         Validators.compose([
           Validators.minLength(2),
           Validators.maxLength(150), 
         ]),
       ],
       Phone : [
-        this.userData.phone,
+        "",
         Validators.compose([
           Validators.required,
           Validators.minLength(2),
@@ -144,6 +196,7 @@ export class AccountComponent implements OnInit{
       ],
       FileSource:['']
     });
+    this.populaForm();
   }
 
   closeError(){
@@ -174,7 +227,7 @@ export class AccountComponent implements OnInit{
         let user = new UserModel();
         user = this.updateForm.value;
         user.id = this.userData.id;
-        user.Type = "user";
+        user.Type =this.userData.type;
         user.CPF = user.CPF.toString();
         user.Phone = user.Phone.toString();
 
@@ -199,6 +252,7 @@ export class AccountComponent implements OnInit{
                 user.PathAvatar = data.path;
                 this.pathAvatar = user.PathAvatar;
                 this.sendUpdate(user);
+                window.location.reload();
               }
               else{
                 Swal.fire({
@@ -210,6 +264,7 @@ export class AccountComponent implements OnInit{
             });
           }
           else{
+            user.PathAvatar = this.pathAvatar;
             this.sendUpdate(user)
           }
         }
@@ -253,11 +308,16 @@ export class AccountComponent implements OnInit{
       return false;
     }
   }
+
   getUrl(){
     if(this.pathAvatar == null || this.pathAvatar == "")
       return this.fileUrl + "/Default/User.png";
     else
       return this.fileUrl + this.pathAvatar;
+  }
+
+   getUser = async() => {
+    this.UserService.getById(this.idUser).toPromise().then
   }
 }
 

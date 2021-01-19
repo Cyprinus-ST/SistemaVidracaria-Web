@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormatService } from "../../../services/utils/format.service";
 import { UserService } from "../../../services/user/user.service";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -12,7 +13,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     public UserService : UserService,
-    public FormatService: FormatService
+    public FormatService: FormatService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,5 +29,14 @@ export class UsersComponent implements OnInit {
 
   dataAtualFormatada(date){
     return this.FormatService.formatDate(date);
+  }
+
+  showUser(user){
+    this.router.navigate(['user/account'],{
+      queryParams:{
+        type: 'admin',
+        user: user.id
+      }
+    });
   }
 }

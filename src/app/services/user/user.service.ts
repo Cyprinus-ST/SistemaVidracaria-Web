@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MessageResponse, FileMessageResponse } from 'src/app/models/Response/MessageResponse';
-import { ListUsers, UserModel } from 'src/app/models/User/UserModel';
+import { ListUsers, UserModel,UsersDTO } from 'src/app/models/User/UserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +48,12 @@ export class UserService{
     return this.httpClient.get<ListUsers>(
       this.apiUrl + "User",
       this.httpOptions
+    );
+  }
+
+  public getById(id):Observable<UsersDTO>{
+    return this.httpClient.get<UsersDTO>(
+      this.apiUrl + `User/${id}`
     );
   }
 }

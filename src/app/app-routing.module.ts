@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule,CanActivate } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
@@ -43,7 +43,10 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate : [AuthGuard],
     children:[
-      { path: "account", component: AccountComponent }
+      { path: "account", component: AccountComponent, data:{
+        type: "",
+        user: {}
+      }}
     ]
   },
   // auth views
