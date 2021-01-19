@@ -1,3 +1,7 @@
 .a-link-bottom {
     color: black;
 }
+
+.background{
+    background-image: '../../../../assets/img/background.jpg';
+}

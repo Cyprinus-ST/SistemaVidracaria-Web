@@ -31,8 +31,35 @@ export class UserResponse{
     user : UserModel;
 }
 
-export function Authenticated(){
-    var user =  JSON.parse(localStorage.getItem('user'));
-    if(user == null)
-        return false;
+export class UsersDTO {
+        name : string;
+        email : string;
+        cpf: string; 
+        type: string; 
+        street : string;
+        neighborhood : string;
+        city : string;
+        state : string;
+        country : string;
+        number : string;
+        complement : string;
+        phone : string;
+        cep : string;
+        createAt : Date;
+        pathAvatar?: string;
+
+        idPlan : string
+        statusPlan : string;
+        dateAcquisition : Date;
+        dateExpired : Date;
+        
+        namePlan : string;
+        description: string;
+        price: number;
+        status: string;
 }
+
+export class ListUsers {
+    users : UsersDTO[];
+}
+

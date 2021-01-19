@@ -7,11 +7,10 @@ import { AppComponent } from "./app.component";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { UsersComponent } from './views/admin/users/users.component';
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -37,14 +36,12 @@ import { FooterComponent } from "./components/footers/footer/footer.component";
 import { FooterSmallComponent } from "./components/footers/footer-small/footer-small.component";
 import { HeaderStatsComponent } from "./components/headers/header-stats/header-stats.component";
 import { IndexNavbarComponent } from "./components/navbars/index-navbar/index-navbar.component";
-import { MapExampleComponent } from "./components/maps/map-example/map-example.component";
 import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/index-dropdown.component";
 import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
 import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pages-dropdown.component";
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
-import { FileUploadComponent } from "./components/modal/file-upload/file-upload.component";
 
 //Material Imports
 import { MatButtonModule } from '@angular/material/button';
@@ -55,7 +52,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
-import { Pipe, PipeTransform } from '@angular/core';
+
 
 @NgModule({
   declarations: [
@@ -78,20 +75,17 @@ import { Pipe, PipeTransform } from '@angular/core';
     CardStatsComponent,
     CardTableComponent,
     HeaderStatsComponent,
-    MapExampleComponent,
     AuthNavbarComponent,
     AdminNavbarComponent,
     IndexNavbarComponent,
     AdminComponent,
     AuthComponent,
-    MapsComponent,
-    TablesComponent,
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
     AccountComponent,
-    FileUploadComponent,
-    RecoveryPasswordComponent
+    RecoveryPasswordComponent,
+    UsersComponent
   ],
   imports: [
       BrowserModule,
@@ -108,7 +102,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
   ],
-  entryComponents:[FileUploadComponent],
+  entryComponents:[],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
