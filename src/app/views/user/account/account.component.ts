@@ -42,9 +42,14 @@ export class AccountComponent implements OnInit{
     this.fileUrl = "../../../../assets/files/";
 
     this.activedRoute.queryParams.subscribe(params => {
-      this.type = params['type'];
       this.idUser = params['user'];
     });
+    const user =JSON.parse(localStorage.getItem('user')); 
+    this.type = user.type;
+    const idUser = user.id;
+    
+    if(this.idUser == user.id)
+      this.type = 'user';
 
     this.initForm();   
 

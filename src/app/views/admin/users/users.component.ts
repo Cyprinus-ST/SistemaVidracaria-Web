@@ -34,7 +34,6 @@ export class UsersComponent implements OnInit {
   showUser(user){
     this.router.navigate(['user/account'],{
       queryParams:{
-        type: 'admin',
         user: user.id
       }
     });

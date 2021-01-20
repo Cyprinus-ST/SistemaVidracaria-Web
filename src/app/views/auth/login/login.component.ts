@@ -96,7 +96,14 @@ export class LoginComponent implements OnInit {
         this.LoginService.doLoginUser(user).subscribe(data => {
           if(data.authenticated){
             //entrou
-            localStorage.setItem('user',JSON.stringify(data.user));
+            console.log(data);
+            var user = {
+              id :data.user.id,
+              name: data.user.name,
+              type: data.user.type
+            }
+            console.log(user);
+            localStorage.setItem('user',JSON.stringify(user));
             localStorage.setItem('token',JSON.stringify(data.acessToken));
             this.router.navigate(['admin/dashboard'])
           }

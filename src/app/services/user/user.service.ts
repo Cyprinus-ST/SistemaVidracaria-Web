@@ -53,7 +53,8 @@ export class UserService{
 
   public getById(id):Observable<UsersDTO>{
     return this.httpClient.get<UsersDTO>(
-      this.apiUrl + `User/${id}`
+      this.apiUrl + `User/${id}`,
+      this.httpOptions
     );
   }
 }

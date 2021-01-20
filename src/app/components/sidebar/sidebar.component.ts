@@ -40,7 +40,6 @@ export class SidebarComponent implements OnInit {
     console.log(this.userData.id);
     this.router.navigate(['user/account'],{
       queryParams:{
-        type: 'user',
         user:  this.userData.id
       }
     });

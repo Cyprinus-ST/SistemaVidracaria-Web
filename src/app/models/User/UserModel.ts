@@ -20,6 +20,13 @@ export class UserModel{
     CEP : string;
 }
 
+export class UserModelResponse{
+    id: string;
+    name : string;
+    pathAvatar : string;
+    type : string;
+}
+
 //Classe que é o retorno da api, aonde vem message de erro ou algo do tipo
 export class UserResponse{
 
@@ -28,7 +35,7 @@ export class UserResponse{
     expiration? : Date;
     acessToken? : string;
     message: string;
-    user : UserModel;
+    user : UserModelResponse;
 }
 
 export class UsersDTO {
