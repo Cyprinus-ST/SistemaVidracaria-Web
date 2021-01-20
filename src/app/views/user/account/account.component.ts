@@ -39,15 +39,15 @@ export class AccountComponent implements OnInit{
   }
 
   ngOnInit() {
+    const user =JSON.parse(localStorage.getItem('user')); 
     this.fileUrl = "../../../../assets/files/";
 
     this.activedRoute.queryParams.subscribe(params => {
       this.idUser = params['user'];
     });
-    const user =JSON.parse(localStorage.getItem('user')); 
+
     this.type = user.type;
-    const idUser = user.id;
-    
+
     if(this.idUser == user.id)
       this.type = 'user';
 
