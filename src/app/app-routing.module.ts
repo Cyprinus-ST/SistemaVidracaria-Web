@@ -11,6 +11,7 @@ import { UsersComponent } from  "./views/admin/users/users.component";
 
 //#region user views
 import { AccountComponent } from "./views/user/account/account.component";
+import { MaterialComponent } from "./views/user/material/material.component";
 ////#endregion
 
 // auth views
@@ -43,10 +44,8 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate : [AuthGuard],
     children:[
-      { path: "account", component: AccountComponent, data:{
-        type: "",
-        user: {}
-      }}
+      { path: "account", component: AccountComponent },
+      { path: "material", component: MaterialComponent }
     ]
   },
   // auth views

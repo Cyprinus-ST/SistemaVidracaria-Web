@@ -20,6 +20,7 @@ import { RecoveryPasswordComponent } from './views/auth/recovery-password/recove
 
 //user views
 import { AccountComponent } from './views/user/account/account.component';
+import { MaterialComponent } from './views/user/material/material.component';
 
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
@@ -51,6 +52,9 @@ import {MatInputModule} from '@angular/material/input';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { ProviderComponent } from './views/user/provider/provider.component';
+import { MaterialModalComponent } from './components/modal/material-modal/material-modal.component';
+
 
 
 
@@ -85,7 +89,10 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     ForgotPasswordComponent,
     AccountComponent,
     RecoveryPasswordComponent,
-    UsersComponent
+    UsersComponent,
+    MaterialComponent,
+    ProviderComponent,
+    MaterialModalComponent
   ],
   imports: [
       BrowserModule,
