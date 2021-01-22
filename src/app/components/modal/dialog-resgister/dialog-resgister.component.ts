@@ -19,7 +19,7 @@ export interface DialogData {
 })
 export class DialogResgisterComponent implements OnInit {
   descriptionList: any = ['MENSAL', 'TRIMESTRAL', 'SEMESTRAL', 'ANUAL'];
-  statusList: any = ['ACTIVE', 'DESACTIVATED'];
+  statusList: any = ['Ativo', 'Desativado'];
 
   registerForm: FormGroup;
   error = {
@@ -39,7 +39,11 @@ export class DialogResgisterComponent implements OnInit {
     private route?: ActivatedRoute,
     private router?: Router,
     public dialog?: MatDialog
-  ) {}
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+      return false;
+    }
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -70,7 +74,6 @@ export class DialogResgisterComponent implements OnInit {
       ],
       Status: [
         this.data.plan.status == null ? "" : this.data.plan.status,
-        Validators.compose([Validators.required]),
       ],
     });
 
@@ -146,6 +149,8 @@ export class DialogResgisterComponent implements OnInit {
             title: "Sucesso!",
             text: "Plano cadastrado com sucesso!",
           });
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => this.router.navigate(["/admin/plan"]));
+          this.dialog.ngOnDestroy;
         } else {
           Swal.fire({
             icon: "error",
@@ -173,7 +178,8 @@ export class DialogResgisterComponent implements OnInit {
             title: "Sucesso!",
             text: "Plano atualizado com sucesso!",
           });
-          this.router.navigate(["/admin/plan"]);
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => this.router.navigate(["/admin/plan"]));
+          this.dialog.ngOnDestroy;
         } else {
           Swal.fire({
             icon: "error",

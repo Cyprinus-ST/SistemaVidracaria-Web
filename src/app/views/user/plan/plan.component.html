@@ -49,17 +49,18 @@
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
                       R$ {{ plan.installments }},00
                     </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                      <i *ngIf="plan.status == 'ACTIVE'" class="fa fa-check-circle"></i>
-                      <i *ngIf="plan.status == 'DESACTIVATED'" class="fa fa-times-circle"></i>
-                      {{ plan.status }}
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      <i *ngIf="plan.status == 'Ativo'" class="icon-status-active-table fa fa-check-circle"></i>
+                      <i *ngIf="plan.status == 'Desativado'" class="icon-status-desactivated-table fa fa-times-circle"></i>
                     </td>
                     <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right">
-                      <button class="button-item-table" type="button" (click)="openUpdatePlanDialog(plan)"><i
-                          class="fas fa-edit"></i></button>
-                      <button class="button-item-table" type="button" (click)="deletePlan()"><i
-                          class="fas fa-trash"></i></button>
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right"
+                    >
+                      <button class="button-item-table" type="button" (click)="openUpdatePlanDialog(plan)"><i class="fas fa-edit"></i></button>
+                      <button class="button-item-table" type="button" (click)="deletePlan(plan)"><i class="fas fa-trash"></i></button>
+
                     </td>
                   </tr>
                 </tbody>

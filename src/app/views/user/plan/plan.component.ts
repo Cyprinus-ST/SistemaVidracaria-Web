@@ -5,7 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DialogResgisterComponent } from './../../../components/modal/dialog-resgister/dialog-resgister.component';
 import { PlanModel } from 'src/app/models/Plan/PlanModel';
 import { PlanService } from 'src/app/services/plan/plan.service';
-
+import { MaterialModalComponent } from 'src/app/components/modal/material-modal/material-modal.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-plan',
@@ -13,6 +14,7 @@ import { PlanService } from 'src/app/services/plan/plan.service';
   styleUrls: ['./plan.component.css']
 })
 export class PlanComponent implements OnInit {
+  showModal = false;
   registerForm : FormGroup;
   error = {
     show: false,
@@ -60,7 +62,27 @@ export class PlanComponent implements OnInit {
 
   openUpdatePlanDialog(plan: PlanModel) {
     this.selectedPlan = plan;
-    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: plan}});
+    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: plan, option: true}});
+  }
+
+  deletePlan(plan: PlanModel) {
+    this.PlanService.deletePlan(plan.id).subscribe((data) => {
+      if (data.valid) {
+        Swal.fire({
+          icon: "success",
+          title: "Sucesso!",
+          text: "Plano excluído com sucesso!",
+        });
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => this.router.navigate(["/admin/plan"]));
+        this.dialog.ngOnDestroy;
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Falha ao atualizar o plano!",
+          text: data.message,
+        });
+      }
+    });
   }
 
 }
