@@ -39,6 +39,7 @@ const routes: Routes = [
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "plan", component: PlanComponent },
     ],
   },
   {
@@ -47,7 +48,6 @@ const routes: Routes = [
     canActivate : [AuthGuard],
     children:[
       { path: "account", component: AccountComponent },
-      { path: "plan", component: PlanComponent },
     ]
   },
 

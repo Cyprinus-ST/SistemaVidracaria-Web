@@ -1,13 +1,14 @@
 export class PlanModel{
-    Id: string;
-    Name : string;
-    Description: string;
-    Price: DoubleRange;
-    Status: PlanStatus;
+    id: string;
+    name : string;
+    description: string;
+    installments: DoubleRange;
+    status: String;
 }
 
-export enum PlanStatus {
+/*export enum PlanStatus {
     ACTIVE,
     DESACTIVATE
 }
 
+*/

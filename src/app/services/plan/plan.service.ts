@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { MessageResponse } from 'src/app/models/Response/MessageResponse';
 import { AddPlanInput } from 'src/app/models/Plan/inputs/AddPlanInput';
 import { PlanModel } from 'src/app/models/Plan/PlanModel';
+import { UpdatePlanInput } from 'src/app/models/Plan/inputs/UpdatePlanInput';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,12 @@ export class PlanService {
   public listPlan(): Observable<Array<PlanModel>>{
     return this.httpClient.get<Array<PlanModel>>(
       this.apiUrl + "Plan", this.httpOptions
+    );
+  }
+
+  public updatePlan(idPlan: String, input: UpdatePlanInput): Observable<MessageResponse>{
+    return this.httpClient.put<MessageResponse>(
+      this.apiUrl + "Plan/"+idPlan, input, this.httpOptions
     );
   }
 }

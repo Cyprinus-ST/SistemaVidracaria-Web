@@ -9,70 +9,83 @@
             <h6 class="text-gray-800 text-xl font-bold">Planos</h6>
             <button
               type="button"
-              class="icon-card-main text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-              (click)="openDialog()">add</button>
+              class=""
+              (click)="openDialog()"
+            >
+              <i class="icon-card-main fa fa-plus-square"></i>
+            </button>
           </div>
         </div>
-        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form [formGroup]="registerForm" (ngSubmit)="submit()">
-            <br />
-            <div class="flex flex-wrap justify-center">
-              <div ng-repeat="p in plans" class="w-full lg:w-6/12 xl:w-3/12 px-6">
-                <div
-                  class="card-plan relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-                >
-                  <div class="px-4 py-6 flex-auto">
-                    <h6 class="text-xl font-semibold">{{p.Name}}</h6>
-                    <p class="p-price-plan">R$ {{p.Price}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="w-full lg:w-6/12 xl:w-3/12 px-6">
-                <div
-                  class="card-plan relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
-                >
-                  <div class="px-6 py-6 flex-auto">
-                    <h6 class="text-xl font-semibold">Plano Semestral</h6>
-                    <p class="p-price-plan">R$79,90</p>
-                    <p style="text-align: end">de 12x</p>
-                    
-                    <button type="button" class=" button-plan-card " style="size: 20;">dfsd</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br />
-            <br />
+        <div
+          class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+        >
+          <div class="w-full mb-12 px-4">
+            <form [formGroup]="registerForm" (ngSubmit)="submit()">
+              <br />
+              <table class="items-center w-full bg-transparent border-collapse">
+                <thead>
+                  <tr>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Nome
+                    </th>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Descrição
+                    </th>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Valor da Parcela
+                    </th>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Status
+                    </th>
+                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let plan of plans">
+                    <th
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left flex items-center"
+                    >
+                      {{ plan.name }}
+                    </th>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      {{ plan.description }}
+                    </td>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      R$ {{ plan.installments }},00
+                    </td>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      <i *ngIf="plan.status == 'ACTIVE'" class="fa fa-check-circle"></i>
+                      <i *ngIf="plan.status == 'DESACTIVATED'" class="fa fa-times-circle"></i>
+                      {{ plan.status }}
+                    </td>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right"
+                    >
+                      <button class="button-item-table" type="button" (click)="openUpdatePlanDialog(plan)"><i class="fas fa-edit"></i></button>
+                      <button class="button-item-table" type="button" (click)="deletePlan()"><i class="fas fa-trash"></i></button>
 
-            <div
-              class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500"
-              *ngIf="error.show"
-            >
-              <span class="text-xl inline-block mr-5 align-middle">
-                <i class="fas fa-times"></i>&nbsp;&nbsp;
-              </span>
-              <span class="inline-block align-middle mr-8">
-                <b>{{ error.message }} </b> <br />
-              </span>
-              <button
-                class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
-                (click)="closeError()"
-              >
-                <span>× &nbsp;&nbsp;</span>
-              </button>
-            </div>
-
-            <hr class="mt-6 border-b-1 border-gray-400" />
-            <br />
-            <div class="flex flex-wrap">
-              <div class="w-10/12 px-4"></div>
-              <div class="w-full px-12 flex-1">
-              </div>
-            </div>
-          </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<app-dialog-resgister></app-dialog-resgister>

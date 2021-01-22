@@ -52,6 +52,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
@@ -108,7 +109,8 @@ import { Pipe, PipeTransform } from '@angular/core';
       MatButtonModule,
       BrowserAnimationsModule,
       MatDialogModule,
-      MatInputModule
+      MatInputModule,
+      MatIconModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
