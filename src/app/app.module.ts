@@ -20,6 +20,7 @@ import { RecoveryPasswordComponent } from './views/auth/recovery-password/recove
 
 //user views
 import { AccountComponent } from './views/user/account/account.component';
+import { PlanComponent } from './views/user/plan/plan.component';
 import { MaterialComponent } from './views/user/material/material.component';
 
 // components for views and layouts
@@ -49,9 +50,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
 import { ProviderComponent } from './views/user/provider/provider.component';
 import { MaterialModalComponent } from './components/modal/material-modal/material-modal.component';
 
@@ -89,6 +92,9 @@ import { MaterialModalComponent } from './components/modal/material-modal/materi
     ForgotPasswordComponent,
     AccountComponent,
     RecoveryPasswordComponent,
+    AccountComponent,
+    PlanComponent,
+    DialogResgisterComponent,
     UsersComponent,
     MaterialComponent,
     ProviderComponent,
@@ -103,13 +109,14 @@ import { MaterialModalComponent } from './components/modal/material-modal/materi
       MatButtonModule,
       BrowserAnimationsModule,
       MatDialogModule,
-      MatInputModule
+      MatInputModule,
+      MatIconModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
   ],
-  entryComponents:[],
+  entryComponents:[DialogResgisterComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

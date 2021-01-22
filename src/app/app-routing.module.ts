@@ -11,6 +11,7 @@ import { UsersComponent } from  "./views/admin/users/users.component";
 
 //#region user views
 import { AccountComponent } from "./views/user/account/account.component";
+import { PlanComponent } from './views/user/plan/plan.component';
 import { MaterialComponent } from "./views/user/material/material.component";
 ////#endregion
 
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: "dashboard", component: DashboardComponent },
       {path: "users", component: UsersComponent},
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "plan", component: PlanComponent },
     ],
   },
   {
@@ -48,6 +50,7 @@ const routes: Routes = [
       { path: "material", component: MaterialComponent }
     ]
   },
+
   // auth views
   {
     path: "",
