@@ -1,0 +1,11 @@
+.modal{
+    width: 1200px !important;
+    margin-left: 10em;
+    z-index: 99 !important;
+    border: black 1px solid;
+}
+form{
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-top: 1em;
+}

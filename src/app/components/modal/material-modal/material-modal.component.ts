@@ -8,9 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MaterialModalComponent implements OnInit {
     
   showModal;
-
-  toggleModal(){
+  type: string;
+  toggleModal(type? : string){
     this.showModal = !this.showModal;
+    this.type = type;
     console.log(this.showModal);
   }
 
