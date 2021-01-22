@@ -26,3 +26,13 @@
     padding-right: 20px;
     font-size: 150%;
 }
+
+.icon-status-active-table {
+    font-size: 150%;
+    color: green;
+}
+
+.icon-status-desactivated-table {
+    font-size: 150%;
+    color: red;
+}

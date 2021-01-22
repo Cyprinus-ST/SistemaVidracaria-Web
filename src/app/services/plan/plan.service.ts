@@ -43,4 +43,10 @@ export class PlanService {
       this.apiUrl + "Plan/"+idPlan, input, this.httpOptions
     );
   }
+
+  public deletePlan(idPlan: String): Observable<MessageResponse> {
+    return this.httpClient.delete<MessageResponse>(
+      this.apiUrl + "Plan?ID="+idPlan, this.httpOptions
+    );
+  }
 }
