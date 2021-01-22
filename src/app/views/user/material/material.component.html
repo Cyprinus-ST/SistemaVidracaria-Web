@@ -47,10 +47,7 @@
           </th>
           <th class="px-6 align-middle border border-solid py-3 text-xs
                       uppercase border-l-0 border-r-0 whitespace-no-wrap
-                      font-semibold text-left bg-gray-100 text-gray-600 border-gray-200">Excluir</th>
-          <th class="px-6 align-middle border border-solid py-3 text-xs
-                      uppercase border-l-0 border-r-0 whitespace-no-wrap
-                      font-semibold text-left bg-gray-100 text-gray-600 border-gray-200">Editar</th>
+                      font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"></th>
         </tr>
       </thead>
       <tbody>
@@ -76,14 +73,12 @@
               {{dataAtualFormatada(material.updateAt)}}
             </span>
           </td>
-          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right">
             <button
               class="text-red-500 background-transparent font-bold uppercase px-3 py-1 text-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button">
               <i class="fas fa-trash"></i>
             </button>
-          </td>
-          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
             <button
               class="text-blue-500 background-transparent font-bold uppercase px-3 py-1 text-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
               type="button" (click)="modal.toggleModal('Editar')">
