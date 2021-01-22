@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule,CanActivate } from "@angular/router";
+import { Routes, RouterModule } from "@angular/router";
 
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
@@ -7,12 +7,12 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
+import { UsersComponent } from  "./views/admin/users/users.component";
 
 //#region user views
 import { AccountComponent } from "./views/user/account/account.component";
 import { PlanComponent } from './views/user/plan/plan.component';
+import { MaterialComponent } from "./views/user/material/material.component";
 ////#endregion
 
 // auth views
@@ -36,8 +36,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
-      { path: "tables", component: TablesComponent },
-      { path: "maps", component: MapsComponent },
+      {path: "users", component: UsersComponent},
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
       { path: "plan", component: PlanComponent },
     ],
@@ -48,6 +47,7 @@ const routes: Routes = [
     canActivate : [AuthGuard],
     children:[
       { path: "account", component: AccountComponent },
+      { path: "material", component: MaterialComponent }
     ]
   },
 

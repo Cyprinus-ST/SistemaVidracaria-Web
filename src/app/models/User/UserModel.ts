@@ -20,6 +20,13 @@ export class UserModel{
     CEP : string;
 }
 
+export class UserModelResponse{
+    id: string;
+    name : string;
+    pathAvatar : string;
+    type : string;
+}
+
 //Classe que é o retorno da api, aonde vem message de erro ou algo do tipo
 export class UserResponse{
 
@@ -28,11 +35,38 @@ export class UserResponse{
     expiration? : Date;
     acessToken? : string;
     message: string;
-    user : UserModel;
+    user : UserModelResponse;
 }
 
-export function Authenticated(){
-    var user =  JSON.parse(localStorage.getItem('user'));
-    if(user == null)
-        return false;
+export class UsersDTO {
+        name : string;
+        email : string;
+        cpf: string; 
+        type: string; 
+        street : string;
+        neighborhood : string;
+        city : string;
+        state : string;
+        country : string;
+        number : string;
+        complement : string;
+        phone : string;
+        cep : string;
+        createAt : Date;
+        pathAvatar?: string;
+
+        idPlan : string
+        statusPlan : string;
+        dateAcquisition : Date;
+        dateExpired : Date;
+        
+        namePlan : string;
+        description: string;
+        price: number;
+        status: string;
 }
+
+export class ListUsers {
+    users : UsersDTO[];
+}
+

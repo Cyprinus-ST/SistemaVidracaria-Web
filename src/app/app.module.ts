@@ -7,11 +7,10 @@ import { AppComponent } from "./app.component";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { UsersComponent } from './views/admin/users/users.component';
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -22,6 +21,7 @@ import { RecoveryPasswordComponent } from './views/auth/recovery-password/recove
 //user views
 import { AccountComponent } from './views/user/account/account.component';
 import { PlanComponent } from './views/user/plan/plan.component';
+import { MaterialComponent } from './views/user/material/material.component';
 
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
@@ -38,14 +38,12 @@ import { FooterComponent } from "./components/footers/footer/footer.component";
 import { FooterSmallComponent } from "./components/footers/footer-small/footer-small.component";
 import { HeaderStatsComponent } from "./components/headers/header-stats/header-stats.component";
 import { IndexNavbarComponent } from "./components/navbars/index-navbar/index-navbar.component";
-import { MapExampleComponent } from "./components/maps/map-example/map-example.component";
 import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/index-dropdown.component";
 import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
 import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pages-dropdown.component";
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
-import { FileUploadComponent } from "./components/modal/file-upload/file-upload.component";
 
 //Material Imports
 import { MatButtonModule } from '@angular/material/button';
@@ -57,8 +55,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
+import { ProviderComponent } from './views/user/provider/provider.component';
+import { MaterialModalComponent } from './components/modal/material-modal/material-modal.component';
 
-import { Pipe, PipeTransform } from '@angular/core';
+
+
 
 @NgModule({
   declarations: [
@@ -81,24 +82,23 @@ import { Pipe, PipeTransform } from '@angular/core';
     CardStatsComponent,
     CardTableComponent,
     HeaderStatsComponent,
-    MapExampleComponent,
     AuthNavbarComponent,
     AdminNavbarComponent,
     IndexNavbarComponent,
     AdminComponent,
     AuthComponent,
-    MapsComponent,
-    TablesComponent,
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
     AccountComponent,
-    FileUploadComponent,
     RecoveryPasswordComponent,
     AccountComponent,
     PlanComponent,
     DialogResgisterComponent,
-    
+    UsersComponent,
+    MaterialComponent,
+    ProviderComponent,
+    MaterialModalComponent
   ],
   imports: [
       BrowserModule,
@@ -116,7 +116,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
   ],
-  entryComponents:[FileUploadComponent, DialogResgisterComponent],
+  entryComponents:[DialogResgisterComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

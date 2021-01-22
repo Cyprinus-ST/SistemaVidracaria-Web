@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-sidebar",
@@ -12,7 +13,9 @@ export class SidebarComponent implements OnInit {
     collapseShow = "hidden";
   ////#endregion
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getUserData();
@@ -23,7 +26,6 @@ export class SidebarComponent implements OnInit {
 
   
   async getUserData(){
-
     this.userData = await JSON.parse(localStorage.getItem('user'));
     if(this.userData.type == "admin"){
       this.isAdmin = true;
@@ -32,4 +34,16 @@ export class SidebarComponent implements OnInit {
       this.isAdmin = false;
     }
   }
+
+  async goToAccount(){
+    this.userData = await JSON.parse(localStorage.getItem('user')); 
+    console.log(this.userData.id);
+    this.router.navigate(['user/account'],{
+      queryParams:{
+        user:  this.userData.id
+      }
+    });
+  }
+
+
 }

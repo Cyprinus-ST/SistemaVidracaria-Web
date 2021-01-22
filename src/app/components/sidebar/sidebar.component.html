@@ -82,12 +82,11 @@
         </li>
 
         <li class="items-center">
-          <a [routerLink]="['/user/account']" class="text-sm py-3 font-bold block" routerLinkActive
-            #adminSettings="routerLinkActive" [ngClass]="
+          <a class="text-sm py-3 font-bold block" routerLinkActive #adminSettings="routerLinkActive" [ngClass]="
               adminSettings.isActive
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-gray-800 hover:text-gray-600'
-            ">
+            " (click)="goToAccount()">
             <i class="fas fa-user mr-2 text-sm" [ngClass]="
                 adminSettings.isActive ? 'opacity-75' : 'text-gray-400'
               "></i>
@@ -119,9 +118,21 @@
             </a>
           </li>
           <li class="items-center">
-            <a [routerLink]="['/auth/register']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
+            <a [routerLink]="['/admin/users']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
               <i class="fas fa-users text-gray-400 mr-2 text-sm"></i>
               Usuários
+            </a>
+          </li>
+          <li class="items-center">
+            <a [routerLink]="['/admin/users']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
+              <i class="fas fa-user-tag text-gray-400 mr-2 text-sm"></i>
+              Acesso por usuário
+            </a>
+          </li>
+          <li class="items-center">
+            <a [routerLink]="['/admin/users']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
+              <i class="fas fa-play text-gray-400 mr-2 text-sm"></i>
+              Cadastro de Tutoriais
             </a>
           </li>
         </ul>
@@ -133,6 +144,20 @@
       </h6>
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+
+        <li class="items-center">
+          <a [routerLink]="['/auth/login']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
+            <i class="fas fa-wallet text-gray-400 mr-2 text-sm"></i>
+            Orçamentos
+          </a>
+        </li>
+        <li class="items-center">
+          <a [routerLink]="['/user/material']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
+            <i class="fas fa-boxes text-gray-400 mr-2 text-sm"></i>
+            Materiais
+          </a>
+        </li>
+
         <li class="items-center">
           <a [routerLink]="['/auth/login']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
             <i class="fas fa-money-check-alt text-gray-400 mr-2 text-sm"></i>
@@ -155,25 +180,12 @@
         </li>
 
         <li class="items-center">
-          <a [routerLink]="['/auth/register']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
-            <i class="fas fa-boxes text-gray-400 mr-2 text-sm"></i>
-            Materiais
-          </a>
-        </li>
-
-        <li class="items-center">
           <a [routerLink]="['/auth/login']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
             <i class="fas fa-project-diagram text-gray-400 mr-2 text-sm"></i>
             Projetos
           </a>
         </li>
 
-        <li class="items-center">
-          <a [routerLink]="['/auth/login']" class="text-gray-800 hover:text-gray-600 text-sm py-3 font-bold block">
-            <i class="fas fa-wallet text-gray-400 mr-2 text-sm"></i>
-            Orçamentos
-          </a>
-        </li>
       </ul>
     </div>
   </div>
