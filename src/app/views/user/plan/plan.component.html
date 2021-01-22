@@ -1,0 +1,91 @@
+<section class="pb-20 bg-gray-300 -mt-24">
+  <div class="flex flex-wrap">
+    <div class="w-full lg:w-12/12 px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-200 border-0"
+      >
+        <div class="upper-border-card rounded-t bg-white mb-0 px-6 py-6">
+          <div class="text-center flex justify-between">
+            <h6 class="text-gray-800 text-xl font-bold">Planos</h6>
+            <button
+              type="button"
+              class=""
+              (click)="openDialog()"
+            >
+              <i class="icon-card-main fa fa-plus-square"></i>
+            </button>
+          </div>
+        </div>
+        <div
+          class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+        >
+          <div class="w-full mb-12 px-4">
+            <form [formGroup]="registerForm" (ngSubmit)="submit()">
+              <br />
+              <table class="items-center w-full bg-transparent border-collapse">
+                <thead>
+                  <tr>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Nome
+                    </th>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Descrição
+                    </th>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Valor da Parcela
+                    </th>
+                    <th
+                      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"
+                    >
+                      Status
+                    </th>
+                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-gray-100 text-gray-600 border-gray-200"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let plan of plans">
+                    <th
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left flex items-center"
+                    >
+                      {{ plan.name }}
+                    </th>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      {{ plan.description }}
+                    </td>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      R$ {{ plan.installments }},00
+                    </td>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4"
+                    >
+                      <i *ngIf="plan.status == 'ACTIVE'" class="fa fa-check-circle"></i>
+                      <i *ngIf="plan.status == 'DESACTIVATED'" class="fa fa-times-circle"></i>
+                      {{ plan.status }}
+                    </td>
+                    <td
+                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right"
+                    >
+                      <button class="button-item-table" type="button" (click)="openUpdatePlanDialog(plan)"><i class="fas fa-edit"></i></button>
+                      <button class="button-item-table" type="button" (click)="deletePlan()"><i class="fas fa-trash"></i></button>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

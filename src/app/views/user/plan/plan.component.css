@@ -1,0 +1,28 @@
+.upper-border-card {
+    background-color: white ;
+}
+
+.card-plan {
+    background-color: #7ec8ea ;
+}
+
+.p-price-plan {
+    font-size: xx-large;
+    color: white;
+}
+
+.icon-card-main {
+    color: #33a374;
+    font-size: 200%;
+}
+
+.button-plan-card {
+    border-radius: 25;
+    background-color: yellow;
+    height: 100;
+}
+
+.button-item-table {
+    padding-right: 20px;
+    font-size: 150%;
+}
