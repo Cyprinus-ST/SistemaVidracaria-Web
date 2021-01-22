@@ -13,6 +13,7 @@ import { UsersComponent } from  "./views/admin/users/users.component";
 import { AccountComponent } from "./views/user/account/account.component";
 import { PlanComponent } from './views/user/plan/plan.component';
 import { MaterialComponent } from "./views/user/material/material.component";
+import { ProviderComponent } from './views/user/provider/provider.component';
 ////#endregion
 
 // auth views
@@ -47,7 +48,8 @@ const routes: Routes = [
     canActivate : [AuthGuard],
     children:[
       { path: "account", component: AccountComponent },
-      { path: "material", component: MaterialComponent }
+      { path: "material", component: MaterialComponent },
+      { path: "provider", component: ProviderComponent}
     ]
   },
 

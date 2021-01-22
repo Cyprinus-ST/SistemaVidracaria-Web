@@ -1,0 +1,18 @@
+.section-dialog {
+    height: 100%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: 0 !important;
+}
+.modal{
+    width: 1200px !important;
+    margin-left: 10em;
+    z-index: 99 !important;
+    border: black 2px solid;
+}
+form{
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-top: 1em;
+}

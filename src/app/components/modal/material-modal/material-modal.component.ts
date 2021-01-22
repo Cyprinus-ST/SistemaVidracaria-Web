@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MaterialModel } from 'src/app/models/Material/MaterialModel';
 
 @Component({
   selector: 'app-material-modal',
@@ -8,10 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class MaterialModalComponent implements OnInit {
     
   showModal;
+  type: string;
+  material: any;
 
-  toggleModal(){
+  toggleModal(type: string){
     this.showModal = !this.showModal;
-    console.log(this.showModal);
+    this.type = type;
+    console.log(this.material);
   }
 
   constructor() { }
