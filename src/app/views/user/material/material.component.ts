@@ -12,6 +12,7 @@ export class MaterialComponent implements OnInit {
 
   listMaterial;
   showModal = false;
+  
   constructor(
     public MaterialService: MaterialService,
     public FormatService: FormatService
@@ -22,10 +23,6 @@ export class MaterialComponent implements OnInit {
     
     this.getAll(user.id);
 
-  }
-
-  toggleModal(){
-    this.showModal = !this.showModal;
   }
 
   getAll(idUser : string){

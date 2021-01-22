@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="block w-full overflow-x-auto">
-    <app-material-modal></app-material-modal>
+    <app-material-modal #modal></app-material-modal>
     <!-- Projects table -->
     <table class="items-center w-full bg-transparent border-collapse">
       <thead>
@@ -79,11 +79,10 @@
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
             <button
               class="text-blue-500 background-transparent font-bold uppercase px-3 py-1 text-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button" (click)="toggleModal()">
+              type="button" (click)="modal.toggleModal()">
               <i class="fas fa-edit"></i>
             </button>
           </td>
-
         </tr>
       </tbody>
     </table>
