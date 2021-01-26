@@ -1,7 +1,6 @@
 <div *ngIf="showModal"
-  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  class="section-dialog relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
   <div class="modal relative w-auto my-6 mx-auto max-w-sm">
-    <!--content-->
     <div class="flex items-start p-5 border-b border-solid border-gray-300 bg-white rounded-t">
       <h3 class="text-3xl font-semibold">
         {{type}} Material
@@ -16,9 +15,6 @@
     </div>
     <div
       class="border-0 rounded-lg shadow-lg relative flex flex-col w-full  bg-gray-200 outline-none focus:outline-none">
-      <!--header-->
-
-      <!--body-->
       <div class="relative p-6 flex-auto  bg-gray-200">
         <form class=" bg-gray-200">
           <div class="relative w-full mb-3">
