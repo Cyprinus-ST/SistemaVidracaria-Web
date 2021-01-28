@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogResgisterComponent } from './../../../components/modal/dialog-resgister/dialog-resgister.component';
 import { PlanModel } from 'src/app/models/Plan/PlanModel';
@@ -47,7 +47,7 @@ export class PlanComponent implements OnInit {
   }
   
   openDialog() {
-    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: new PlanModel()}});
+    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: new PlanModel()}, autoFocus: true, restoreFocus : false, position: { top: '-25%', left: '28%'}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -62,7 +62,7 @@ export class PlanComponent implements OnInit {
 
   openUpdatePlanDialog(plan: PlanModel) {
     this.selectedPlan = plan;
-    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: plan, option: true}});
+    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: plan}, autoFocus: true, restoreFocus : false, position: { top: '-25%', left: '28%'}});
   }
 
   deletePlan(plan: PlanModel) {
