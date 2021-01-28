@@ -57,6 +57,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
 import { ProviderComponent } from './views/user/provider/provider.component';
 import { MaterialModalComponent } from './components/modal/material-modal/material-modal.component';
+import { ProjectsComponent } from './views/user/projects/projects.component';
+import { ProjectsDetailsComponent } from './views/user/projects-details/projects-details.component';
 
 
 
@@ -98,7 +100,9 @@ import { MaterialModalComponent } from './components/modal/material-modal/materi
     UsersComponent,
     MaterialComponent,
     ProviderComponent,
-    MaterialModalComponent
+    MaterialModalComponent,
+    ProjectsComponent,
+    ProjectsDetailsComponent
   ],
   imports: [
       BrowserModule,

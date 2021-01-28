@@ -12,10 +12,10 @@ export class MaterialModalComponent implements OnInit {
   type: string;
   material: any;
 
-  toggleModal(type: string){
+  toggleModal(type: string, object : any){
     this.showModal = !this.showModal;
     this.type = type;
-    console.log(this.material);
+    console.log(object);
   }
 
   constructor() { }
