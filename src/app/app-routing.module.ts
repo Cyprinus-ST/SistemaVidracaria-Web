@@ -11,7 +11,7 @@ import { UsersComponent } from  "./views/admin/users/users.component";
 
 //#region user views
 import { AccountComponent } from "./views/user/account/account.component";
-import { PlanComponent } from './views/user/plan/plan.component';
+import { PlanComponent } from './views/admin/plan/plan.component';
 import { MaterialComponent } from "./views/user/material/material.component";
 import { ProviderComponent } from './views/user/provider/provider.component';
 ////#endregion

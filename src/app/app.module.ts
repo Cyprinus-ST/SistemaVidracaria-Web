@@ -20,7 +20,7 @@ import { RecoveryPasswordComponent } from './views/auth/recovery-password/recove
 
 //user views
 import { AccountComponent } from './views/user/account/account.component';
-import { PlanComponent } from './views/user/plan/plan.component';
+import { PlanComponent } from './views/admin/plan/plan.component';
 import { MaterialComponent } from './views/user/material/material.component';
 
 // components for views and layouts

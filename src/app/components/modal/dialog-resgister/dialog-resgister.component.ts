@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { AddPlanInput } from "src/app/models/Plan/inputs/AddPlanInput";
 import { UpdatePlanInput } from "src/app/models/Plan/inputs/UpdatePlanInput";
 import { PlanModel } from "src/app/models/Plan/PlanModel";
@@ -36,9 +36,8 @@ export class DialogResgisterComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private fb?: FormBuilder,
     public PlanService?: PlanService,
-    private route?: ActivatedRoute,
     private router?: Router,
-    public dialog?: MatDialog
+    public dialog?: MatDialog,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;
