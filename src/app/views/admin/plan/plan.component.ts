@@ -1,11 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogResgisterComponent } from './../../../components/modal/dialog-resgister/dialog-resgister.component';
 import { PlanModel } from 'src/app/models/Plan/PlanModel';
 import { PlanService } from 'src/app/services/plan/plan.service';
-import { MaterialModalComponent } from 'src/app/components/modal/material-modal/material-modal.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -47,7 +46,7 @@ export class PlanComponent implements OnInit {
   }
   
   openDialog() {
-    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: new PlanModel()}, autoFocus: true, restoreFocus : false, position: { top: '-25%', left: '28%'}});
+    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: new PlanModel()}, autoFocus: true, restoreFocus : false, position: { top: '-85%', left: '28%'}});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
