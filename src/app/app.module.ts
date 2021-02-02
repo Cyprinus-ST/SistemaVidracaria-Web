@@ -21,7 +21,7 @@ import { RecoveryPasswordComponent } from './views/auth/recovery-password/recove
 //user views
 import { AccountComponent } from './views/user/account/account.component';
 import { PlanComponent } from './views/admin/plan/plan.component';
-import { MaterialComponent } from './views/user/material/material.component';
+import { MaterialComponent } from './views/user/material/list/material.component';
 
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
@@ -55,8 +55,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
-import { ProviderComponent } from './views/user/provider/provider.component';
-import { MaterialModalComponent } from './components/modal/material-modal/material-modal.component';
+import { ProviderComponent } from './views/user/provider/list/provider.component';
+import { ProjectsComponent } from './views/user/projects/projects.component';
+import { ProjectsDetailsComponent } from './views/user/projects-details/projects-details.component';
 
 
 
@@ -98,7 +99,8 @@ import { MaterialModalComponent } from './components/modal/material-modal/materi
     UsersComponent,
     MaterialComponent,
     ProviderComponent,
-    MaterialModalComponent
+    ProjectsComponent,
+    ProjectsDetailsComponent
   ],
   imports: [
       BrowserModule,

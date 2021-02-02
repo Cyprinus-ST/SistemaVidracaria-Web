@@ -12,8 +12,12 @@ import { UsersComponent } from  "./views/admin/users/users.component";
 //#region user views
 import { AccountComponent } from "./views/user/account/account.component";
 import { PlanComponent } from './views/admin/plan/plan.component';
-import { MaterialComponent } from "./views/user/material/material.component";
-import { ProviderComponent } from './views/user/provider/provider.component';
+import { MaterialComponent } from "./views/user/material/list/material.component";
+import { RegisterComponent as RegisterMaterial } from './views/user/material/register/register.component';
+import { ProviderComponent } from './views/user/provider/list/provider.component';
+import { ProjectsComponent } from './views/user/projects/projects.component';
+import { ProjectsDetailsComponent } from './views/user/projects-details/projects-details.component';
+import { RegisterComponent as RegisterProvider } from './views/user/provider/register/register.component';
 ////#endregion
 
 // auth views
@@ -49,7 +53,11 @@ const routes: Routes = [
     children:[
       { path: "account", component: AccountComponent },
       { path: "material", component: MaterialComponent },
-      { path: "provider", component: ProviderComponent}
+      { path: "material/register", component: RegisterMaterial},
+      { path: "provider", component: ProviderComponent },
+      { path: "provider/register", component: RegisterProvider},
+      { path: "projects", component: ProjectsComponent },
+      { path: "projects-details", component: ProjectsDetailsComponent}
     ]
   },
 
