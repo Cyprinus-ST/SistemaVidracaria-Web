@@ -1,0 +1,24 @@
+.plan-title-text {
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.plan-price-text {
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #e3f2ff;
+    font-weight: lighter;
+}
+
+.plan-price-description-text {
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #e3f2ff;
+    font-weight: lighter;
+    text-align: right;
+    padding-right: 8%;
+}
+
+.plan-card {
+    background-color: #7ec8ea;
+}

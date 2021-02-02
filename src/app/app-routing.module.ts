@@ -8,10 +8,11 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
 import { UsersComponent } from  "./views/admin/users/users.component";
+import { PlanComponent } from './views/admin/plan/plan.component';
 
 //#region user views
 import { AccountComponent } from "./views/user/account/account.component";
-import { PlanComponent } from './views/admin/plan/plan.component';
+import { UserPlanComponent } from './views/user/user-plan/user-plan.component';
 import { MaterialComponent } from "./views/user/material/material.component";
 import { ProviderComponent } from './views/user/provider/provider.component';
 ////#endregion
@@ -49,7 +50,8 @@ const routes: Routes = [
     children:[
       { path: "account", component: AccountComponent },
       { path: "material", component: MaterialComponent },
-      { path: "provider", component: ProviderComponent}
+      { path: "provider", component: ProviderComponent},
+      { path: "plan", component: UserPlanComponent}
     ]
   },
 

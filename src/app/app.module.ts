@@ -11,6 +11,7 @@ import { UsersComponent } from './views/admin/users/users.component';
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
+import { PlanComponent } from './views/admin/plan/plan.component';
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -20,8 +21,8 @@ import { RecoveryPasswordComponent } from './views/auth/recovery-password/recove
 
 //user views
 import { AccountComponent } from './views/user/account/account.component';
-import { PlanComponent } from './views/admin/plan/plan.component';
 import { MaterialComponent } from './views/user/material/material.component';
+import { UserPlanComponent } from './views/user/user-plan/user-plan.component';
 
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
@@ -98,7 +99,8 @@ import { MaterialModalComponent } from './components/modal/material-modal/materi
     UsersComponent,
     MaterialComponent,
     ProviderComponent,
-    MaterialModalComponent
+    MaterialModalComponent,
+    UserPlanComponent
   ],
   imports: [
       BrowserModule,

@@ -6,7 +6,9 @@ import { DialogResgisterComponent } from './../../../components/modal/dialog-res
 import { PlanModel } from 'src/app/models/Plan/PlanModel';
 import { PlanService } from 'src/app/services/plan/plan.service';
 import { MaterialModalComponent } from 'src/app/components/modal/material-modal/material-modal.component';
+import { Renderer2, Inject } from '@angular/core';
 import Swal from 'sweetalert2';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-plan',
@@ -15,21 +17,22 @@ import Swal from 'sweetalert2';
 })
 export class PlanComponent implements OnInit {
   showModal = false;
-  registerForm : FormGroup;
+  registerForm: FormGroup;
   error = {
     show: false,
-    message : ""
+    message: ""
   };
 
-  plans : Array<PlanModel>;
-  selectedPlan : PlanModel = new PlanModel();
+  plans: Array<PlanModel>;
+  selectedPlan: PlanModel = new PlanModel();
 
   submited = false;
 
   constructor(
-    private fb : FormBuilder,
-    public PlanService : PlanService,
-    private route : ActivatedRoute,
+    private elementRef: ElementRef,
+    private fb: FormBuilder,
+    public PlanService: PlanService,
+    private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog) {
   }
@@ -39,15 +42,22 @@ export class PlanComponent implements OnInit {
     this.listPlans();
   }
 
+  ngAfterViewInit() {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js";
+    this.elementRef.nativeElement.appendChild(s);
+  }
+
   initForm() {
     this.error = {
       show: false,
       message: ""
     }
   }
-  
+
   openDialog() {
-    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: new PlanModel()}, autoFocus: true, restoreFocus : false, position: { top: '-25%', left: '28%'}});
+    var dialogRef = this.dialog.open(DialogResgisterComponent, { data: { plan: new PlanModel() }, autoFocus: true, restoreFocus: false, position: { top: '-25%', left: '28%' } });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -62,7 +72,7 @@ export class PlanComponent implements OnInit {
 
   openUpdatePlanDialog(plan: PlanModel) {
     this.selectedPlan = plan;
-    var dialogRef = this.dialog.open(DialogResgisterComponent, {data: {plan: plan}, autoFocus: true, restoreFocus : false, position: { top: '-25%', left: '28%'}});
+    var dialogRef = this.dialog.open(DialogResgisterComponent, { data: { plan: plan }, autoFocus: true, restoreFocus: false, position: { top: '-25%', left: '28%' } });
   }
 
   deletePlan(plan: PlanModel) {
@@ -73,7 +83,7 @@ export class PlanComponent implements OnInit {
           title: "Sucesso!",
           text: "Plano excluído com sucesso!",
         });
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => this.router.navigate(["/admin/plan"]));
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => this.router.navigate(["/admin/plan"]));
         this.dialog.ngOnDestroy;
       } else {
         Swal.fire({
