@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { MaterialService } from  '../../../../services/user/material.service';
 import { FormatService } from '../../../../services/utils/format.service';
 
 @Component({
-  selector: 'app-material',
-  templateUrl: './material.component.html',
-  styleUrls: ['./material.component.css']
+  selector: 'app-provider',
+  templateUrl: './provider.component.html',
+  styleUrls: ['./provider.component.css']
 })
-
-export class MaterialComponent implements OnInit {
+export class ProviderComponent implements OnInit {
 
   listMaterial;
   showModal = false;
   
   constructor(
     public MaterialService: MaterialService,
-    public FormatService: FormatService,
-    private router: Router
+    public FormatService: FormatService
   ) { }
 
   ngOnInit(): void {
@@ -43,12 +40,5 @@ export class MaterialComponent implements OnInit {
       return this.FormatService.formatDate(date);
   }
 
-  goToRegister( type : string){
-    this.router.navigate(['user/material/register'],{
-      queryParams:{
-        backRoute: 'user/material',
-        type : type
-      }
-    });
-  } 
+
 }

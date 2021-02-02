@@ -55,7 +55,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
-import { ProviderComponent } from './views/user/provider/provider.component';
+import { ProviderComponent } from './views/user/provider/list/provider.component';
 import { ProjectsComponent } from './views/user/projects/projects.component';
 import { ProjectsDetailsComponent } from './views/user/projects-details/projects-details.component';
 
