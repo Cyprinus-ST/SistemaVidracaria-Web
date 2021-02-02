@@ -1,11 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogResgisterComponent } from './../../../components/modal/dialog-resgister/dialog-resgister.component';
 import { PlanModel } from 'src/app/models/Plan/PlanModel';
 import { PlanService } from 'src/app/services/plan/plan.service';
-import { MaterialModalComponent } from 'src/app/components/modal/material-modal/material-modal.component';
 import { Renderer2, Inject } from '@angular/core';
 import Swal from 'sweetalert2';
 import { DOCUMENT } from '@angular/common';

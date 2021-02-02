@@ -9,14 +9,13 @@
       <div>
         <button
           class="bg-green-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-          type="button" (click)="modal.toggleModal('Cadastrar')">
+          type="button" (click)="goToRegister('Cadastrar')">
           + Novo
         </button>
       </div>
     </div>
   </div>
   <div class="block w-full overflow-x-auto">
-    <app-material-modal #modal></app-material-modal>
     <!-- Projects table -->
     <table class="items-center w-full bg-transparent border-collapse">
       <thead>
@@ -81,7 +80,7 @@
             </button>
             <button
               class="text-blue-500 background-transparent font-bold uppercase px-3 py-1 text-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button" (click)="modal.toggleModal('Editar')">
+              type="button" (click)="goToRegister('Editar')">
               <i class="fas fa-edit"></i>
             </button>
           </td>
