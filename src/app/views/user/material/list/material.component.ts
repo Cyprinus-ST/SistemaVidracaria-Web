@@ -1,5 +1,8 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MaterialModel } from 'src/app/models/Material/MaterialModel';
+import Swal from 'sweetalert2';
 import { MaterialService } from  '../../../../services/user/material.service';
 import { FormatService } from '../../../../services/utils/format.service';
 
@@ -13,7 +16,7 @@ export class MaterialComponent implements OnInit {
 
   listMaterial;
   showModal = false;
-  
+  idUser: string;
   constructor(
     public MaterialService: MaterialService,
     public FormatService: FormatService,
@@ -22,7 +25,7 @@ export class MaterialComponent implements OnInit {
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')); 
-    
+    this.idUser = user.id;
     this.getAll(user.id);
 
   }
@@ -40,15 +43,46 @@ export class MaterialComponent implements OnInit {
   }
 
   dataAtualFormatada(date){
-      return this.FormatService.formatDate(date);
+     if(date != null)
+        return this.FormatService.formatDate(date);
+      else
+       return "-";
   }
 
-  goToRegister( type : string){
+  goToRegister( type : string, material: MaterialModel){
+    console.log(material)
     this.router.navigate(['user/material/register'],{
       queryParams:{
         backRoute: 'user/material',
-        type : type
+        type : type,
+        material : JSON.stringify(material)
       }
     });
   } 
+
+  deleteMaterial(idMaterial: string){
+    this.MaterialService.DeleteMaterial(idMaterial).subscribe(data =>{
+      if(data.valid){
+        Swal.fire(
+          'Sucesso!',
+          'Material excluído!',
+          'success'
+        )
+        this.getAll(this.idUser);
+      }
+      else{
+        Swal.fire(
+          'Error!',
+           data.message,
+          'error'
+        )
+      }
+    },ex => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro!',
+        text: 'Error: ' + ex.error
+      });
+    });
+  }
 }
