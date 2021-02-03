@@ -9,7 +9,7 @@
       <div>
         <button
           class="bg-green-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-          type="button" (click)="modal.toggleModal('Cadastrar')">
+          type="button" (click)="goToRegister('Cadastrar')">
           + Novo
         </button>
       </div>
@@ -25,13 +25,19 @@
                     text-xs uppercase border-l-0 border-r-0
                     whitespace-no-wrap font-semibold text-left 
                     bg-gray-100 text-gray-600 border-gray-200">
-            Descrição
+            Nome
           </th>
           <th class="px-6 align-middle border border-solid py-3
                          text-xs uppercase border-l-0 border-r-0
                          whitespace-no-wrap font-semibold text-left
                          bg-gray-100 text-gray-600 border-gray-200">
-            Quantidade
+            Descrição
+          </th>
+          <th class="px-6 align-middle border border-solid py-3
+          text-xs uppercase border-l-0 border-r-0
+          whitespace-no-wrap font-semibold text-left
+          bg-gray-100 text-gray-600 border-gray-200">
+            Telefone
           </th>
           <th class="px-6 align-middle border border-solid
                         py-3 text-xs uppercase border-l-0 border-r-0
@@ -51,37 +57,42 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let material of listMaterial">
+        <tr *ngFor="let provider of listProvider">
           <th
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left flex items-center">
             <span class="ml-3 font-bold text-gray-700">
-              {{material.name}}
+              {{provider.name}}
             </span>
           </th>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
             <span class="ml-3 font-bold text-gray-700">
-              {{material.amount}}
+              {{provider.description}}
             </span>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
             <span class="ml-3 font-bold text-gray-700">
-              {{dataAtualFormatada(material.createAt)}}
+              {{provider.phone}}
             </span>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
             <span class="ml-3 font-bold text-gray-700">
-              {{dataAtualFormatada(material.updateAt)}}
+              {{dataAtualFormatada(provider.createAt)}}
+            </span>
+          </td>
+          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
+            <span class="ml-3 font-bold text-gray-700">
+              {{dataAtualFormatada(provider.updateAt)}}
             </span>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-right">
             <button
               class="text-red-500 background-transparent font-bold uppercase px-3 py-1 text-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button">
+              type="button" (click)="deleteProvider(provider.id)">
               <i class="fas fa-trash"></i>
             </button>
             <button
               class="text-blue-500 background-transparent font-bold uppercase px-3 py-1 text-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button" (click)="modal.toggleModal('Editar')">
+              type="button" (click)="goToRegister('Editar',provider)">
               <i class="fas fa-edit"></i>
             </button>
           </td>
