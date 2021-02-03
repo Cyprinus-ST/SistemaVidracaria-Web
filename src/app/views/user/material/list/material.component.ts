@@ -50,7 +50,6 @@ export class MaterialComponent implements OnInit {
   }
 
   goToRegister( type : string, material: MaterialModel){
-    console.log(material)
     this.router.navigate(['user/material/register'],{
       queryParams:{
         backRoute: 'user/material',

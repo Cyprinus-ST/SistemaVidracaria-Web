@@ -26,6 +26,7 @@ import { RegisterComponent as MaterialRegister } from './views/user/material/reg
 import { ProviderComponent } from './views/user/provider/list/provider.component';
 import { ProjectsComponent } from './views/user/projects/projects.component';
 import { ProjectsDetailsComponent } from './views/user/projects-details/projects-details.component';
+
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
 import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
