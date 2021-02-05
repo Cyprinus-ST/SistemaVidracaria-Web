@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProviderModel } from 'src/app/models/Provider/ProviderModel';
 import { ProviderService } from 'src/app/services/user/provider.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -67,6 +68,7 @@ export class RegisterComponent implements OnInit {
         "",
         Validators.compose([
           Validators.email,
+          Validators.required,
           Validators.minLength(2),
           Validators.maxLength(100)
         ])
@@ -99,7 +101,77 @@ export class RegisterComponent implements OnInit {
     this.error.show = true;
     this.error.message= message;
   }
+
   goBack(){
     this.router.navigate([this.backRoute]);
+  }
+
+  submit(){
+    console.log(this.formGroup);
+    this.submited = true; 
+    
+    try{
+
+      let provider = new ProviderModel();
+      provider = this.formGroup.value;
+
+      if(this.formGroup.valid){
+
+        if(this.type == 'Cadastrar'){
+          
+          provider.idUser = this.idUser;
+          this.ProviderService.AddProvider(provider).subscribe(data =>{
+            if(data.valid){
+              Swal.fire(
+                'Sucesso!',
+                'Fornecedor salvo!',
+                'success'
+                )
+                this.goBack();
+              }
+              else{
+                throw data.message;
+              }
+            },ex => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Erro ao salvar o fornecedor!',
+                text: 'Error: ' + ex.error
+              });
+        });
+      }
+      else{
+        
+        provider.id = this.provider.id;
+        provider.idUser = this.provider.idUser;
+        this.ProviderService.UpdateProvider(provider).subscribe(data =>{
+          if(data.valid){
+            Swal.fire(
+              'Sucesso!',
+              'Fornecedor salvo!',
+              'success'
+              )
+              this.goBack();
+            }
+            else{
+              throw data.message;
+            }
+          },ex => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Erro ao salvar o fornecedor!',
+              text: 'Error: ' + ex.error
+            });
+          });
+        }
+      }
+    }
+    catch(ex){
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro!',
+        text: 'Ocorreu um erro ao salvar o fornecedor! Tente novamente mais tarde.' 
+      });
+    }
   }
 }

@@ -50,7 +50,10 @@ export class ProviderComponent implements OnInit {
           'Fornecedor excluído!',
           'success'
         )
-        this.getAll(this.idUser);
+        this.ProviderService.GetAllProvider(this.idUser).subscribe(data=>{
+          if(data.valid)
+            this.listProvider = data.listProvider;
+        });
       }
       else{
         Swal.fire(

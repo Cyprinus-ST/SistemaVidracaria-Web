@@ -26,6 +26,7 @@ import { RegisterComponent as MaterialRegister } from './views/user/material/reg
 import { ProviderComponent } from './views/user/provider/list/provider.component';
 import { ProjectsComponent } from './views/user/projects/projects.component';
 import { ProjectsDetailsComponent } from './views/user/projects-details/projects-details.component';
+import { RegisterComponent as ProviderRegister } from './views/user/provider/register/register.component';
 
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
@@ -103,7 +104,8 @@ import { DialogResgisterComponent } from './components/modal/dialog-resgister/di
     ProviderComponent,
     ProjectsComponent,
     ProjectsDetailsComponent,
-    MaterialRegister
+    MaterialRegister,
+    ProviderRegister
   ],
   imports: [
       BrowserModule,

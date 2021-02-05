@@ -23,8 +23,8 @@
                       bg-white rounded text-sm shadow focus:outline-none
                       focus:shadow-outline w-full ease-linear transition-all duration-150" formControlName="name" />
                 <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                  *ngIf="formGroup.controls.description.errors != null && formGroup.controls.description.errors.required != null && submited == true">
-                  * Descrição é um campo obrigatório!
+                  *ngIf="formGroup.controls.name.errors != null && formGroup.controls.name.errors.required != null && submited == true">
+                  * Nome é um campo obrigatório!
                 </small>
               </div>
               <div class="relative w-full mb-3">
@@ -50,8 +50,8 @@
                       bg-white rounded text-sm shadow focus:outline-none
                       focus:shadow-outline w-full ease-linear transition-all duration-150" formControlName="phone" />
                 <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                  *ngIf="formGroup.controls.description.errors != null && formGroup.controls.description.errors.required != null && submited == true">
-                  * Descrição é um campo obrigatório!
+                  *ngIf="formGroup.controls.phone.errors != null && formGroup.controls.phone.errors.required != null && submited == true">
+                  * Telefone é um campo obrigatório!
                 </small>
               </div>
               <div class="relative w-full mb-3">
@@ -62,8 +62,8 @@
                       bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline
                       w-full ease-linear transition-all duration-150" formControlName="email" />
                 <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
-                  *ngIf="formGroup.controls.email.errors != null && formGroup.controls.email.errors.required != null && submited == true">
-                  * E-mail é um campo obrigatório!
+                  *ngIf="formGroup.controls.email.errors != null && formGroup.controls.email.errors.email != null && submited == true">
+                  * Favor inserir um e-mail válido!
                 </small>
               </div>
             </div>
