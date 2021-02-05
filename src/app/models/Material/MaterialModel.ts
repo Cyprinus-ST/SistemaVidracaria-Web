@@ -12,3 +12,8 @@ export class ListMaterialResponse{
     message? : string;
     listMaterial : MaterialModel[]
 }
+
+export class MessageResponse {
+    valid : string;
+    message: string;
+}

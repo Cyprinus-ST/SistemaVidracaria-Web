@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListMaterialResponse,MaterialModel } from '../../models/Material/MaterialModel';
+import { ListMaterialResponse,MaterialModel,MessageResponse } from '../../models/Material/MaterialModel';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,35 @@ export class MaterialService {
       this.apiUrl + `?idUser=${idUser}`,
       this.httpOptions
     );
+  }
+
+  public DeleteMaterial(idMaterial : string): Observable<MessageResponse>{
+    return this.httpClient.delete<MessageResponse>(
+      this.apiUrl + `?id=${idMaterial}`,
+      this.httpOptions
+    );
+  }
+
+  public GetMaterial(idMaterial : string): Observable<MaterialModel>{
+    return this.httpClient.get<MaterialModel>(
+      this.apiUrl + `${idMaterial}`,
+      this.httpOptions
+    )
+  }
+
+  public AddMaterial(material : MaterialModel) : Observable<MessageResponse>{
+    return this.httpClient.post<MessageResponse>(
+      this.apiUrl,
+      material,
+      this.httpOptions
+    )
+  }
+
+  public UpdateMaterial(material : MaterialModel) : Observable<MessageResponse>{
+    return this.httpClient.put<MessageResponse>(
+      this.apiUrl,
+      material,
+      this.httpOptions
+    )
   }
 }
