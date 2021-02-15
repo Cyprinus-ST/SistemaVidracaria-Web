@@ -28,7 +28,10 @@ import { ProviderComponent } from './views/user/provider/list/provider.component
 import { ProjectsComponent } from './views/user/projects/projects.component';
 import { ProjectsDetailsComponent } from './views/user/projects-details/projects-details.component';
 import { RegisterComponent as ProviderRegister } from './views/user/provider/register/register.component';
-
+import { TutorialComponent } from './views/admin/tutorial/tutorial.component';
+import { UserAccessComponent } from './views/admin/user-access/user-access.component';
+import { CustomersComponent } from './views/user/customers/customers.component';
+import { BudgetComponent } from './views/user/budget/budget.component';
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
 import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
@@ -50,6 +53,7 @@ import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pa
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
 
 //Material Imports
 import { MatButtonModule } from '@angular/material/button';
@@ -60,9 +64,6 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
-import { DialogResgisterComponent } from './components/modal/dialog-resgister/dialog-resgister.component';
-
-
 
 
 
@@ -107,7 +108,11 @@ import { DialogResgisterComponent } from './components/modal/dialog-resgister/di
     ProjectsComponent,
     ProjectsDetailsComponent,
     MaterialRegister,
-    ProviderRegister
+    ProviderRegister,
+    TutorialComponent,
+    UserAccessComponent,
+    CustomersComponent,
+    BudgetComponent
   ],
   imports: [
       BrowserModule,
