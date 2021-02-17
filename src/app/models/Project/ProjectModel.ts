@@ -1,5 +1,3 @@
-import { ProjectsComponent } from "src/app/views/user/projects/projects.component";
-
 export class FilterProject {
     start: number;
     maxResults: number;
@@ -25,4 +23,14 @@ export class FilterProjectResponse {
     data : ProjectModel[];
     pages : number;
     actualPage : number;
+}
+
+export class ProjectTypeResponse{
+    valid: string;
+    result : ProjectTypeModel[]
+}
+
+export class ProjectTypeModel{
+    id: number;
+    type: string;
 }
