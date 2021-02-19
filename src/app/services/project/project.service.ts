@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProjectTypeResponse } from 'src/app/models/Project/ProjectModel';
+import { FilterProject, FilterProjectResponse, ProjectTypeResponse } from 'src/app/models/Project/ProjectModel';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,13 @@ export class ProjectService {
       this.apiUrl + "/ProjectType",
       this.httpOptions
     );
+  }
+
+  public PostFilterProject(filterProject : FilterProject): Observable<FilterProjectResponse>{
+    return this.httpClient.post<FilterProjectResponse>(
+      this.apiUrl + "/ListFiltered",
+      filterProject,
+      this.httpOptions,
+    )
   }
 }

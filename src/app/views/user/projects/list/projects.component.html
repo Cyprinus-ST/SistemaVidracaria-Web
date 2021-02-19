@@ -23,63 +23,66 @@
       <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
         <br />
         <br />
-        <div class="flex flex-wrap">
-          <div class="w-full lg:w-3/12 px-4">
-            <div class="relative w-full mb-3">
-              <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
-                Nome do projeto
-              </label>
-              <input type="text" class="px-3 py-3 placeholder-gray-400 text-gray-700
+        <form [formGroup]="filterForm">
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Nome do projeto
+                </label>
+                <input type="text" class="px-3 py-3 placeholder-gray-400 text-gray-700
               bg-white rounded text-sm shadow focus:outline-none
-              focus:shadow-outline w-full ease-linear transition-all duration-150" />
+              focus:shadow-outline w-full ease-linear transition-all duration-150" formControlName="title" />
+              </div>
             </div>
-          </div>
-          <div class="w-full lg:w-3/12 px-4">
-            <div class="relative w-full mb-3">
-              <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
-                Tipo do projeto
-              </label>
-              <select
-                class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150">
-                <option *ngFor="let p of projectsTypes" value="p.id">
-                  {{p.type}}
-                </option>
-              </select>
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Tipo do projeto
+                </label>
+                <select formControlName="projectType"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150">
+                  <option *ngFor="let p of projectsTypes" value="{{p.id}}">
+                    {{p.type}}
+                  </option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="w-full lg:w-3/12 px-4">
-            <div class="relative w-full mb-3">
-              <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
-                Número de folhas de vidro
-              </label>
-              <input type="number" class="px-3 py-3 placeholder-gray-400 text-gray-700
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Número de folhas de vidro
+                </label>
+                <input type="number" class="px-3 py-3 placeholder-gray-400 text-gray-700
               bg-white rounded text-sm shadow focus:outline-none
-              focus:shadow-outline w-full ease-linear transition-all duration-150" />
+              focus:shadow-outline w-full ease-linear transition-all duration-150" formControlName="numberGlass" />
+              </div>
+            </div>
+            <div class="w-full lg:w-3/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Número de registros por página
+                </label>
+                <select formControlName="maxResults"
+                  class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150">
+                  <option value="10" selected>10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                </select>
+              </div>
             </div>
           </div>
-          <div class="w-full lg:w-3/12 px-4">
-            <div class="relative w-full mb-3">
-              <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
-                Número de registros por página
-              </label>
-              <select
-                class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150">
-                <option value="10" selected>10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
 
       <div class="px-4 mb-12 btn_filter" style="margin-left:90%;">
         <button
           class="btn_filter bg-blue-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-          type="button">
+          type="button" (click)="GetProjects()">
           Buscar
         </button>
       </div>
+
     </div>
   </div>
 </div>
@@ -104,41 +107,11 @@
 
   <div class="container px-4 mx-auto">
     <div class="flex flex-wrap">
-      <div class="w-full px-4 flex-1">
+      <div class="w-full px-4 flex-1" *ngFor="let project of listProjects">
         <div class="relative flex flex-col min-w-0 break-word  mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
           <div class="rounded-t bg-white mb-0 px-6 py-6">
             <div class="text-center flex justify-between">
-              <h6 class="text-gray-800 text-xl font-bold">Porta de Vidro</h6>
-            </div>
-          </div>
-          <div class="px-4 lg:px-4 py-10 pt-2">
-            <div class="flex flex-wrap justify-center">
-              <img src="../../../../assets/img/vidro.png" alt="..." class="shadow roundedalign-middle border-none"
-                width="250px" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-full px-4 flex-1">
-        <div class="relative flex flex-col min-w-0 break-word  mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
-          <div class="rounded-t bg-white mb-0 px-6 py-6">
-            <div class="text-center flex justify-between">
-              <h6 class="text-gray-800 text-xl font-bold">Porta de Vidro</h6>
-            </div>
-          </div>
-          <div class="px-4 lg:px-4 py-10 pt-2">
-            <div class="flex flex-wrap justify-center">
-              <img src="../../../../assets/img/vidro.png" alt="..." class="shadow roundedalign-middle border-none"
-                width="250px" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-full px-4 flex-1">
-        <div class="relative flex flex-col min-w-0 break-word  mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
-          <div class="rounded-t bg-white mb-0 px-6 py-6">
-            <div class="text-center flex justify-between">
-              <h6 class="text-gray-800 text-xl font-bold">Porta de Vidro</h6>
+              <h6 class="text-gray-800 text-xl font-bold">{{project.title}}</h6>
             </div>
           </div>
           <div class="px-4 lg:px-4 py-10 pt-2">
