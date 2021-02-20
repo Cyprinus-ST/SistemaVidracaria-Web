@@ -25,4 +25,13 @@ export class FormatService {
     }
   };
   
+  public validType(file){
+    const type = file.type;
+    if(type == "image/jpeg" || type == "image/png" || type == "image/jpg"){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }

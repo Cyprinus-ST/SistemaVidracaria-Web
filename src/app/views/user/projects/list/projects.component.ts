@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FilterProject, ProjectModel, ProjectTypeModel } from 'src/app/models/Project/ProjectModel';
 import { ProjectService } from 'src/app/services/project/project.service';
 import { AlertsService } from 'src/app/services/utils/alerts.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-projects',
@@ -20,7 +20,8 @@ export class ProjectsComponent implements OnInit {
   constructor(
     private fb : FormBuilder,
     public ProjectService : ProjectService,
-    public AlertService : AlertsService
+    public AlertService : AlertsService,
+    private router: Router
   ) {
     this.getProjectType();
     this.initForm();
@@ -38,7 +39,7 @@ export class ProjectsComponent implements OnInit {
     this.collapse = true;
   }
 
-  GetProjects(){
+  GetProjects(): void{
     let filter = new FilterProject();
     filter = this.filterForm.value;
 
@@ -61,7 +62,7 @@ export class ProjectsComponent implements OnInit {
 
       }, ex =>{
         if(ex.status == 401)
-          ex.error = "Ocorreu ao autenticar o usuário, por favor faça o login novamente!";
+          this.AlertService.errorAutenticacao();
         this.AlertService.showError(ex.error);
       });
     }
@@ -89,8 +90,18 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  toggleButton(){
+  toggleButton(): void{
     this.collapse = !this.collapse;
     console.log(this.collapse);
+  }
+
+  goToRegister(type: string, project : ProjectModel){
+    this.router.navigate(['user/projects/register'],{
+      queryParams:{
+        backRoute: 'user/projects',
+        type : type,
+        project : JSON.stringify(project)
+      }
+    });
   }
 }

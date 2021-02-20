@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FilterProject, FilterProjectResponse, ProjectTypeResponse } from 'src/app/models/Project/ProjectModel';
+import { FilterProject, FilterProjectResponse, ProjectAddResponse, ProjectModel, ProjectTypeResponse } from 'src/app/models/Project/ProjectModel';
+import { MessageResponse } from 'src/app/models/Response/MessageResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,12 @@ export class ProjectService {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
       "Authorization": `Bearer ${this.token}`
+    }),
+  };
+
+  httpOptionsFormData = {
+    headers: new HttpHeaders({
+      "Authorization": "Bearer " + this.token
     }),
   };
 
@@ -33,5 +40,21 @@ export class ProjectService {
       filterProject,
       this.httpOptions,
     )
+  }
+
+  public PostProject(project : ProjectModel) : Observable<ProjectAddResponse>{
+    return this.httpClient.post<ProjectAddResponse>(
+        this.apiUrl,
+        project,
+        this.httpOptions
+      );
+  }
+
+  public UploadFile(formData : FormData) : Observable<MessageResponse>{
+    return this.httpClient.post<MessageResponse>(
+      this.apiUrl + "/uploadFile",
+      formData,
+      this.httpOptionsFormData
+    );
   }
 }

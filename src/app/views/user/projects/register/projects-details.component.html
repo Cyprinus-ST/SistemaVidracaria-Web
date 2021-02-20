@@ -1,1 +1,108 @@
-<p>projects-details works!</p>
+<div class="flex flex-wrap">
+  <div class="w-full lg:w-12/12 px-4">
+    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
+      <div class="rounded-t bg-white mb-0 px-6 py-6">
+        <div class="text-center flex justify-between">
+          <h6 class="text-gray-800 text-xl font-bold">{{type}} Projeto</h6>
+        </div>
+      </div>
+      <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <form [formGroup]="formGroup">
+          <br />
+          <div class="flex flex-wrap justify-center">
+          </div>
+          <br />
+          <br />
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Nome Projeto
+                </label>
+                <input type="text" class="px-3 py-3 placeholder-gray-400 text-gray-700
+                      bg-white rounded text-sm shadow focus:outline-none
+                      focus:shadow-outline w-full ease-linear transition-all duration-150" formControlName="Title" />
+                <small class="font-normal leading-normal mt-0 mb-4 text-red-600"
+                  *ngIf="formGroup.controls.Title.errors != null && formGroup.controls.Title.errors.required != null && submited == true">
+                  * Nome Projeto é um campo obrigatório!
+                </small>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Descrição
+                </label>
+                <input type="text" class="px-3 py-3 placeholder-gray-400 text-gray-700 
+                      bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline
+                      w-full ease-linear transition-all duration-150" formControlName="Descripition" />
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Número de folhas de vidro
+                </label>
+                <input type="number" class="px-3 py-3 placeholder-gray-400 text-gray-700
+                        bg-white rounded text-sm shadow focus:outline-none
+                        focus:shadow-outline w-full ease-linear transition-all duration-150"
+                  formControlName="NumberGlass" />
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                  Tipo do projeto
+                </label>
+                <select class="px-3 py-3 placeholder-gray-400 text-gray-700 
+                    bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline
+                    w-full ease-linear transition-all duration-150" formControlName="ProjectType">
+                  <option *ngFor="let p of projectsTypes" value="{{p.id}}">
+                    {{p.type}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-4 py-2 pt-2">
+            <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+              Alterar imagem
+            </label>
+            <div class="flex flex-wrap">
+              <img src="../../../../assets/img/vidro.png" alt="..." class="shadow roundedalign-middle border-none"
+                width="350px" />
+            </div>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-3/12 px-4">
+              <input type="file" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm
+                    shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                (change)="onFileChange($event)" />
+            </div>
+          </div>
+
+          <hr class="mt-6 border-b-1 border-gray-400" />
+          <br />
+          <div class="flex flex-wrap">
+            <div class="w-10/12 px-4">
+            </div>
+            <button class="bg-red-500 text-white active:bg-green-600 
+            font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+            outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+              (click)="goBack()">
+              Voltar
+            </button>
+            <button class="bg-green-500 text-white active:bg-green-600 
+              font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+              outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+              (click)="submit()">
+              Salvar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

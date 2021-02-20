@@ -25,6 +25,12 @@ export class FilterProjectResponse {
     actualPage : number;
 }
 
+export class ProjectAddResponse{
+    valid : boolean;
+    message : string;
+    idProject : string;
+}
+
 export class ProjectTypeResponse{
     valid: string;
     result : ProjectTypeModel[]

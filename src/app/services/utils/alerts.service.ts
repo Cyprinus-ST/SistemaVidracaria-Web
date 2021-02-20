@@ -16,7 +16,19 @@ export class AlertsService {
     });
   }
 
-  public teste(){
-    return "Oi";
+  public showSucess(message: string){
+    return Swal.fire({
+      icon: 'success',
+      title: 'Sucesso!',
+      text: message
+    });
+  }
+  
+  public errorAutenticacao(){
+    return  Swal.fire({
+      icon: 'error',
+      title: 'Erro!',
+      text: "Ocorreu ao autenticar o usuário, por favor faça o login novamente!"
+    });
   }
 }
