@@ -28,7 +28,7 @@ export class AlertsService {
     return  Swal.fire({
       icon: 'error',
       title: 'Erro!',
-      text: "Ocorreu ao autenticar o usuário, por favor faça o login novamente!"
+      text: 'Ocorreu ao autenticar o usuário, por favor faça o login novamente!'
     });
   }
 }

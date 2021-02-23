@@ -39,7 +39,7 @@ export class ProjectsComponent implements OnInit {
     this.collapse = true;
   }
 
-  GetProjects(): void{
+  getProjects(): void{
     let filter = new FilterProject();
     filter = this.filterForm.value;
 
@@ -61,13 +61,14 @@ export class ProjectsComponent implements OnInit {
         }
 
       }, ex =>{
-        if(ex.status == 401)
+        if(ex.status === 401){
           this.AlertService.errorAutenticacao();
+        }
         this.AlertService.showError(ex.error);
       });
     }
     catch(ex){
-      console.log(ex);
+      console.log("Oi");
       this.AlertService.showError(ex.error);
     }
 
@@ -102,6 +103,24 @@ export class ProjectsComponent implements OnInit {
         type : type,
         project : JSON.stringify(project)
       }
+    });
+  }
+
+  deleteProject(idProject : string): void{
+    this.ProjectService.DeleteProject(idProject).subscribe(data => {
+      if(data.valid){
+        this.AlertService.showSucess("Projeto excluído com sucesso!")
+        this.getProjects();
+      }
+      else{
+        this.AlertService.showError("Ocorreu um erro ao excluir o projeto!");
+      }
+    }, ex =>{
+      if(ex.status == 401)
+        this.AlertService.errorAutenticacao();
+      if(ex.error == null)
+        ex.error = "Ocorreu um erro ao excluir o projeto!";
+      this.AlertService.showError(ex.error);
     });
   }
 }

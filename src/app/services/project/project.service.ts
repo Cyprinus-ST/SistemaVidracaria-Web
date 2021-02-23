@@ -49,6 +49,14 @@ export class ProjectService {
         this.httpOptions
       );
   }
+  
+  public PutProject(project : ProjectModel): Observable<MessageResponse>{
+    return this.httpClient.put<MessageResponse>(
+      this.apiUrl,
+      project,
+      this.httpOptions
+    );
+  }
 
   public UploadFile(formData : FormData) : Observable<MessageResponse>{
     return this.httpClient.post<MessageResponse>(
@@ -57,4 +65,12 @@ export class ProjectService {
       this.httpOptionsFormData
     );
   }
+
+  public DeleteProject(idProject : string) : Observable<MessageResponse>{
+    return this.httpClient.delete<MessageResponse>(
+      this.apiUrl + "?ID=" + idProject,
+      this.httpOptions
+    )
+  }
+
 }

@@ -78,7 +78,7 @@
       <div class="px-4 mb-12 btn_filter" style="margin-left:90%;">
         <button
           class="btn_filter bg-blue-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-          type="button" (click)="GetProjects()">
+          type="button" (click)="getProjects()">
           Buscar
         </button>
       </div>
@@ -111,16 +111,25 @@
         <div class="relative flex flex-col min-w-0 break-word  mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
           <div class="rounded-t bg-white mb-0 px-6 py-6">
             <div class="flex flex-wrap">
-              <div class="lg:w-9/12 px-8">
+              <div class="lg:w-8/12 px-8">
                 <h6 class="text-gray-800 text-xl font-bold">{{project.title}}</h6>
               </div>
-              <div class="w-full lg:w-3/12">
+              <div class="lg:w-2/12">
                 <button
                   class="bg-green-500 text-white
                   active:bg-red-700 font-bold uppercase text-xs
                   px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-                  type="button" (click)="goToRegister('Cadastrar')">
+                  type="button" (click)="goToRegister('Editar',project)">
                   Editar
+                </button>
+              </div>
+              <div class="lg:w-2/12">
+                <button
+                  class="bg-red-500 text-white
+                  active:bg-red-700 font-bold uppercase text-xs
+                  px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                  type="button" (click)="deleteProject(project.id)">
+                  Excluir
                 </button>
               </div>
             </div>
@@ -128,7 +137,7 @@
           <div>
             <div class="flex flex-wrap justify-center">
               <img src="../../../../assets/files/{{project.imageUrl}}" alt="..."
-                class="shadow roundedalign-middle border-none" width="250px" height="250px" />
+                class="shadow roundedalign-middle border-none project_image" />
             </div>
           </div>
         </div>

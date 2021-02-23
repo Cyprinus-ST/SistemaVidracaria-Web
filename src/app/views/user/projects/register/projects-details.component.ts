@@ -23,6 +23,9 @@ export class ProjectsDetailsComponent implements OnInit {
     message: ""
   };
   projectsTypes : ProjectTypeModel[];
+  project : ProjectModel;
+  projectImage : string;
+
   constructor(
     public activedRoute: ActivatedRoute,
     public router : Router,
@@ -41,8 +44,14 @@ export class ProjectsDetailsComponent implements OnInit {
     this.activedRoute.queryParams.subscribe(params => {
       this.type = params['type'];
       this.backRoute = params['backRoute'];
+      this.project = JSON.parse(params['project']);
+      console.log(this.project);
     });
     this.submited = false;
+
+    if(this.type == 'Editar'){
+      this.popularForm();
+    }
   }
 
   initForm(): void{
@@ -75,6 +84,21 @@ export class ProjectsDetailsComponent implements OnInit {
       ],
       ImageUrl: ['']
     });
+
+  }
+
+  popularForm() : void{
+    this.formGroup.controls.Title.setValue(this.project.title);
+    this.formGroup.controls.NumberGlass.setValue(this.project.numberGlass);
+    this.formGroup.controls.Descripition.setValue(this.project.descripition);
+    this.formGroup.controls.ProjectType.setValue(this.project.projectType);
+    this.formGroup.controls.ImageUrl.setValue(this.project.imageUrl);
+    if(this.project.imageUrl != ""){
+      this.projectImage = this.project.imageUrl;
+    }
+    else{
+      this.projectImage = "img/vidro.png";
+    }
 
   }
 
@@ -112,42 +136,72 @@ export class ProjectsDetailsComponent implements OnInit {
       project.projectType = this.formGroup.get('ProjectType').value;
       project.title = this.formGroup.get('Title').value;
       project.idUser = this.idUser;
-      project.imageUrl = null;
-      
-      this.ProjectService.PostProject(project).subscribe(data =>{
-        if(data.valid){
-          const file = this.formGroup.get('ImageUrl').value;
-          if(file != "" && file != null){
-            if(this.FormatService.validType(file)){ 
-              const formData = new FormData();
-              formData.append('file',file);
-              formData.append('idUser',project.idUser);
-              formData.append('idProject',data.idProject);
 
-              this.ProjectService.UploadFile(formData).subscribe(data =>{
-                console.log(data);
-              });
-
-            }else{
-              this.AlertService.showError("A imagem deve ser no formato .PNG, .JPG ou .JPEG!");
+      if(this.formGroup.get('ImageUrl').value != "" && this.formGroup.get('ImageUrl').value != null){
+        project.imageUrl = this.formGroup.get('ImageUrl').value;
+      }
+      else{
+        project.imageUrl = null;
+      }
+      if(this.type == 'Editar'){
+        this.ProjectService.PutProject(project).subscribe(data =>{
+          if(data.valid){
+            const file = this.formGroup.get('ImageUrl').value;
+            if(file != "" && file != null){
+              this.uploadFile(file,project.idUser,project.id);
+            }
+            else{
+              this.AlertService.showSucess("Projeto Salvo com sucesso!");
+            }
+          }else{
+            this.AlertService.showError(data.message);
+          }
+        }, ex =>{
+          if(ex.status == 401)
+          this.AlertService.errorAutenticacao();
+        this.AlertService.showError(ex.error);
+        });
+      }
+      else{
+        this.ProjectService.PostProject(project).subscribe(data =>{
+          if(data.valid){
+            const file = this.formGroup.get('ImageUrl').value;
+            if(file != "" && file != null){
+              this.uploadFile(file,project.idUser,data.idProject);
+            }
+            else{
+              this.AlertService.showSucess("Projeto Salvo com sucesso!");
             }
           }
           else{
-            this.AlertService.showSucess("Projeto Cadastrado com sucesso!");
+            this.AlertService.showError(data.message);
           }
-        }
-        else{
-          this.AlertService.showError(data.message);
-        }
-      },ex => {
-        if(ex.status == 401)
-          this.AlertService.errorAutenticacao();
-        this.AlertService.showError(ex.error);
-      });
+        },ex => {
+          if(ex.status == 401)
+            this.AlertService.errorAutenticacao();
+          this.AlertService.showError(ex.error);
+        });
+      }
     }
     catch(ex){
       this.AlertService.showError(ex);
     } 
+  }
+
+  uploadFile(file, idUser, idProject){
+    if(this.FormatService.validType(file)){ 
+
+      const formData = new FormData();
+      formData.append('file',file);
+      formData.append('idUser',idUser);
+      formData.append('idProject',idProject);
+  
+      this.ProjectService.UploadFile(formData).subscribe(data =>{
+        this.AlertService.showSucess("Projeto Salvo com sucesso!");
+      });
+    }else{
+      this.AlertService.showError("A imagem deve ser no formato .PNG, .JPG ou .JPEG!");
+    }
   }
 
   onFileChange(event){
