@@ -137,17 +137,14 @@ export class ProjectsDetailsComponent implements OnInit {
       project.title = this.formGroup.get('Title').value;
       project.idUser = this.idUser;
 
-      if(this.formGroup.get('ImageUrl').value != "" && this.formGroup.get('ImageUrl').value != null){
-        project.imageUrl = this.formGroup.get('ImageUrl').value;
-      }
-      else{
-        project.imageUrl = null;
-      }
       if(this.type == 'Editar'){
+        project.id = this.project.id;
+        project.imageUrl = this.project.imageUrl;
         this.ProjectService.PutProject(project).subscribe(data =>{
           if(data.valid){
             const file = this.formGroup.get('ImageUrl').value;
-            if(file != "" && file != null){
+            if(file != "" && file != null && file != project.imageUrl){
+              
               this.uploadFile(file,project.idUser,project.id);
             }
             else{
@@ -179,7 +176,9 @@ export class ProjectsDetailsComponent implements OnInit {
         },ex => {
           if(ex.status == 401)
             this.AlertService.errorAutenticacao();
-          this.AlertService.showError(ex.error);
+          else{
+            this.AlertService.showError(ex.error);
+          }
         });
       }
     }
@@ -198,6 +197,7 @@ export class ProjectsDetailsComponent implements OnInit {
   
       this.ProjectService.UploadFile(formData).subscribe(data =>{
         this.AlertService.showSucess("Projeto Salvo com sucesso!");
+        this.goBack();
       });
     }else{
       this.AlertService.showError("A imagem deve ser no formato .PNG, .JPG ou .JPEG!");
