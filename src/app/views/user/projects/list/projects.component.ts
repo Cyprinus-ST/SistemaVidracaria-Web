@@ -37,6 +37,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.collapse = true;
+    this.getProjects();
   }
 
   getProjects(): void{

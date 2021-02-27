@@ -30,7 +30,7 @@ import { ProjectsDetailsComponent } from './views/user/projects/register/project
 import { RegisterComponent as ProviderRegister } from './views/user/provider/register/register.component';
 import { TutorialComponent } from './views/admin/tutorial/tutorial.component';
 import { UserAccessComponent } from './views/admin/user-access/user-access.component';
-import { CustomersComponent } from './views/user/customers/customers.component';
+import { CustomersComponent } from './views/user/customers/list/customers.component';
 import { BudgetComponent } from './views/user/budget/budget.component';
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";

@@ -9,6 +9,10 @@ export class AlertsService {
   constructor() { }
 
   public showError(message : string){
+
+    if(message == null || message == "")
+      message = "Ocorreu um erro ao processar sua requisição! Tente novamente mais tarde!";
+      
     return  Swal.fire({
       icon: 'error',
       title: 'Erro!',

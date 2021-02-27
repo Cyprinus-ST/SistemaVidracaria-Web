@@ -19,6 +19,8 @@ import { ProviderComponent } from './views/user/provider/list/provider.component
 import { ProjectsComponent } from './views/user/projects/list/projects.component';
 import { ProjectsDetailsComponent } from './views/user/projects/register/projects-details.component';
 import { RegisterComponent as RegisterProvider } from './views/user/provider/register/register.component';
+import { CustomersComponent } from './views/user/customers/list/customers.component';
+import { RegisterComponent as RegisterCustomer} from './views/user/customers/register/register.component';
 ////#endregion
 
 // auth views
@@ -59,7 +61,9 @@ const routes: Routes = [
       { path: "provider", component: ProviderComponent },
       { path: "provider/register", component: RegisterProvider},
       { path: "projects", component: ProjectsComponent },
-      { path: "projects/register", component: ProjectsDetailsComponent}
+      { path: "projects/register", component: ProjectsDetailsComponent},
+      { path: "customers", component: CustomersComponent},
+      { path: "customers/register", component: RegisterCustomer}
     ]
   },
 
