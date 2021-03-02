@@ -32,7 +32,11 @@ import { TutorialComponent } from './views/admin/tutorial/tutorial.component';
 import { UserAccessComponent } from './views/admin/user-access/user-access.component';
 import { CustomersComponent } from './views/user/customers/list/customers.component';
 import { RegisterComponent as CostumerRegister } from './views/user/customers/register/register.component';
-import { BudgetComponent } from './views/user/budget/budget.component';
+import { BudgetComponent } from './views/user/budget/list/budget.component';
+import { RegisterComponent as BudgetRegister} from './views/user/budget/register/register.component'
+
+
+
 // components for views and layouts
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
 import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
@@ -114,7 +118,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     UserAccessComponent,
     CustomersComponent,
     BudgetComponent,
-    CostumerRegister
+    CostumerRegister,
+    BudgetRegister
   ],
   imports: [
       BrowserModule,
