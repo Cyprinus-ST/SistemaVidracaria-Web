@@ -60,11 +60,18 @@ export class CustomersComponent implements OnInit {
       queryParams:{
         backRoute: 'user/customers',
         type : type,
-        material : JSON.stringify(costumer)
+        costumer : JSON.stringify(costumer)
       }
     });
   } 
 
+validateField(field : string){
+
+  if(field == null || field == "")
+    return "-";
+  else
+    return field;
+}
 
 deleteCostumer(idCostumer: string){
     this.CostumerService.DeleteCostumer(idCostumer).subscribe(data =>{

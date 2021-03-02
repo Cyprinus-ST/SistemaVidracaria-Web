@@ -60,17 +60,17 @@
           <th
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4 text-left flex items-center">
             <span class="ml-3 font-bold text-gray-700">
-              {{costumer.name}}
+              {{validateField(costumer.name)}}
             </span>
           </th>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
             <span class="ml-3 font-bold text-gray-700">
-              {{costumer.email}}
+              {{validateField(costumer.email)}}
             </span>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
             <span class="ml-3 font-bold text-gray-700">
-              {{costumer.phone}}
+              {{validateField(costumer.phone)}}
             </span>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-no-wrap p-4">
@@ -91,7 +91,7 @@
             </button>
             <button
               class="text-blue-500 background-transparent font-bold uppercase px-3 py-1 text-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button" (click)="goToRegister('Editar',material)">
+              type="button" (click)="goToRegister('Editar',costumer)">
               <i class="fas fa-edit"></i>
             </button>
           </td>

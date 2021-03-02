@@ -202,6 +202,13 @@
                 *ngIf="type=='user'">
                 Salvar
               </button>
+
+              <button class="bg-green-500 text-white active:bg-green-600 
+              font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+              outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                *ngIf="type=='admin'">
+                Voltar
+              </button>
             </div>
           </div>
         </form>
@@ -235,8 +242,13 @@
               </p>
               <button [routerLink]="['/user/plan']" class="text-green-500 background-transparent font-bold
                 px-3 py-1 text-md outline-none focus:outline-none
-                mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                mr-1 mb-1 ease-linear transition-all duration-150" type="button" *ngIf="type=='user'">
                 Alterar Plano
+              </button>
+              <button [routerLink]="['/user/plan']" class="text-green-500 background-transparent font-bold
+                px-3 py-1 text-md outline-none focus:outline-none
+                mr-1 mb-1 ease-linear transition-all duration-150" type="button" *ngIf="type=='admin'">
+                Alterar Data de Expiração
               </button>
             </div>
           </div>

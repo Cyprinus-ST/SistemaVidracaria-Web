@@ -1,7 +1,7 @@
 export class CostumerModel {
-    name : string;
-    email : string;
-    phone : string;
+    Name : string;
+    Email : string;
+    Phone : string;
     idUser : string;
     id : string;
     createAt : Date;
