@@ -1,4 +1,4 @@
-export class CostumerModel {
+export class CostumerModel extends Array {
     Name : string;
     Email : string;
     Phone : string;

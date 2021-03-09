@@ -21,6 +21,8 @@ import { ProjectsDetailsComponent } from './views/user/projects/register/project
 import { RegisterComponent as RegisterProvider } from './views/user/provider/register/register.component';
 import { CustomersComponent } from './views/user/customers/list/customers.component';
 import { RegisterComponent as RegisterCustomer} from './views/user/customers/register/register.component';
+import { BudgetComponent } from './views/user/budget/list/budget.component';
+import { RegisterComponent as RegisterBudget } from './views/user/budget/register/register.component';
 ////#endregion
 
 // auth views
@@ -63,7 +65,9 @@ const routes: Routes = [
       { path: "projects", component: ProjectsComponent },
       { path: "projects/register", component: ProjectsDetailsComponent},
       { path: "customers", component: CustomersComponent},
-      { path: "customers/register", component: RegisterCustomer}
+      { path: "customers/register", component: RegisterCustomer},
+      { path: "budget", component: BudgetComponent},
+      { path: "budget/register", component: RegisterBudget },
     ]
   },
 

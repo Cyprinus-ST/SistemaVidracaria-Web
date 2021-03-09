@@ -7,7 +7,7 @@ export class FilterProject {
     title: string;
 }
 
-export class ProjectModel{
+export class ProjectModel extends Array{
     title: string;
     numberGlass: number;
     descripition: string;

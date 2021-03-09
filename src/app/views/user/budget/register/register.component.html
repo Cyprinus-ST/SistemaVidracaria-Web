@@ -1,1 +1,136 @@
-<p>register works!</p>
+<br><br><br><br><br><br>
+<div class="flex flex-wrap">
+  <div class="w-full">
+    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(1)"
+          [ngClass]="{'text-blue-600 bg-white': openTab !== 1, 'text-white bg-blue-600': openTab === 1}">
+          <i class="fas fa-user text-base mr-1"></i> Cliente
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(2)"
+          [ngClass]="{'text-blue-600 bg-white': openTab !== 2, 'text-white bg-blue-600': openTab === 2}">
+          <i class="fas fa-cog text-base mr-1"></i> Projeto
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(3)"
+          [ngClass]="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 3}">
+          <i class="fas fa-briefcase text-base mr-1"></i> Conclusão
+        </a>
+      </li>
+    </ul>
+    <form [formGroup]="formBudget">
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+        <div class="px-4 py-5 flex-auto">
+          <div class="tab-content tab-space">
+            <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+              <h5 class="text-xl font-normal leading-normal mt-0 mb-2">
+                Selecione um cliente ou cadastre um novo
+                <br />
+                <br />
+              </h5>
+              <div class="flex flex-wrap">
+                <div class="w-6/12 px-4">
+                  <select class="px-3 py-3 placeholder-gray-400
+                      text-gray-700 bg-white rounded text-sm
+                      shadow focus:outline-none focus:shadow-outline
+                      w-full ease-linear transition-all duration-150" formControlName="IdCostumer"
+                    (change)="onChangeCostumer()">
+                    <option *ngFor="let user of listCostumer" value="{{user.id}}">
+                      {{user.name}}
+                    </option>
+                  </select>
+                </div>
+                <button class="bg-green-500 text-white active:bg-green-600 
+                font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="registerCostumer()">
+                  Cadastrar cliente
+                </button>
+              </div>
+              <br>
+              <br>
+              <hr class="mt-6 border-b-1 border-gray-400" />
+              <br />
+              <div class="flex flex-wrap">
+                <div class="w-10/12 px-4">
+                </div>
+                <button class="bg-red-500 text-white active:bg-green-600 
+                font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                  Cancelar
+                </button>
+                <button class="bg-green-500 text-white active:bg-green-600 
+                  font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                  outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="goToProject()">
+                  Avançar
+                </button>
+              </div>
+            </div>
+            <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+              <p>
+                Completely synergize resource taxing relationships via
+                premier niche markets. Professionally cultivate one-to-one
+                customer service with robust ideas.
+                <br />
+                <br />
+                Dynamically innovate resource-leveling customer service for
+                state of the art customer service.
+              </p>
+              <hr class="mt-6 border-b-1 border-gray-400" />
+              <br />
+              <div class="flex flex-wrap">
+                <div class="w-10/12 px-4">
+                </div>
+                <button class="bg-red-500 text-white active:bg-green-600 
+                font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="toggleTabs(1)">
+                  Voltar
+                </button>
+                <button class="bg-green-500 text-white active:bg-green-600 
+                  font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                  outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="toggleTabs(3)">
+                  Avançar
+                </button>
+              </div>
+            </div>
+            <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}">
+              <p>
+                Efficiently unleash cross-media information without
+                cross-media value. Quickly maximize timely deliverables for
+                real-time schemas.
+                <br />
+                <br />
+                Dramatically maintain clicks-and-mortar solutions
+                without functional solutions.
+              </p>
+              <hr class="mt-6 border-b-1 border-gray-400" />
+              <br />
+              <div class="flex flex-wrap">
+                <div class="w-10/12 px-4">
+                </div>
+                <button class="bg-red-500 text-white active:bg-green-600 
+                font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="toggleTabs(2)">
+                  Voltar
+                </button>
+                <button class="bg-green-500 text-white active:bg-green-600 
+                  font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                  outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="submit()">
+                  Finalizar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

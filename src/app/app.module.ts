@@ -64,9 +64,10 @@ import { DialogResgisterComponent } from './components/modal/dialog-resgister/di
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule as MatStoppedModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
@@ -131,7 +132,9 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
       BrowserAnimationsModule,
       MatDialogModule,
       MatInputModule,
-      MatIconModule
+      MatIconModule,
+      MatStoppedModule,
+      MatFormFieldModule
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

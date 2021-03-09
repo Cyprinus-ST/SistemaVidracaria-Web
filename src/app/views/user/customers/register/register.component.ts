@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   formGroup : FormGroup;
   submited : boolean;
   idUser :  string;
-  Costumer : CostumerModel;
+  Costumer : any;
 
   constructor(
     public activedRoute : ActivatedRoute,
@@ -47,9 +47,9 @@ export class RegisterComponent implements OnInit {
   }
 
   popularForm() : void{
-    this.formGroup.controls.Name.setValue(this.Costumer.Name);
-    this.formGroup.controls.Email.setValue(this.Costumer.Email);
-    this.formGroup.controls.Phone.setValue(this.Costumer.Phone);
+    this.formGroup.controls.Name.setValue(this.Costumer.name);
+    this.formGroup.controls.Email.setValue(this.Costumer.email);
+    this.formGroup.controls.Phone.setValue(this.Costumer.phone);
   }
 
   initForm() : void{
