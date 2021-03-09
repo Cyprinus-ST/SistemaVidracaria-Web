@@ -17,6 +17,12 @@
       <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
         <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(3)"
           [ngClass]="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 3}">
+          <i class="fas fa-plus text-base mr-1"></i> Informações Adicionais
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(3)"
+          [ngClass]="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 3}">
           <i class="fas fa-briefcase text-base mr-1"></i> Conclusão
         </a>
       </li>
@@ -70,16 +76,61 @@
                 </button>
               </div>
             </div>
+
             <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
-              <p>
-                Completely synergize resource taxing relationships via
-                premier niche markets. Professionally cultivate one-to-one
-                customer service with robust ideas.
-                <br />
-                <br />
-                Dynamically innovate resource-leveling customer service for
-                state of the art customer service.
-              </p>
+              <form [formGroup]="filterForm">
+                <h5 class="text-xl font-normal leading-normal mt-0 mb-2">
+                  Selecione um projeto
+                  <br />
+                  <br />
+                </h5>
+                <div class="flex flex-wrap">
+                  <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                      <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                        Tipo do projeto
+                      </label>
+                      <select formControlName="projectType" class="px-3 py-3 placeholder-gray-400 text-gray-700 
+                            bg-white rounded text-sm shadow focus:outline-none
+                            focus:shadow-outline w-full ease-linear transition-all duration-150"
+                        (change)="getAllProjects()">
+                        <option *ngFor="let p of listProjectsTypes" value="{{p.id}}">
+                          {{p.type}}
+                        </option>
+                      </select>
+                    </div>
+                    <br />
+                    <div class="relative w-full mb-3">
+                      <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                        Número de folhas de vidro
+                      </label>
+                      <input type="number" class="px-3 py-3 placeholder-gray-400 text-gray-700
+                        bg-white rounded text-sm shadow focus:outline-none
+                        focus:shadow-outline w-full ease-linear transition-all duration-150"
+                        (change)="getAllProjects()" formControlName="numberGlass" />
+                    </div>
+                    <br />
+                    <div class="relative w-full mb-3">
+                      <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                        Projeto
+                      </label>
+                      <select formControlName="projectType" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded 
+                          text-sm shadow focus:outline-none focus:shadow-outline w-full
+                           ease-linear transition-all duration-150">
+                        <option *ngFor="let p of projectsTypes" value="{{p.id}}">
+                          {{p.type}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="w-full lg:w-6/12 py-3 px-6">
+                    <div class="justify-center" style="margin-left: 10em;">
+                      <img src="../../../../assets/files/vidro.png" alt="..."
+                        class="shadow roundedalign-middle border-none project_image" />
+                    </div>
+                  </div>
+                </div>
+              </form>
               <hr class="mt-6 border-b-1 border-gray-400" />
               <br />
               <div class="flex flex-wrap">

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BudgetDTO } from 'src/app/models/Budget/BudgetModel';
 import { CostumerModel } from 'src/app/models/Costumer/CostumerModel';
-import { ProjectModel } from 'src/app/models/Project/ProjectModel';
+import { FilterProject, ProjectModel, ProjectTypeModel } from 'src/app/models/Project/ProjectModel';
 import { CostumerService } from 'src/app/services/costumer/costumer.service';
 import { ProjectService } from 'src/app/services/project/project.service';
 import { AlertsService } from 'src/app/services/utils/alerts.service';
@@ -16,10 +16,12 @@ export class RegisterComponent implements OnInit {
 
   listCostumer: CostumerModel[];
   listProjects : ProjectModel[];
+  listProjectsTypes : ProjectTypeModel[];
   idUser: string;
   openTab = 1;
   hasCostumerSelected = false;
   formBudget : FormGroup;
+  filterForm : FormGroup;
   Budget : BudgetDTO;
   
   constructor(
@@ -36,12 +38,13 @@ export class RegisterComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user')); 
     this.idUser = user.id;
     this.getAllCostumer(user.id);
+    this.getAllProjectType();
     this.initForm();
 
   }
 
   initForm() : void {
-    console.log("oi");
+
     this.formBudget = this.fb.group({
       IdCostumer : [
         null
@@ -53,6 +56,21 @@ export class RegisterComponent implements OnInit {
         ""
       ]
     })
+
+    this.filterForm = this.fb.group({
+      title: [
+        ""
+      ],
+      numberGlass:[
+        null
+      ],
+      projectType: [
+        null
+      ],
+      maxResults: [
+        null
+      ]
+    });
   };
   
 
@@ -76,9 +94,30 @@ export class RegisterComponent implements OnInit {
     }
   };
 
-  getAllProjects(idUser : string){
-    try{
+  getAllProjects(){
+    console.log(this.filterForm);
+    let filter = new FilterProject();
+    filter = this.filterForm.value;
+    filter.maxResults = 100;
+    if(filter.numberGlass === null)
+      filter.numberGlass = 0;
 
+      try{
+        this.ProjectService.PostFilterProject(filter).subscribe(response =>{
+          if(response.data.length > 0){
+            this.listProjects = response.data;
+            console.log(this.listProjects)
+          }
+          else{
+            this.AlertService.showError("Não foram encontrados registros com os parâmetros passados!")
+          }
+  
+        }, ex =>{
+          if(ex.status === 401){
+            this.AlertService.errorAutenticacao();
+          }
+          this.AlertService.showError(ex.error);
+        });
     }
     catch(ex){
 
@@ -88,6 +127,14 @@ export class RegisterComponent implements OnInit {
       this.AlertService.showError(ex.error);
     }
   }
+
+  getAllProjectType(): void{
+    this.ProjectService.GetProjectType().subscribe(data =>{
+      if(data.valid)
+        this.listProjectsTypes = data.result;
+    });
+  }
+
 
   //#endregion
 
