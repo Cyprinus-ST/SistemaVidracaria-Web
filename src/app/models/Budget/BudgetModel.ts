@@ -1,12 +1,7 @@
+import { CostumerModel } from '../Costumer/CostumerModel';
+import { ProjectModel } from '../Project/ProjectModel';
 export class BudgetDTO {
     Costumer : CostumerModel;
+    Project : ProjectModel;
 }
 
-export class  CostumerModel{
-    id: string;
-    Name : string;
-    Email : string;
-    Phone : string;
-    idUser : string;
-
-}

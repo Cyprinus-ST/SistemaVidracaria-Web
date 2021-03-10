@@ -3,25 +3,25 @@
   <div class="w-full">
     <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
       <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(1)"
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal"
           [ngClass]="{'text-blue-600 bg-white': openTab !== 1, 'text-white bg-blue-600': openTab === 1}">
           <i class="fas fa-user text-base mr-1"></i> Cliente
         </a>
       </li>
       <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(2)"
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal"
           [ngClass]="{'text-blue-600 bg-white': openTab !== 2, 'text-white bg-blue-600': openTab === 2}">
           <i class="fas fa-cog text-base mr-1"></i> Projeto
         </a>
       </li>
       <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(3)"
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal"
           [ngClass]="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 3}">
           <i class="fas fa-plus text-base mr-1"></i> Informações Adicionais
         </a>
       </li>
       <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(3)"
+        <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal"
           [ngClass]="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 3}">
           <i class="fas fa-briefcase text-base mr-1"></i> Conclusão
         </a>
@@ -91,8 +91,8 @@
                         Tipo do projeto
                       </label>
                       <select formControlName="projectType" class="px-3 py-3 placeholder-gray-400 text-gray-700 
-                            bg-white rounded text-sm shadow focus:outline-none
-                            focus:shadow-outline w-full ease-linear transition-all duration-150"
+                        bg-white rounded text-sm shadow focus:outline-none
+                        focus:shadow-outline w-full ease-linear transition-all duration-150"
                         (change)="getAllProjects()">
                         <option *ngFor="let p of listProjectsTypes" value="{{p.id}}">
                           {{p.type}}
@@ -114,11 +114,11 @@
                       <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
                         Projeto
                       </label>
-                      <select formControlName="projectType" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded 
+                      <select formControlName="idProject" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded 
                           text-sm shadow focus:outline-none focus:shadow-outline w-full
-                           ease-linear transition-all duration-150">
-                        <option *ngFor="let p of projectsTypes" value="{{p.id}}">
-                          {{p.type}}
+                           ease-linear transition-all duration-150" (change)="onChangeProject()">
+                        <option *ngFor="let project of listProjects" value="{{project.id}}">
+                          {{project.title}}
                         </option>
                       </select>
                     </div>

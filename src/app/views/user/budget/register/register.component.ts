@@ -58,16 +58,13 @@ export class RegisterComponent implements OnInit {
     })
 
     this.filterForm = this.fb.group({
-      title: [
+      idProject: [
         ""
       ],
       numberGlass:[
         null
       ],
       projectType: [
-        null
-      ],
-      maxResults: [
         null
       ]
     });
@@ -167,15 +164,20 @@ export class RegisterComponent implements OnInit {
   //#endregion
 
   //#region  Métodos onChange
+
     onChangeCostumer(){
-      console.log(this.formBudget);
       const form = this.formBudget.value;
       if(form.IdCostumer != null || form.IdCostumer != ""){
         this.Budget.Costumer = this.listCostumer.find(e => e.id == form.IdCostumer);
         console.log(this.Budget);
       }
-
     };
+
+    onChangeProject(){
+      const form = this.filterForm.value;
+      console.log(form);
+
+    }
   //#endregion
 
   //#region Métodos Verificadores
