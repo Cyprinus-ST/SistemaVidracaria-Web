@@ -12,6 +12,7 @@ import { AlertsService } from 'src/app/services/utils/alerts.service';
 })
 export class ProjectsComponent implements OnInit {
   
+  idUser: string;
   collapse: boolean;
   projectsTypes : ProjectTypeModel[];
   filterForm : FormGroup;
@@ -36,6 +37,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.idUser = user.id;
     this.collapse = true;
     this.getProjects();
   }
@@ -50,6 +53,8 @@ export class ProjectsComponent implements OnInit {
     if(filter.projectType === null){
       filter.projectType = 99;
     }
+
+    filter.idUser = this.idUser;
 
     try{
       this.ProjectService.PostFilterProject(filter).subscribe(response =>{

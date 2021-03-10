@@ -5,6 +5,7 @@ export class FilterProject {
     numberGlass: number;
     page: number;
     title: string;
+    idUser: string;
 }
 
 export class ProjectModel extends Array{
