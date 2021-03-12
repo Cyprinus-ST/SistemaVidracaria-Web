@@ -12,11 +12,12 @@ import { AlertsService } from 'src/app/services/utils/alerts.service';
 })
 export class ProjectsComponent implements OnInit {
   
+  idUser: string;
   collapse: boolean;
   projectsTypes : ProjectTypeModel[];
   filterForm : FormGroup;
   listProjects : ProjectModel[];
-  idUser: string;
+
 
   constructor(
     private fb : FormBuilder,
@@ -53,6 +54,8 @@ export class ProjectsComponent implements OnInit {
     if(filter.projectType === null){
       filter.projectType = 99;
     }
+
+    filter.idUser = this.idUser;
 
     try{
       this.ProjectService.PostFilterProject(filter).subscribe(response =>{
