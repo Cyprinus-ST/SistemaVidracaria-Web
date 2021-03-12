@@ -5,6 +5,7 @@ export class FilterProject {
     numberGlass: number;
     page: number;
     title: string;
+    idUser : string;
 }
 
 export class ProjectModel extends Array{
@@ -18,6 +19,19 @@ export class ProjectModel extends Array{
     createAt: Date;
     updateAt: Date;
 }
+
+export class AddProject {
+    title: string;
+    numberGlass: number;
+    descripition: string;
+    idUser: string;
+    imageUrl: string;
+    projectType: string;
+    id: string;
+    createAt: Date;
+    updateAt: Date;
+}
+
 
 export class FilterProjectResponse {
     data : ProjectModel[];

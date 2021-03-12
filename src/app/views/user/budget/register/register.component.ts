@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   listProjects : ProjectModel[];
   listProjectsTypes : ProjectTypeModel[];
   idUser: string;
+  urlImage: string;
   openTab = 1;
   hasCostumerSelected = false;
   formBudget : FormGroup;
@@ -92,10 +93,10 @@ export class RegisterComponent implements OnInit {
   };
 
   getAllProjects(){
-    console.log(this.filterForm);
     let filter = new FilterProject();
     filter = this.filterForm.value;
     filter.maxResults = 100;
+    filter.idUser = this.idUser;
     if(filter.numberGlass === null)
       filter.numberGlass = 0;
 
@@ -143,24 +144,27 @@ export class RegisterComponent implements OnInit {
     else
       this.toggleTabs(2);
   };  
+  
+  goToInfo(){
+    if(this.EnsureBudget(this.Budget,3) == false)
+      this.AlertService.showError("Favor selecionar um projeto primeiro!");
+    else
+      this.toggleTabs(3);
+  };
 
   toggleTabs($tabNumber: number){
-    
-    //Validando se ele já preencheu o campo de usuário
-    console.log(this.formBudget)
     this.openTab = $tabNumber;
   };
   
-    // Vai para rota de cadastro de cliente
-    registerCostumer() : void {
-      this.router.navigate(['user/customers/register'],{
-        queryParams:{
-          backRoute: 'user/budget/register',
-          type : "Cadastrar",
-          costumer : null
-        }
-      });
-    };
+  registerCostumer() : void {
+    this.router.navigate(['user/customers/register'],{
+      queryParams:{
+        backRoute: 'user/budget/register',
+        type : "Cadastrar",
+        costumer : null
+      }
+    });
+  };
   //#endregion
 
   //#region  Métodos onChange
@@ -175,21 +179,41 @@ export class RegisterComponent implements OnInit {
 
     onChangeProject(){
       const form = this.filterForm.value;
-      console.log(form);
-
+      if(this.EnsureValue(form.idProject)){
+        this.Budget.Project = this.listProjects.find(e => e.id == form.idProject);
+        this.urlImage = this.Budget.Project.imageUrl;
+      }
     }
   //#endregion
 
   //#region Métodos Verificadores
+
   EnsureBudget(Budget : BudgetDTO, step: number): boolean{
-    
+
     if(Budget == undefined || Budget == null)
       return false;
     if(Budget.Costumer == undefined || Budget.Costumer == null)
       return false;
 
+    //Validando para ir para a tela de informação adicional
+    if(step == 3){
+      if(Budget.Project == undefined || Budget.Project == null)
+        return false;
+    }
     return true;
+
   }
+
+  EnsureValue(value : string): boolean{
+
+    if(value != null || value != undefined || value != "")
+      return true;
+    else
+      return false;
+
+  }
+
   //#endregion
+
 
 }

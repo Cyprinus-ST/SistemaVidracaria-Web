@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FilterProject, FilterProjectResponse, ProjectAddResponse, ProjectModel, ProjectTypeResponse } from 'src/app/models/Project/ProjectModel';
+import { AddProject, FilterProject, FilterProjectResponse, ProjectAddResponse, ProjectModel, ProjectTypeResponse } from 'src/app/models/Project/ProjectModel';
 import { MessageResponse } from 'src/app/models/Response/MessageResponse';
 
 @Injectable({
@@ -42,7 +42,7 @@ export class ProjectService {
     )
   }
 
-  public PostProject(project : ProjectModel) : Observable<ProjectAddResponse>{
+  public PostProject(project : AddProject) : Observable<ProjectAddResponse>{
     return this.httpClient.post<ProjectAddResponse>(
         this.apiUrl,
         project,
@@ -50,7 +50,7 @@ export class ProjectService {
       );
   }
   
-  public PutProject(project : ProjectModel): Observable<MessageResponse>{
+  public PutProject(project : AddProject): Observable<MessageResponse>{
     return this.httpClient.put<MessageResponse>(
       this.apiUrl,
       project,

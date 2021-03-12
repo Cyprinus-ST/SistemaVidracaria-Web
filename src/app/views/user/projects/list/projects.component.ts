@@ -16,6 +16,7 @@ export class ProjectsComponent implements OnInit {
   projectsTypes : ProjectTypeModel[];
   filterForm : FormGroup;
   listProjects : ProjectModel[];
+  idUser: string;
 
   constructor(
     private fb : FormBuilder,
@@ -31,11 +32,12 @@ export class ProjectsComponent implements OnInit {
     this.ProjectService.GetProjectType().subscribe(data =>{
       if(data.valid)
         this.projectsTypes = data.result;
-      console.log(this.projectsTypes);
     });
   }
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user')); 
+    this.idUser = user.id;
     this.collapse = true;
     this.getProjects();
   }
@@ -43,6 +45,7 @@ export class ProjectsComponent implements OnInit {
   getProjects(): void{
     let filter = new FilterProject();
     filter = this.filterForm.value;
+    filter.idUser = this.idUser;
 
     if(filter.numberGlass === null)
       filter.numberGlass = 0;
@@ -69,7 +72,6 @@ export class ProjectsComponent implements OnInit {
       });
     }
     catch(ex){
-      console.log("Oi");
       this.AlertService.showError(ex.error);
     }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectModel, ProjectTypeModel } from 'src/app/models/Project/ProjectModel';
+import { AddProject, ProjectModel, ProjectTypeModel } from 'src/app/models/Project/ProjectModel';
 import { ProjectService } from 'src/app/services/project/project.service';
 import { AlertsService } from 'src/app/services/utils/alerts.service';
 import { FormatService } from 'src/app/services/utils/format.service';
@@ -44,8 +44,10 @@ export class ProjectsDetailsComponent implements OnInit {
     this.activedRoute.queryParams.subscribe(params => {
       this.type = params['type'];
       this.backRoute = params['backRoute'];
-      this.project = JSON.parse(params['project']);
-      console.log(this.project);
+
+      if(this.type == 'Editar')
+        this.project = JSON.parse(params['project']);
+      
     });
     this.submited = false;
 
@@ -129,8 +131,8 @@ export class ProjectsDetailsComponent implements OnInit {
     try{
       
       this.submited = true;
-      let project = new ProjectModel();
-      
+      let project = new AddProject();
+
       project.descripition =  this.formGroup.get('Descripition').value;
       project.numberGlass = this.formGroup.get('NumberGlass').value;
       project.projectType = this.formGroup.get('ProjectType').value;

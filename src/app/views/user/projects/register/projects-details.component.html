@@ -59,7 +59,7 @@
                 <select class="px-3 py-3 placeholder-gray-400 text-gray-700 
                     bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline
                     w-full ease-linear transition-all duration-150" formControlName="ProjectType">
-                  <option *ngFor="let p of projectsTypes" value="{{p}}">
+                  <option *ngFor="let p of projectsTypes" value="{{p.id}}">
                     {{p.type}}
                   </option>
                 </select>

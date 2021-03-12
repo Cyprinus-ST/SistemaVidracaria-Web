@@ -22,7 +22,7 @@
       </li>
       <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
         <a class="text font-bold px-5 py-3 shadow-lg rounded block leading-normal"
-          [ngClass]="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 3}">
+          [ngClass]="{'text-blue-600 bg-white': openTab !== 3, 'text-white bg-blue-600': openTab === 4}">
           <i class="fas fa-briefcase text-base mr-1"></i> Conclusão
         </a>
       </li>
@@ -125,8 +125,8 @@
                   </div>
                   <div class="w-full lg:w-6/12 py-3 px-6">
                     <div class="justify-center" style="margin-left: 10em;">
-                      <img src="../../../../assets/files/vidro.png" alt="..."
-                        class="shadow roundedalign-middle border-none project_image" />
+                      <img src="../../../../assets/files/{{urlImage}}" alt="..."
+                        class="shadow roundedalign-middle border-none project_image" *ngIf="urlImage != null" />
                     </div>
                   </div>
                 </div>
@@ -145,7 +145,7 @@
                 <button class="bg-green-500 text-white active:bg-green-600 
                   font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg 
                   outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-                  (click)="toggleTabs(3)">
+                  (click)="goToInfo()">
                   Avançar
                 </button>
               </div>
