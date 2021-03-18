@@ -83,7 +83,7 @@
             </div>
 
             <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
-              <form [formGroup]="filterForm">
+              <form [formGroup]="projectForm">
                 <h5 class="text-xl font-normal leading-normal mt-0 mb-2">
                   Selecione um projeto
                   <br />
@@ -124,6 +124,45 @@
                            ease-linear transition-all duration-150" (change)="onChangeProject()">
                         <option *ngFor="let project of listProjects" value="{{project.id}}">
                           {{project.title}}
+                        </option>
+                      </select>
+                    </div>
+                    <br />
+                    <div class="relative w-full mb-3">
+                      <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                        Cor do Vidro
+                      </label>
+                      <select formControlName="idGlassColor" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded 
+                          text-sm shadow focus:outline-none focus:shadow-outline w-full
+                           ease-linear transition-all duration-150">
+                        <option *ngFor="let color of listGlassColor" value="{{color.id}}">
+                          {{color.description}}
+                        </option>
+                      </select>
+                    </div>
+                    <br />
+                    <div class="relative w-full mb-3">
+                      <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                        Cor da Ferragem
+                      </label>
+                      <select formControlName="idStructureColor" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded 
+                      text-sm shadow focus:outline-none focus:shadow-outline w-full
+                       ease-linear transition-all duration-150">
+                        <option *ngFor="let color of listStructureColor" value="{{color.id}}">
+                          {{color.description}}
+                        </option>
+                      </select>
+                    </div>
+                    <br />
+                    <div class="relative w-full mb-3">
+                      <label class="block text-gray-700 text font-bold mb-2" htmlFor="grid-password">
+                        Cor do Alumínio
+                      </label>
+                      <select formControlName="idAluminiumColor" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded 
+                      text-sm shadow focus:outline-none focus:shadow-outline w-full
+                       ease-linear transition-all duration-150">
+                        <option *ngFor="let color of listAluminiumColor" value="{{color.id}}">
+                          {{color.description}}
                         </option>
                       </select>
                     </div>
@@ -244,7 +283,7 @@
                   font-bold  text-sm px-6 py-3 rounded shadow hover:shadow-lg 
                   outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
                   (click)="submit()">
-                  Finalizar
+                  Avançar
                 </button>
               </div>
             </div>
@@ -255,7 +294,6 @@
                 <br />
                 <br />
               </h5>
-
               <div class="container px-4 mx-auto block my-4 p-3 text-gray-800 rounded border border-gray-200">
                 <h4 class="text-xl  font-normal leading-normal mt-0 mb-2">
                   Nome da Vidraçaria - Logo
@@ -316,12 +354,33 @@
                   </div>
                 </div>
               </div>
-              <button class="bg-blue-600 text-white active:bg-green-600 
-              font-bold text-sm px-6 py-3 rounded shadow hover:shadow-lg 
-              outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-                (click)="toggleTabs(2)">
-                Orçamentos
-              </button>
+              <div class="flex flex-wrap">
+                <div class="w-6/12 px-4">
+                  <button class="bg-green-500 text-white active:bg-green-600 
+                font-bold  text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                    (click)="submit()">
+                    Adicionar outro projeto
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap">
+                <div class="w-10/12 px-4">
+                </div>
+                <button class="bg-red-500 text-white active:bg-green-600 
+                font-bold  text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="toggleTabs(2)">
+                  Voltar
+                </button>
+                <button class="bg-green-500 text-white active:bg-green-600 
+                  font-bold  text-sm px-6 py-3 rounded shadow hover:shadow-lg 
+                  outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                  (click)="submit()">
+                  Finalizar
+                </button>
+              </div>
             </div>
           </div>
         </div>

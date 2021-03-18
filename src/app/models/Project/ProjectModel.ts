@@ -54,3 +54,30 @@ export class ProjectTypeModel{
     id: number;
     type: string;
 }
+
+export class GlassColorResponse{
+    data: GlassColorModel[];
+}
+
+export class AluminiumColorResponse{
+    data: AluminiumColorModel[];
+}
+
+export class StructureColorResponse{
+    data: StructureColorModel[];
+}
+
+export class GlassColorModel{
+    id: number;
+    description : string;
+}
+
+export class AluminiumColorModel{
+    id: number;
+    description : string;
+}
+
+export class StructureColorModel{
+    id: number;
+    description : string;
+}

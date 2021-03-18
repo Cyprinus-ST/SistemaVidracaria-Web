@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AddProject, FilterProject, FilterProjectResponse, ProjectAddResponse, ProjectModel, ProjectTypeResponse } from 'src/app/models/Project/ProjectModel';
+import { AddProject, AluminiumColorResponse, FilterProject, FilterProjectResponse, GlassColorResponse, ProjectAddResponse, ProjectTypeResponse, StructureColorResponse } from 'src/app/models/Project/ProjectModel';
 import { MessageResponse } from 'src/app/models/Response/MessageResponse';
 
 @Injectable({
@@ -34,6 +34,28 @@ export class ProjectService {
     );
   }
 
+  public GetGlassColor() : Observable<GlassColorResponse>{
+    return this.httpClient.get<GlassColorResponse>(
+      this.apiUrl + "/GlassColor",
+      this.httpOptions
+    );
+  }
+
+  public GetAluminiumColor() : Observable<AluminiumColorResponse>{
+    return this.httpClient.get<AluminiumColorResponse>(
+      this.apiUrl + "/AluminiumColor",
+      this.httpOptions
+    );
+  }
+
+  public GetStructureColor() : Observable<StructureColorResponse>{
+    return this.httpClient.get<StructureColorResponse>(
+      this.apiUrl + "/StructureColor",
+      this.httpOptions
+    );
+  }
+
+  
   public PostFilterProject(filterProject : FilterProject): Observable<FilterProjectResponse>{
     return this.httpClient.post<FilterProjectResponse>(
       this.apiUrl + "/ListFiltered",

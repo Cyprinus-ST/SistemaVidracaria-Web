@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BudgetDTO } from 'src/app/models/Budget/BudgetModel';
 import { CostumerModel } from 'src/app/models/Costumer/CostumerModel';
-import { FilterProject, ProjectModel, ProjectTypeModel } from 'src/app/models/Project/ProjectModel';
+import { AluminiumColorModel, FilterProject, GlassColorModel, ProjectModel, ProjectTypeModel, StructureColorModel } from 'src/app/models/Project/ProjectModel';
 import { CostumerService } from 'src/app/services/costumer/costumer.service';
 import { ProjectService } from 'src/app/services/project/project.service';
 import { AlertsService } from 'src/app/services/utils/alerts.service';
@@ -17,12 +17,15 @@ export class RegisterComponent implements OnInit {
   listCostumer: CostumerModel[];
   listProjects : ProjectModel[];
   listProjectsTypes : ProjectTypeModel[];
+  listGlassColor : GlassColorModel[];
+  listAluminiumColor: AluminiumColorModel[];
+  listStructureColor: StructureColorModel[];
   idUser: string;
   urlImage: string;
   openTab = 1;
   hasCostumerSelected = false;
   formBudget : FormGroup;
-  filterForm : FormGroup;
+  projectForm : FormGroup;
   Budget : BudgetDTO;
   
   constructor(
@@ -40,6 +43,7 @@ export class RegisterComponent implements OnInit {
     this.idUser = user.id;
     this.getAllCostumer(user.id);
     this.getAllProjectType();
+    this.getProjectColors();
     this.initForm();
 
   }
@@ -58,8 +62,17 @@ export class RegisterComponent implements OnInit {
       ]
     })
 
-    this.filterForm = this.fb.group({
+    this.projectForm = this.fb.group({
       idProject: [
+        ""
+      ],
+      idGlassColor: [
+        ""
+      ],
+      idStructureColor: [
+        ""
+      ],
+      idAluminiumColor: [
         ""
       ],
       numberGlass:[
@@ -77,7 +90,6 @@ export class RegisterComponent implements OnInit {
   getAllCostumer(idUser : string){
     try{
       this.CostumerService.GetAllCostumer(idUser).subscribe(data=>{
-        console.log(data);
         if(data.valid)
           this.listCostumer = data.listCostumers;
       }, ex =>{
@@ -94,7 +106,7 @@ export class RegisterComponent implements OnInit {
 
   getAllProjects(){
     let filter = new FilterProject();
-    filter = this.filterForm.value;
+    filter = this.projectForm.value;
     filter.maxResults = 100;
     filter.idUser = this.idUser;
     if(filter.numberGlass === null)
@@ -133,6 +145,22 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  getProjectColors(): void{
+
+    this.ProjectService.GetGlassColor().subscribe(response =>{
+        this.listGlassColor = response.data;
+        console.log(this.listGlassColor);
+    });
+
+    this.ProjectService.GetAluminiumColor().subscribe(response =>{
+        this.listAluminiumColor = response.data;
+    });
+
+    this.ProjectService.GetStructureColor().subscribe(response =>{
+        this.listStructureColor = response.data;
+    });
+
+  }
 
   //#endregion
 
@@ -178,7 +206,7 @@ export class RegisterComponent implements OnInit {
     };
 
     onChangeProject(){
-      const form = this.filterForm.value;
+      const form = this.projectForm.value;
       if(this.EnsureValue(form.idProject)){
         this.Budget.Project = this.listProjects.find(e => e.id == form.idProject);
         this.urlImage = this.Budget.Project.imageUrl;
